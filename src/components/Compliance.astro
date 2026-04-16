@@ -1,0 +1,528 @@
+---
+const standards = [
+  { code: 'API 580/581', region: 'Americas', color: '#FF6B00' },
+  { code: 'ASME',         region: 'Global',    color: '#FF6B00' },
+  { code: 'OSHA PSM',     region: 'USA',       color: '#FF6B00' },
+  { code: 'NBIC',         region: 'USA',       color: '#FF6B00' },
+  { code: 'CRN',          region: 'Canada',    color: '#FF6B00' },
+  { code: 'PED',          region: 'Europe',    color: '#FF6B00' },
+  { code: 'ABSA',         region: 'Canada',    color: '#FF6B00' },
+  { code: 'NR-13',        region: 'Brazil',    color: '#FF6B00' },
+];
+
+const stats = [
+  { value: '1', suffix: '-Click', label: 'Audit Report' },
+  { value: '100', suffix: '%',    label: 'Audit Trail' },
+  { value: '8+',  suffix: '',     label: 'Global Standards' },
+];
+---
+
+<section class="compliance section">
+  <!-- Grid lines background -->
+  <div class="compliance__bg-grid" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="compliance__inner">
+      <div class="compliance__content reveal">
+        <div class="section-label">Regulatory Compliance</div>
+        <h2>
+          <span class="text-light">One-Click Audit Reporting.</span><br />
+          <span class="text-bold">Full Compliance.</span>
+        </h2>
+        <p class="compliance__text">
+          Maintain full audit trails and generate compliance reports with a single click. Metegrity supports major global standards so your facilities meet regulatory requirements with confidence.
+        </p>
+
+        <!-- Mini stat row -->
+        <div class="compliance__stats">
+          {stats.map((s, i) => (
+            <div class="compliance__stat" style={`--i: ${i}`}>
+              <span class="compliance__stat-val">
+                <span class="compliance__stat-num" data-end={s.value}>0</span>{s.suffix}
+              </span>
+              <span class="compliance__stat-label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <a href="#" class="btn btn-dark" style="margin-top: var(--space-8);">
+          Learn more
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 8H12M12 8L8 4M12 8L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Animated compliance visual -->
+      <div class="compliance__visual reveal">
+        <!-- Central report card -->
+        <div class="compliance__report">
+          <div class="compliance__report-head">
+            <div class="compliance__report-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="compliance__report-tag">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5L4 7L8 3" stroke="#028901" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Verified
+            </span>
+          </div>
+
+          <div class="compliance__report-body">
+            <span class="compliance__report-label">AUDIT REPORT</span>
+            <span class="compliance__report-title">Q2 · 2026 Compliance Summary</span>
+
+            <div class="compliance__report-lines">
+              <div class="compliance__line compliance__line--l1"></div>
+              <div class="compliance__line compliance__line--l2"></div>
+              <div class="compliance__line compliance__line--l3"></div>
+              <div class="compliance__line compliance__line--l4"></div>
+            </div>
+
+            <div class="compliance__report-progress">
+              <div class="compliance__report-progress-row">
+                <span>API 580/581</span>
+                <span class="compliance__report-pct">100%</span>
+              </div>
+              <div class="compliance__report-progress-bar"><div style="--w: 100%"></div></div>
+
+              <div class="compliance__report-progress-row">
+                <span>ASME</span>
+                <span class="compliance__report-pct">98%</span>
+              </div>
+              <div class="compliance__report-progress-bar"><div style="--w: 98%"></div></div>
+
+              <div class="compliance__report-progress-row">
+                <span>OSHA PSM</span>
+                <span class="compliance__report-pct">100%</span>
+              </div>
+              <div class="compliance__report-progress-bar"><div style="--w: 100%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating orbiting standards badges -->
+        <div class="compliance__orbit">
+          {standards.map((s, i) => (
+            <span class="compliance__badge-float" style={`--i: ${i}; --total: ${standards.length}`}>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                <path d="M8 1L10 5.5L15 6L11.5 9.5L12.5 14.5L8 12L3.5 14.5L4.5 9.5L1 6L6 5.5L8 1Z" stroke={s.color} stroke-width="1" fill={s.color} fill-opacity="0.2"/>
+              </svg>
+              {s.code}
+            </span>
+          ))}
+        </div>
+
+        <!-- Central "click" pulse ring -->
+        <div class="compliance__pulse" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .compliance {
+    background: var(--color-bg-alt);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .compliance__bg-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(26,26,26,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,26,26,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+
+  .compliance .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .compliance__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: center;
+  }
+
+  .compliance__content h2 {
+    margin-bottom: var(--space-6);
+  }
+
+  .compliance__text {
+    font-size: var(--font-size-base);
+    max-width: 480px;
+    margin-bottom: var(--space-10);
+  }
+
+  /* Mini stats */
+  .compliance__stats {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .compliance__stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .compliance__stat-val {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-dark);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .compliance__stat-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: var(--font-medium);
+  }
+
+  /* Visual area */
+  .compliance__visual {
+    position: relative;
+    min-height: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Report card */
+  .compliance__report {
+    position: relative;
+    z-index: 3;
+    width: 92%;
+    max-width: 380px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    animation: report-float 6s ease-in-out infinite;
+  }
+
+  @keyframes report-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .compliance__report-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .compliance__report-dots {
+    display: flex;
+    gap: 5px;
+  }
+
+  .compliance__report-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-border);
+  }
+
+  .compliance__report-dots span:first-child { background: #FF6B00; opacity: 0.6; }
+
+  .compliance__report-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    background: rgba(2, 137, 1, 0.1);
+    color: #028901;
+    font-size: 10px;
+    font-weight: var(--font-bold);
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .compliance__report-body {
+    padding: var(--space-5) var(--space-5) var(--space-6);
+  }
+
+  .compliance__report-label {
+    display: block;
+    font-size: 10px;
+    font-weight: var(--font-bold);
+    color: var(--color-primary);
+    letter-spacing: 0.12em;
+    margin-bottom: var(--space-1);
+  }
+
+  .compliance__report-title {
+    display: block;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+    margin-bottom: var(--space-4);
+  }
+
+  /* Skeleton lines fading in */
+  .compliance__report-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: var(--space-5);
+  }
+
+  .compliance__line {
+    height: 6px;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-pill);
+    width: 0;
+    animation: line-grow 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .compliance__line--l1 { animation-delay: 0.2s; --tw: 92%; }
+  .compliance__line--l2 { animation-delay: 0.4s; --tw: 78%; }
+  .compliance__line--l3 { animation-delay: 0.6s; --tw: 85%; }
+  .compliance__line--l4 { animation-delay: 0.8s; --tw: 65%; }
+
+  @keyframes line-grow {
+    to { width: var(--tw); }
+  }
+
+  /* Progress bars per standard */
+  .compliance__report-progress {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .compliance__report-progress-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    font-weight: var(--font-semibold);
+    color: var(--color-dark);
+    margin-top: var(--space-1);
+  }
+
+  .compliance__report-pct {
+    color: var(--color-primary);
+    font-weight: var(--font-bold);
+  }
+
+  .compliance__report-progress-bar {
+    height: 4px;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+  }
+
+  .compliance__report-progress-bar > div {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--color-primary), #FF8A33);
+    border-radius: var(--radius-pill);
+    animation: prog-fill 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .compliance__report-progress-bar:nth-of-type(2) > div { animation-delay: 0.4s; }
+  .compliance__report-progress-bar:nth-of-type(4) > div { animation-delay: 0.7s; }
+  .compliance__report-progress-bar:nth-of-type(6) > div { animation-delay: 1s; }
+
+  @keyframes prog-fill {
+    to { width: var(--w); }
+  }
+
+  /* Orbiting standard badges */
+  .compliance__orbit {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    animation: orbit-rotate 40s linear infinite;
+  }
+
+  @keyframes orbit-rotate {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+  }
+
+  .compliance__badge-float {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: var(--radius-pill);
+    font-size: 11px;
+    font-weight: var(--font-semibold);
+    color: var(--color-dark);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    white-space: nowrap;
+    transform-origin: center;
+    transform:
+      rotate(calc(var(--i) * (360deg / var(--total))))
+      translate(220px)
+      rotate(calc(-1 * var(--i) * (360deg / var(--total))));
+    animation: badge-counter 40s linear infinite;
+    pointer-events: auto;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  /* Counter-rotate the text so it stays upright */
+  @keyframes badge-counter {
+    from { transform:
+      rotate(calc(var(--i) * (360deg / var(--total))))
+      translate(220px)
+      rotate(0deg); }
+    to { transform:
+      rotate(calc(var(--i) * (360deg / var(--total))))
+      translate(220px)
+      rotate(-360deg); }
+  }
+
+  .compliance__badge-float:hover {
+    box-shadow: 0 8px 24px rgba(255, 107, 0, 0.25);
+    color: var(--color-primary);
+  }
+
+  /* Pulse ring behind everything */
+  .compliance__pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    margin-left: -100px;
+    margin-top: -100px;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    opacity: 0;
+    animation: pulse-ring 3s ease-out infinite;
+    z-index: 1;
+  }
+
+  .compliance__pulse::before,
+  .compliance__pulse::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    opacity: 0;
+    animation: pulse-ring 3s ease-out infinite;
+  }
+
+  .compliance__pulse::before { animation-delay: 1s; }
+  .compliance__pulse::after  { animation-delay: 2s; }
+
+  @keyframes pulse-ring {
+    0%   { transform: scale(0.5); opacity: 0.6; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .compliance__report,
+    .compliance__orbit,
+    .compliance__badge-float,
+    .compliance__line,
+    .compliance__report-progress-bar > div,
+    .compliance__pulse,
+    .compliance__pulse::before,
+    .compliance__pulse::after {
+      animation: none;
+    }
+    .compliance__line { width: var(--tw); }
+    .compliance__report-progress-bar > div { width: var(--w); }
+  }
+
+  @media (max-width: 1100px) {
+    .compliance__badge-float {
+      transform:
+        rotate(calc(var(--i) * (360deg / var(--total))))
+        translate(180px)
+        rotate(calc(-1 * var(--i) * (360deg / var(--total))));
+    }
+    @keyframes badge-counter {
+      from { transform: rotate(calc(var(--i) * (360deg / var(--total)))) translate(180px) rotate(0deg); }
+      to   { transform: rotate(calc(var(--i) * (360deg / var(--total)))) translate(180px) rotate(-360deg); }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .compliance__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .compliance__visual {
+      min-height: 400px;
+    }
+
+    .compliance__badge-float {
+      transform:
+        rotate(calc(var(--i) * (360deg / var(--total))))
+        translate(160px)
+        rotate(calc(-1 * var(--i) * (360deg / var(--total))));
+      font-size: 10px;
+      padding: 4px 10px;
+    }
+
+    @keyframes badge-counter {
+      from { transform: rotate(calc(var(--i) * (360deg / var(--total)))) translate(160px) rotate(0deg); }
+      to   { transform: rotate(calc(var(--i) * (360deg / var(--total)))) translate(160px) rotate(-360deg); }
+    }
+
+    .compliance__stats {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+  }
+</style>
+
+<script>
+  // Animate mini stat numbers
+  const statNums = document.querySelectorAll<HTMLElement>('.compliance__stat-num');
+  const statIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target as HTMLElement;
+      const raw = el.dataset.end || '0';
+      const end = parseInt(raw, 10);
+      if (isNaN(end)) { el.textContent = raw; statIO.unobserve(el); return; }
+      const duration = 1600;
+      const start = performance.now();
+      function tick(now: number) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = String(Math.round(eased * end));
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      statIO.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  statNums.forEach(n => statIO.observe(n));
+</script>

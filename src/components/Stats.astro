@@ -1,0 +1,114 @@
+---
+const stats = [
+  { end: 30, prefix: '', suffix: '+', label: 'Years in the Industry' },
+  { end: 1350, prefix: '', suffix: '+', label: 'Facilities Worldwide' },
+  { end: 1, prefix: '$', suffix: 'T+', label: 'In Managed Assets' },
+  { end: 5, prefix: '', suffix: '', label: 'Continents Served' },
+];
+---
+
+<section class="stats">
+  <div class="stats__inner container">
+    {stats.map(stat => (
+      <div class="stats__item reveal">
+        <span
+          class="stats__value"
+          data-end={stat.end}
+          data-prefix={stat.prefix}
+          data-suffix={stat.suffix}
+        >
+          {stat.prefix}0{stat.suffix}
+        </span>
+        <span class="stats__label">{stat.label}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .stats {
+    padding: var(--space-12) 0;
+    background: #1A1A1A;
+  }
+
+  .stats__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-8);
+    text-align: center;
+  }
+
+  .stats__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .stats__value {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-extrabold);
+    color: #FFFFFF;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .stats__label {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: var(--font-medium);
+  }
+
+  @media (max-width: 768px) {
+    .stats__inner {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-8) var(--space-4);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats__inner {
+      grid-template-columns: 1fr 1fr;
+    }
+    .stats__value {
+      font-size: var(--font-size-3xl);
+    }
+  }
+</style>
+
+<script>
+  function formatNumber(n: number): string {
+    return n >= 1000 ? n.toLocaleString('en-US') : String(n);
+  }
+
+  function animateCounter(el: HTMLElement) {
+    const end = Number(el.dataset.end);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const duration = 2000;
+    const startTime = performance.now();
+
+    function update(now: number) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * end);
+      el.textContent = prefix + formatNumber(current) + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target as HTMLElement;
+        animateCounter(el);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stats__value').forEach(el => observer.observe(el));
+</script>

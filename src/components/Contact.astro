@@ -1,0 +1,172 @@
+---
+const offices = [
+  {
+    country: 'Canada',
+    company: 'Metegrity Inc.',
+    phone: '+1 780-485-8500',
+    address: '5715-76 Avenue, Edmonton, AB T6B 0A7, Canada',
+  },
+  {
+    country: 'United States',
+    company: 'Metegrity Corp.',
+    phone: '+1 832-390-2262',
+    address: 'Williams Tower, 2800 Post Oak Blvd., Suite 5600, Houston, TX 77056',
+  },
+  {
+    country: 'Europe',
+    company: 'Metegrity Sp. z.o.o.',
+    phone: '+48-71-88-11-171',
+    address: 'ul. Swojczycka 129, 51-502 Wroclaw, Poland',
+  },
+];
+---
+
+<section class="contact section" id="contact">
+  <div class="container">
+    <div class="contact__inner">
+      <div class="contact__left reveal">
+        <div class="section-label">Get in Touch</div>
+        <h2>
+          <span class="text-light">Connect</span><br />
+          <span class="text-bold">With Us.</span>
+        </h2>
+        <p class="contact__desc">
+          Ask us any question regarding our products, services, and training. We're here to help you optimize your asset integrity management.
+        </p>
+
+        <div class="contact__ctas">
+          <a href="#" class="btn btn-primary">Book a Demo</a>
+          <div class="contact__tollfree">
+            <span class="contact__tollfree-label">Toll Free</span>
+            <span class="contact__tollfree-num">+1 866-485-8500</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact__offices reveal">
+        {offices.map(office => (
+          <div class="contact__office">
+            <h4 class="contact__office-country">{office.country}</h4>
+            <p class="contact__office-company">{office.company}</p>
+            <p class="contact__office-phone">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M5.5 2L3 4.5C3 4.5 4 8 6 10C8 12 11.5 13 11.5 13L13 10.5L10.5 8.5L9 10C9 10 7.5 9.5 6 8C4.5 6.5 4 5 4 5L5.5 3.5L5.5 2Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+              </svg>
+              {office.phone}
+            </p>
+            <p class="contact__office-address">{office.address}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: var(--color-dark);
+    color: var(--color-white);
+  }
+
+  .contact .section-label {
+    color: var(--color-primary);
+  }
+
+  .contact__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  .contact__left h2 {
+    margin-bottom: var(--space-6);
+  }
+
+  .contact__left h2 .text-light {
+    color: var(--color-text-muted);
+  }
+
+  .contact__desc {
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: var(--space-8);
+    max-width: 400px;
+  }
+
+  .contact__ctas {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    flex-wrap: wrap;
+  }
+
+  .contact__tollfree {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .contact__tollfree-label {
+    font-size: var(--font-size-xs);
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .contact__tollfree-num {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-semibold);
+  }
+
+  .contact__offices {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .contact__office {
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .contact__office:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .contact__office-country {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-bold);
+  }
+
+  .contact__office-company {
+    font-size: var(--font-size-sm);
+    color: var(--color-primary);
+    font-weight: var(--font-medium);
+  }
+
+  .contact__office-phone {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .contact__office-address {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .contact__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+  }
+</style>

@@ -1,0 +1,159 @@
+---
+const testimonials = [
+  {
+    quote: 'The extremely professional individuals at Metegrity know their business inside out. Their dedication to providing quality solutions is unmatched in the industry.',
+    author: 'Advanced Facility Specialist',
+    company: 'Marathon Oil Company',
+  },
+  {
+    quote: 'Visions continues to increase its presence as a leading Asset Integrity Data Management system. The platform reliability and comprehensive feature set make it indispensable.',
+    author: 'Asset Integrity Process Supervisor',
+    company: 'Chevron Angola',
+  },
+  {
+    quote: 'The Metegrity reporting system is very user friendly. It has streamlined our inspection processes and provided clear insights for decision-making across all our facilities.',
+    author: 'Pressure Equipment Inspector',
+    company: 'Major Energy Corporation',
+  },
+];
+---
+
+<section class="testimonials section">
+  <div class="container">
+    <div class="testimonials__header reveal">
+      <div class="section-label">Testimonials</div>
+      <h2>
+        <span class="text-light">What Our</span>
+        <span class="text-bold">Clients Say.</span>
+      </h2>
+    </div>
+
+    <div class="testimonials__grid">
+      {testimonials.map((t, i) => (
+        <blockquote class={`testimonials__card reveal ${i === 0 ? 'testimonials__card--featured' : ''}`} style={`transition-delay: ${i * 120}ms`}>
+          <svg class="testimonials__quote" width="32" height="24" viewBox="0 0 32 24" fill="none">
+            <path d="M0 24V14.4C0 6.4 4.8 1.6 14.4 0L16 3.2C11.2 4.8 8.8 7.2 8 10.4H14V24H0ZM18 24V14.4C18 6.4 22.8 1.6 32 0L33.6 3.2C28.8 4.8 26.4 7.2 25.6 10.4H32V24H18Z" fill="currentColor"/>
+          </svg>
+          <p class="testimonials__text">{t.quote}</p>
+          <footer class="testimonials__footer">
+            <div class="testimonials__avatar">
+              {t.author[0]}
+            </div>
+            <div>
+              <cite class="testimonials__author">{t.author}</cite>
+              <span class="testimonials__company">{t.company}</span>
+            </div>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials__header {
+    margin-bottom: var(--space-16);
+  }
+
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .testimonials__card {
+    padding: var(--space-8);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .testimonials__card--featured {
+    grid-row: span 2;
+    background: var(--color-dark);
+    border-color: transparent;
+  }
+
+  .testimonials__card--featured .testimonials__quote {
+    color: var(--color-primary);
+  }
+
+  .testimonials__card--featured .testimonials__text {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--font-size-lg);
+  }
+
+  .testimonials__card--featured .testimonials__author {
+    color: var(--color-white);
+  }
+
+  .testimonials__card--featured .testimonials__company {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .testimonials__card--featured .testimonials__avatar {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .testimonials__quote {
+    color: var(--color-border);
+    width: 32px;
+    flex-shrink: 0;
+  }
+
+  .testimonials__text {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    flex: 1;
+    font-style: italic;
+  }
+
+  .testimonials__footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .testimonials__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 107, 0, 0.1);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-bold);
+    font-size: var(--font-size-sm);
+    flex-shrink: 0;
+  }
+
+  .testimonials__author {
+    display: block;
+    font-style: normal;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-dark);
+  }
+
+  .testimonials__company {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .testimonials__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonials__card--featured {
+      grid-row: auto;
+    }
+  }
+</style>

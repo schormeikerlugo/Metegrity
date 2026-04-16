@@ -1,0 +1,762 @@
+---
+const services = [
+  { name: 'Implementation Planning', desc: 'Tailored roadmaps that align your AIM strategy with business objectives and operational priorities.' },
+  { name: 'Configuration & Setup', desc: 'Asset hierarchy configuration, data templates, and workflows customized to your facility requirements.' },
+  { name: 'Systems Integration', desc: 'Seamless integration with SAP, EAM, CMMS, and GIS systems for unified data management.' },
+  { name: 'User Training', desc: 'Role-based training programs ensuring your team maximizes the value of every feature.' },
+  { name: 'Strategic Consulting', desc: 'Expert guidance for regulatory compliance, cost control, and process efficiency optimization.' },
+  { name: 'Data Migration', desc: 'Safe, validated migration of legacy data with full integrity verification and audit trails.' },
+];
+
+const benefits = [
+  {
+    label: 'Lower Costs',
+    full: 'Reduce capital expenditure',
+    icon: `<svg viewBox="0 0 32 32" fill="none">
+      <path class="bi-line" d="M6 24L12 18L18 22L26 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="bi-line" d="M20 10H26V16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle class="bi-dot" cx="12" cy="18" r="2" fill="currentColor"/>
+      <circle class="bi-dot" cx="18" cy="22" r="2" fill="currentColor"/>
+    </svg>`,
+  },
+  {
+    label: 'No Hardware',
+    full: 'Zero on-premise hardware',
+    icon: `<svg viewBox="0 0 32 32" fill="none">
+      <path class="bi-cloud" d="M22 22H9a5 5 0 01-1-9.9A7 7 0 0122 14a4 4 0 010 8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="bi-check" d="M12 16l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`,
+  },
+  {
+    label: 'Fast Deploy',
+    full: 'Accelerated ROI',
+    icon: `<svg viewBox="0 0 32 32" fill="none">
+      <path class="bi-bolt" d="M18 4L8 18h6l-2 10 10-14h-6l2-10z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`,
+  },
+  {
+    label: 'Secure',
+    full: 'Reliable & flexible',
+    icon: `<svg viewBox="0 0 32 32" fill="none">
+      <path class="bi-shield" d="M16 4l10 4v8c0 6-4.5 10-10 12C10.5 26 6 22 6 16V8l10-4z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="bi-check" d="M12 16l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`,
+  },
+  {
+    label: 'Unified Data',
+    full: 'Corporate-wide access',
+    icon: `<svg viewBox="0 0 32 32" fill="none">
+      <ellipse class="bi-disk" cx="16" cy="8" rx="9" ry="3" stroke="currentColor" stroke-width="1.8"/>
+      <path class="bi-disk" d="M7 8v8c0 1.7 4 3 9 3s9-1.3 9-3V8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path class="bi-disk" d="M7 16v8c0 1.7 4 3 9 3s9-1.3 9-3v-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>`,
+  },
+];
+---
+
+<section class="services section" id="services">
+  <div class="container">
+    <div class="services__top reveal">
+      <div class="services__header">
+        <div class="section-label">Services</div>
+        <h2>
+          <span class="text-light">Services that Go</span><br />
+          <span class="text-bold">Hand-in-Hand.</span>
+        </h2>
+        <p class="services__intro">
+          Cloud computing is changing the way companies manage their IT investments. Our cloud services improve flexibility, reliability, security and more — all while remaining cost effective to deliver an increased return on investment.
+        </p>
+        <p class="services__intro">
+          With the help of our Metegrity experts, your organization can realize enhanced speed of deployment, reduced overhead expenditure and secure access to your data when you need it most. We will help you integrate our cloud-based offering and tailor a strategy exclusive to your company's strengths, goals, and long term vision.
+        </p>
+      </div>
+      <div class="services__dashboard">
+        <!-- Dashboard-style visual with live metrics -->
+        <div class="services__dash-card services__dash-main">
+          <div class="services__dash-header">
+            <div class="services__dash-title">
+              <span class="services__dash-dot"></span>
+              <span>Live Monitoring</span>
+            </div>
+            <span class="services__dash-badge">CLOUD · SaaS</span>
+          </div>
+
+          <div class="services__dash-metric">
+            <span class="services__dash-label">System Uptime</span>
+            <div class="services__dash-value">
+              <span class="services__dash-num" data-end="99.9">0.0</span>
+              <span class="services__dash-unit">%</span>
+            </div>
+            <div class="services__dash-bar">
+              <div class="services__dash-bar-fill"></div>
+            </div>
+          </div>
+
+          <div class="services__dash-grid">
+            <div class="services__dash-small">
+              <span class="services__dash-small-label">Facilities</span>
+              <span class="services__dash-small-val">1,350+</span>
+              <svg class="services__dash-spark" viewBox="0 0 60 20" fill="none">
+                <path d="M0 15 L10 10 L20 12 L30 6 L40 9 L50 4 L60 7" stroke="#FF6B00" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+            <div class="services__dash-small">
+              <span class="services__dash-small-label">Deployment</span>
+              <span class="services__dash-small-val">40-60%</span>
+              <span class="services__dash-small-sub">faster ROI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating glass card -->
+        <div class="services__dash-float">
+          <div class="services__dash-float-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M17 10h1a3 3 0 010 6h-1M7 10H6a3 3 0 000 6h1M6 10a6 6 0 0112 0M8 14h8" stroke="#FF6B00" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="services__dash-float-content">
+            <span class="services__dash-float-label">Secure Cloud</span>
+            <span class="services__dash-float-sub">No hardware required</span>
+          </div>
+        </div>
+
+        <!-- Orbit rings accent -->
+        <svg class="services__dash-orbit" viewBox="0 0 300 300" fill="none" aria-hidden="true">
+          <circle cx="150" cy="150" r="80" stroke="#FF6B00" stroke-width="0.8" stroke-dasharray="2 4" opacity="0.3"/>
+          <circle cx="150" cy="150" r="120" stroke="#FF6B00" stroke-width="0.8" stroke-dasharray="2 4" opacity="0.2"/>
+          <circle cx="150" cy="150" r="145" stroke="#1A1A1A" stroke-width="0.5" stroke-dasharray="3 5" opacity="0.1"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="services__benefits-wrap">
+      <span class="services__benefits-title reveal">Cloud-Powered Benefits</span>
+      <div class="services__benefits-grid">
+        {benefits.map((b, i) => (
+          <div class="benefit-card" style={`--i: ${i}`}>
+            <div class="benefit-card__icon" set:html={b.icon} />
+            <span class="benefit-card__label">{b.label}</span>
+            <span class="benefit-card__sub">{b.full}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="services__grid">
+      {services.map((service, i) => (
+        <div class="services__item reveal" style={`transition-delay: ${i * 80}ms`}>
+          <span class="services__num">{String(i + 1).padStart(2, '0')}</span>
+          <div class="services__item-content">
+            <h3>{service.name}</h3>
+            <p>{service.desc}</p>
+          </div>
+          <svg class="services__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M6 14L14 6M14 6H8M14 6V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services__top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    margin-bottom: var(--space-16);
+    align-items: start;
+  }
+
+  .services__header h2 {
+    margin-bottom: var(--space-6);
+  }
+
+  .services__intro {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-4);
+    max-width: 520px;
+  }
+
+  .services__intro:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Dashboard Visual */
+  .services__dashboard {
+    position: relative;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .services__dash-orbit {
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: -5%;
+    left: -5%;
+    animation: dash-orbit-rotate 40s linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes dash-orbit-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .services__dash-card {
+    position: relative;
+    z-index: 1;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .services__dash-main {
+    width: 82%;
+    max-width: 360px;
+  }
+
+  .services__dash-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-6);
+  }
+
+  .services__dash-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-semibold);
+    color: var(--color-dark);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .services__dash-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22C55E;
+    position: relative;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: dash-dot-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes dash-dot-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  }
+
+  .services__dash-badge {
+    font-size: 9px;
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+    background: rgba(255, 107, 0, 0.1);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.08em;
+  }
+
+  .services__dash-metric {
+    margin-bottom: var(--space-6);
+  }
+
+  .services__dash-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-medium);
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+
+  .services__dash-value {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-1);
+    margin-bottom: var(--space-3);
+  }
+
+  .services__dash-num {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-dark);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .services__dash-unit {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+  }
+
+  .services__dash-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+  }
+
+  .services__dash-bar-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--color-primary), #FF8A33);
+    border-radius: var(--radius-pill);
+    animation: dash-bar-fill 2.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+  }
+
+  @keyframes dash-bar-fill {
+    from { width: 0; }
+    to { width: 99.9%; }
+  }
+
+  .services__dash-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .services__dash-small {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: relative;
+  }
+
+  .services__dash-small-label {
+    font-size: 10px;
+    color: var(--color-text-secondary);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .services__dash-small-val {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+  }
+
+  .services__dash-small-sub {
+    font-size: 10px;
+    color: var(--color-text-muted);
+  }
+
+  .services__dash-spark {
+    width: 60px;
+    height: 18px;
+    margin-top: 4px;
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+    animation: dash-spark 2s ease-out 0.8s forwards;
+  }
+
+  @keyframes dash-spark {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .services__dash-float {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    animation: dash-float 5s ease-in-out infinite;
+  }
+
+  @keyframes dash-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .services__dash-float-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 107, 0, 0.12);
+    border-radius: var(--radius-md);
+  }
+
+  .services__dash-float-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .services__dash-float-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+  }
+
+  .services__dash-float-sub {
+    font-size: 10px;
+    color: var(--color-text-secondary);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .services__dash-orbit,
+    .services__dash-float,
+    .services__dash-dot,
+    .services__dash-bar-fill,
+    .services__dash-spark {
+      animation: none;
+    }
+    .services__dash-bar-fill { width: 99.9%; }
+    .services__dash-spark { stroke-dashoffset: 0; }
+  }
+
+  /* Benefits cards */
+  .services__benefits-wrap {
+    margin-bottom: var(--space-12);
+  }
+
+  .services__benefits-title {
+    display: block;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-primary);
+    margin-bottom: var(--space-6);
+  }
+
+  .services__benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-4);
+  }
+
+  .benefit-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding: var(--space-5);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  }
+
+  .services__benefits-grid.in-view .benefit-card {
+    animation: benefit-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: calc(var(--i) * 100ms);
+  }
+
+  @keyframes benefit-in {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 107, 0, 0.3);
+    box-shadow: 0 12px 28px rgba(255, 107, 0, 0.12);
+  }
+
+  .benefit-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .benefit-card__icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 107, 0, 0.08);
+    border-radius: var(--radius-md);
+    color: var(--color-primary);
+    transition: background var(--transition-base), transform var(--transition-base);
+  }
+
+  .benefit-card__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .benefit-card:hover .benefit-card__icon {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: scale(1.08);
+  }
+
+  /* Per-icon hover animations */
+  .benefit-card .bi-line,
+  .benefit-card .bi-cloud,
+  .benefit-card .bi-bolt,
+  .benefit-card .bi-shield,
+  .benefit-card .bi-disk,
+  .benefit-card .bi-check {
+    transition: stroke-dashoffset 0.6s ease, transform 0.4s ease;
+  }
+
+  /* Line chart draw on hover */
+  .benefit-card .bi-line {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+  }
+  .benefit-card:hover .bi-line {
+    animation: bi-redraw 0.8s ease;
+  }
+  @keyframes bi-redraw {
+    0% { stroke-dashoffset: 60; }
+    100% { stroke-dashoffset: 0; }
+  }
+  .benefit-card .bi-dot {
+    transition: transform 0.3s ease;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  .benefit-card:hover .bi-dot {
+    animation: bi-dot-pop 0.6s ease;
+  }
+  @keyframes bi-dot-pop {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.6); }
+  }
+
+  /* Cloud bounce */
+  .benefit-card:hover .bi-cloud {
+    animation: bi-bounce 0.7s ease;
+  }
+  @keyframes bi-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+  }
+
+  /* Check draw */
+  .benefit-card .bi-check {
+    stroke-dasharray: 14;
+    stroke-dashoffset: 0;
+  }
+  .benefit-card:hover .bi-check {
+    animation: bi-check-draw 0.5s 0.15s ease both;
+  }
+  @keyframes bi-check-draw {
+    from { stroke-dashoffset: 14; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Bolt flash */
+  .benefit-card:hover .bi-bolt {
+    animation: bi-flash 0.6s ease;
+  }
+  @keyframes bi-flash {
+    0%, 100% { transform: scale(1) rotate(0); filter: drop-shadow(0 0 0 currentColor); }
+    40% { transform: scale(1.15) rotate(-6deg); filter: drop-shadow(0 0 6px currentColor); }
+    70% { transform: scale(0.95) rotate(3deg); }
+  }
+
+  /* Shield pulse */
+  .benefit-card:hover .bi-shield {
+    animation: bi-shield-pulse 0.8s ease;
+  }
+  @keyframes bi-shield-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  /* Disk layers stagger */
+  .benefit-card:hover .bi-disk {
+    animation: bi-disk-blink 0.8s ease;
+  }
+  .benefit-card:hover .bi-disk:nth-of-type(2) { animation-delay: 0.1s; }
+  .benefit-card:hover .bi-disk:nth-of-type(3) { animation-delay: 0.2s; }
+  @keyframes bi-disk-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; transform: translateX(1px); }
+  }
+
+  .benefit-card__label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+    margin-top: var(--space-2);
+  }
+
+  .benefit-card__sub {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .benefit-card {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .services__benefits-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 540px) {
+    .services__benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .services__grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .services__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: all var(--transition-base);
+  }
+
+  .services__item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .services__item:hover {
+    padding-left: var(--space-4);
+  }
+
+  .services__item:hover .services__arrow {
+    color: var(--color-primary);
+    transform: translate(2px, -2px);
+  }
+
+  .services__num {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+    min-width: 28px;
+  }
+
+  .services__item-content {
+    flex: 1;
+  }
+
+  .services__item-content h3 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-1);
+  }
+
+  .services__item-content p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .services__arrow {
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+    transition: all var(--transition-fast);
+  }
+
+  @media (max-width: 768px) {
+    .services__top {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+    .services__dashboard {
+      min-height: 300px;
+    }
+    .services__dash-main {
+      width: 100%;
+      max-width: 100%;
+    }
+    .services__benefits-strip {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
+<script>
+  // Benefit cards staggered entrance
+  const benefitsGrid = document.querySelector('.services__benefits-grid');
+  if (benefitsGrid) {
+    const bio = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          bio.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    bio.observe(benefitsGrid);
+  }
+
+  const numEl = document.querySelector<HTMLElement>('.services__dash-num');
+  if (numEl) {
+    const end = Number(numEl.dataset.end);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const start = performance.now();
+          const duration = 2200;
+          function tick(now: number) {
+            const p = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            const val = eased * end;
+            numEl!.textContent = val.toFixed(1);
+            if (p < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    io.observe(numEl);
+  }
+</script>

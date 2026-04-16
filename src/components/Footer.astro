@@ -1,0 +1,182 @@
+---
+const links = {
+  Products: ['Visions Enterprise', 'VISIONSGO', 'Visions RBI Bundle', 'Fugitive Emissions'],
+  Services: ['Implementation Planning', 'Configuration & Setup', 'Systems Integration', 'User Training', 'Strategic Consulting'],
+  Company: ['About Us', 'Partner Network', 'Clients', 'Careers', 'Contact'],
+  Resources: ['Success Stories', 'Whitepapers', 'Blogs', 'Video Gallery'],
+};
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="/" class="footer__logo" aria-label="Metegrity">
+          <img src="/images/brand/logo.png" alt="Metegrity" />
+        </a>
+        <p class="footer__tagline">
+          Global leader in asset integrity management software.
+        </p>
+        <div class="footer__social">
+          <a href="https://www.linkedin.com/company/metegrity" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 8V16M4 4.5V4.51M8 16V8M12 16V11.5C12 9.5 14 9 15 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        {Object.entries(links).map(([title, items]) => (
+          <div class="footer__col">
+            <h4 class="footer__col-title">{title}</h4>
+            <ul>
+              {items.map(item => (
+                <li><a href="#">{item}</a></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; 2026 Metegrity Inc. All rights reserved.</p>
+      <div class="footer__legal">
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-dark);
+    color: var(--color-white);
+    padding: var(--space-16) 0 var(--space-8);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-16);
+    padding-bottom: var(--space-12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer__logo {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: var(--space-4);
+  }
+
+  .footer__logo img {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+    filter: invert(1) brightness(2);
+  }
+
+  .footer__tagline {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.4);
+    max-width: 240px;
+    margin-bottom: var(--space-6);
+  }
+
+  .footer__social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.6);
+    transition: all var(--transition-fast);
+  }
+
+  .footer__social a:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .footer__links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-8);
+  }
+
+  .footer__col-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-4);
+    color: var(--color-white);
+  }
+
+  .footer__col ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .footer__col a {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.4);
+    transition: color var(--transition-fast);
+  }
+
+  .footer__col a:hover {
+    color: var(--color-primary);
+  }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-8);
+    font-size: var(--font-size-xs);
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .footer__legal {
+    display: flex;
+    gap: var(--space-6);
+  }
+
+  .footer__legal a {
+    color: rgba(255, 255, 255, 0.3);
+    transition: color var(--transition-fast);
+  }
+
+  .footer__legal a:hover {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  @media (max-width: 900px) {
+    .footer__top {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+
+    .footer__links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer__bottom {
+      flex-direction: column;
+      gap: var(--space-4);
+      text-align: center;
+    }
+
+    .footer__legal {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+</style>

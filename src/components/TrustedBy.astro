@@ -1,0 +1,91 @@
+---
+const logos = [
+  { src: '/images/logos/aicpa-soc2.png', alt: 'AICPA SOC 2' },
+  { src: '/images/logos/absa.png', alt: 'ABSA' },
+  { src: '/images/logos/osha.png', alt: 'OSHA' },
+  { src: '/images/logos/asme.png', alt: 'ASME' },
+  { src: '/images/logos/api.png', alt: 'API' },
+  { src: '/images/logos/csa.png', alt: 'CSA' },
+];
+---
+
+<section class="trusted">
+  <div class="container">
+    <p class="trusted__title reveal">Trusted by Industry Leaders Across the Globe</p>
+    <div class="trusted__logos reveal">
+      {logos.map(logo => (
+        <div class="trusted__logo">
+          <img src={logo.src} alt={logo.alt} loading="lazy" />
+        </div>
+      ))}
+    </div>
+    <p class="trusted__desc reveal">
+      Visions Enterprise® is designed around all major global regulatory standards, making legal audit adherence seamless. It delivers one-click audit reporting, translating to saved time and expense. Full audit trails are always available in the system, making pertinent data retrieval and report generation quick and simple.
+    </p>
+  </div>
+</section>
+
+<style>
+  .trusted {
+    padding: var(--space-16) 0;
+    background: var(--color-bg-alt);
+    text-align: center;
+  }
+
+  .trusted__title {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-dark);
+    margin-bottom: var(--space-10);
+  }
+
+  .trusted__logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-12);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-10);
+  }
+
+  .trusted__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition: all var(--transition-base);
+  }
+
+  .trusted__logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  .trusted__logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .trusted__desc {
+    max-width: 750px;
+    margin: 0 auto;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .trusted__logos {
+      gap: var(--space-8);
+    }
+
+    .trusted__logo {
+      height: 36px;
+    }
+  }
+</style>

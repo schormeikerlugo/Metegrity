@@ -1,0 +1,246 @@
+---
+const products = [
+  {
+    name: 'Visions Enterprise',
+    description: 'Manage asset health using our industry-leading asset integrity management software for single to multi-site plants and facilities.',
+    icon: 'enterprise',
+    tag: 'Core Platform',
+  },
+  {
+    name: 'VISIONSGO',
+    description: 'Execute inspection management from the field using our mobile data management solution. Real-time data capture, anywhere, anytime.',
+    icon: 'mobile',
+    tag: 'Mobile',
+  },
+  {
+    name: 'Visions RBI Bundle',
+    description: 'Intelligently analyze equipment probability of failure vs consequence of failure. API RP 580/581 compliant risk models.',
+    icon: 'rbi',
+    tag: 'Analytics',
+  },
+];
+
+const icons: Record<string, string> = {
+  enterprise: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="8" width="24" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 14H28" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="18" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="18" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M12 4L16 8L20 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  mobile: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="8" y="2" width="16" height="28" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 6H24" stroke="currentColor" stroke-width="1.5"/><path d="M8 24H24" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="27" r="1.5" fill="currentColor"/><path d="M13 12L15 16L17 10L19 16L21 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  rbi: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.5"/><path d="M16 8V16L22 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M6 6L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M26 6L22 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+};
+---
+
+<section class="products section" id="products">
+  <!-- Background isometric illustration -->
+  <div class="products__bg-illustration">
+    <svg viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Storage tanks cluster -->
+      <g stroke="#1A1A1A" stroke-width="0.8" opacity="0.07">
+        <ellipse cx="600" cy="120" rx="55" ry="16"/>
+        <rect x="545" y="120" width="110" height="90"/>
+        <ellipse cx="600" cy="210" rx="55" ry="16"/>
+        <rect x="657" y="130" width="6" height="70" rx="3"/>
+        <rect x="658" y="165" width="4" height="30" rx="2" fill="#1A1A1A" opacity="0.3"/>
+        <!-- Second tank -->
+        <ellipse cx="470" cy="150" rx="45" ry="13"/>
+        <rect x="425" y="150" width="90" height="75"/>
+        <ellipse cx="470" cy="225" rx="45" ry="13"/>
+        <!-- Pipes connecting -->
+        <line x1="515" y1="180" x2="545" y2="180" stroke-width="2"/>
+        <line x1="470" y1="225" x2="470" y2="260" stroke-width="2"/>
+        <line x1="600" y1="210" x2="600" y2="260" stroke-width="2"/>
+        <line x1="470" y1="260" x2="600" y2="260" stroke-width="1.5"/>
+        <!-- Valve -->
+        <rect x="525" y="254" width="16" height="12" rx="2"/>
+      </g>
+      <!-- Pipeline with supports -->
+      <g stroke="#1A1A1A" stroke-width="0.8" opacity="0.07">
+        <line x1="400" y1="300" x2="750" y2="300" stroke-width="2.5"/>
+        <line x1="400" y1="305" x2="750" y2="305" stroke-width="1"/>
+        <!-- Supports -->
+        <line x1="430" y1="300" x2="430" y2="340"/>
+        <line x1="420" y1="340" x2="440" y2="340"/>
+        <line x1="530" y1="300" x2="530" y2="340"/>
+        <line x1="520" y1="340" x2="540" y2="340"/>
+        <line x1="630" y1="300" x2="630" y2="340"/>
+        <line x1="620" y1="340" x2="640" y2="340"/>
+        <line x1="720" y1="300" x2="720" y2="340"/>
+        <line x1="710" y1="340" x2="730" y2="340"/>
+        <!-- Elbow turn -->
+        <path d="M750 300 Q770 300 770 320 L770 380" stroke-width="2.5" fill="none"/>
+        <!-- Flange -->
+        <line x1="762" y1="380" x2="778" y2="380" stroke-width="1.5"/>
+      </g>
+      <!-- Small pump station -->
+      <g stroke="#1A1A1A" stroke-width="0.8" opacity="0.07">
+        <rect x="470" y="350" width="30" height="18" rx="3"/>
+        <circle cx="485" cy="359" r="6"/>
+        <line x1="500" y1="359" x2="530" y2="359" stroke-width="2"/>
+        <line x1="470" y1="359" x2="450" y2="359" stroke-width="2"/>
+        <rect x="520" y="353" width="18" height="12" rx="2"/>
+      </g>
+      <!-- Monitoring sensors -->
+      <circle cx="535" cy="180" r="3" fill="#FF6B00" opacity="0.08" class="prod-sensor"/>
+      <circle cx="600" cy="165" r="3" fill="#FF6B00" opacity="0.08" class="prod-sensor"/>
+      <circle cx="630" cy="300" r="3" fill="#FF6B00" opacity="0.08" class="prod-sensor"/>
+      <circle cx="485" cy="359" r="3" fill="#FF6B00" opacity="0.08" class="prod-sensor"/>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="products__header reveal">
+      <div class="section-label">Products</div>
+      <h2>
+        <span class="text-light">Reliable Solutions for</span><br />
+        <span class="text-bold">Asset Integrity.</span>
+      </h2>
+      <p class="products__desc">
+        High value products for high value equipment. From field inspections to enterprise-wide risk management.
+      </p>
+    </div>
+
+    <div class="products__grid">
+      {products.map((product, i) => (
+        <article class="products__card card reveal" style={`transition-delay: ${i * 100}ms`}>
+          <div class="products__card-top">
+            <div class="products__icon" set:html={icons[product.icon]} />
+            <span class="badge badge-primary">{product.tag}</span>
+          </div>
+          <h3 class="products__name">{product.name}</h3>
+          <p class="products__text">{product.description}</p>
+          <a href="#" class="products__link">
+            Learn more
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 8H12M12 8L8 4M12 8L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .products {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .products__bg-illustration {
+    position: absolute;
+    top: 10%;
+    right: -5%;
+    width: 65%;
+    height: 90%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .products__bg-illustration svg {
+    width: 100%;
+    height: 100%;
+    animation: prod-drift 15s ease-in-out infinite;
+  }
+
+  @keyframes prod-drift {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-8px) translateX(5px); }
+  }
+
+  .prod-sensor {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: prod-pulse 2.5s ease-in-out infinite;
+  }
+
+  .prod-sensor:nth-of-type(2n) { animation-delay: 0.7s; }
+  .prod-sensor:nth-of-type(3n) { animation-delay: 1.4s; }
+
+  @keyframes prod-pulse {
+    0%, 100% { opacity: 0.08; transform: scale(1); }
+    50% { opacity: 0.25; transform: scale(1.7); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .products__bg-illustration svg,
+    .prod-sensor {
+      animation: none;
+    }
+  }
+
+  .products .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .products__header {
+    max-width: 560px;
+    margin-bottom: var(--space-16);
+  }
+
+  .products__header h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .products__desc {
+    font-size: var(--font-size-md);
+  }
+
+  .products__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .products__card {
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .products__card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .products__icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 107, 0, 0.08);
+    border-radius: var(--radius-lg);
+    color: var(--color-primary);
+  }
+
+  .products__name {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-bold);
+  }
+
+  .products__text {
+    font-size: var(--font-size-sm);
+    flex: 1;
+  }
+
+  .products__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+    transition: gap var(--transition-fast);
+  }
+
+  .products__link:hover {
+    gap: var(--space-3);
+  }
+
+  @media (max-width: 900px) {
+    .products__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+</style>
