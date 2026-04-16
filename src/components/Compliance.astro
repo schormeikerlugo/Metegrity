@@ -474,30 +474,67 @@ const stats = [
   @media (max-width: 768px) {
     .compliance__inner {
       grid-template-columns: 1fr;
-      gap: var(--space-8);
+      gap: var(--space-10);
+    }
+
+    .compliance__content .btn {
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .compliance__visual {
-      min-height: 400px;
+      min-height: 380px;
+    }
+
+    .compliance__report {
+      margin: 0 auto;
+      max-width: 340px;
     }
 
     .compliance__badge-float {
       transform:
         rotate(calc(var(--i) * (360deg / var(--total))))
-        translate(160px)
+        translate(150px)
         rotate(calc(-1 * var(--i) * (360deg / var(--total))));
       font-size: 10px;
       padding: 4px 10px;
     }
 
     @keyframes badge-counter {
-      from { transform: rotate(calc(var(--i) * (360deg / var(--total)))) translate(160px) rotate(0deg); }
-      to   { transform: rotate(calc(var(--i) * (360deg / var(--total)))) translate(160px) rotate(-360deg); }
+      from { transform: rotate(calc(var(--i) * (360deg / var(--total)))) translate(150px) rotate(0deg); }
+      to   { transform: rotate(calc(var(--i) * (360deg / var(--total)))) translate(150px) rotate(-360deg); }
     }
 
     .compliance__stats {
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-4);
+      justify-items: center;
+    }
+
+    .compliance__stat {
+      text-align: center;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .compliance__badge-float {
+      transform:
+        rotate(calc(var(--i) * (360deg / var(--total))))
+        translate(125px)
+        rotate(calc(-1 * var(--i) * (360deg / var(--total))));
+      font-size: 9px;
+      padding: 3px 8px;
+    }
+    @keyframes badge-counter {
+      from { transform: rotate(calc(var(--i) * (360deg / var(--total)))) translate(125px) rotate(0deg); }
+      to   { transform: rotate(calc(var(--i) * (360deg / var(--total)))) translate(125px) rotate(-360deg); }
+    }
+    .compliance__visual {
+      min-height: 340px;
+    }
+    .compliance__report {
+      max-width: 260px;
     }
   }
 </style>

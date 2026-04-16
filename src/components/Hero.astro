@@ -1247,19 +1247,28 @@
 
   @media (max-width: 560px) {
     .hero__visual {
-      min-height: 440px;
+      min-height: 420px;
+      overflow: visible;
     }
     .dash {
       max-width: 100%;
+      transform-origin: top center;
+      transform: scale(0.88);
     }
     .stat-card__val {
       font-size: var(--font-size-lg);
     }
+    .stat-card {
+      padding: var(--space-2) var(--space-3);
+    }
     .stat-card--alert,
     .stat-card--sensor,
     .stat-card--stats {
-      min-width: 170px;
+      min-width: 150px;
     }
+    .stat-card--alert { top: -2%; left: -4%; }
+    .stat-card--sensor { bottom: 18%; left: -6%; }
+    .stat-card--stats { bottom: -2%; right: -4%; }
   }
 </style>
 

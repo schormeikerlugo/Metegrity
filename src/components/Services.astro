@@ -706,18 +706,36 @@ const benefits = [
   @media (max-width: 768px) {
     .services__top {
       grid-template-columns: 1fr;
-      gap: var(--space-8);
+      gap: var(--space-10);
     }
     .services__dashboard {
       min-height: 300px;
     }
     .services__dash-main {
       width: 100%;
-      max-width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
     }
-    .services__benefits-strip {
-      flex-direction: column;
+    .services__dash-float {
+      right: 0;
+    }
+    .services__benefits-wrap {
+      text-align: center;
+    }
+    .services__benefits-grid {
+      justify-items: stretch;
+    }
+    .benefit-card {
+      align-items: center;
+      text-align: center;
+    }
+    /* Services list — tighten and keep left-aligned for readability */
+    .services__item {
       align-items: flex-start;
+    }
+    .services__item-content h3,
+    .services__item-content p {
+      text-align: left;
     }
   }
 </style>

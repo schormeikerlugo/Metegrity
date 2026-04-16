@@ -394,3 +394,148 @@ p {
     --font-size-4xl: 1.75rem;
   }
 }
+
+/* ============================================
+   MOBILE CENTERED EXPERIENCE (≤ 768px)
+   ============================================ */
+@media (max-width: 768px) {
+  /* Center section labels and headers */
+  .section-label {
+    justify-content: center;
+  }
+
+  /* Center common section content containers */
+  .hero__content,
+  .products__header,
+  .innovation__content,
+  .capabilities__header,
+  .industries__header,
+  .services__header,
+  .testimonials__header,
+  .compliance__content,
+  .contact__left {
+    text-align: center;
+    align-items: center;
+  }
+
+  /* Headings and paragraphs default centered under headers */
+  .hero__content h1,
+  .hero__content p,
+  .products__header h2,
+  .products__header p,
+  .innovation__content h2,
+  .innovation__content p,
+  .capabilities__header h2,
+  .capabilities__header p,
+  .industries__header h2,
+  .services__header h2,
+  .services__intro,
+  .testimonials__header h2,
+  .compliance__content h2,
+  .compliance__text,
+  .contact__left h2,
+  .contact__desc {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Buttons / CTA groups */
+  .hero__ctas,
+  .contact__ctas {
+    justify-content: center;
+  }
+
+  /* Inline-block spans inside hero title keep animations but center */
+  .hero__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .hero__title br {
+    display: none;
+  }
+
+  /* Innovation "Read More" button centered */
+  .innovation__content .btn {
+    align-self: center;
+  }
+
+  /* Services benefits title centered */
+  .services__benefits-title {
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Compliance stats row stays centered */
+  .compliance__stats {
+    justify-content: center;
+  }
+
+  /* Contact office content centered */
+  .contact__offices,
+  .contact__office {
+    text-align: center;
+    align-items: center;
+  }
+
+  .contact__office-phone {
+    justify-content: center;
+  }
+
+  /* Footer brand column centered */
+  .footer__brand {
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer__brand .footer__logo,
+  .footer__brand .footer__social {
+    justify-content: center;
+  }
+
+  .footer__tagline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* TrustedBy already centered - keep */
+  .trusted {
+    text-align: center;
+  }
+
+  /* Full-width images/visuals */
+  .innovation__visual,
+  .hero__visual {
+    width: 100%;
+  }
+
+  /* Remove floating offsets that overflow on mobile */
+  .innovation__stats {
+    margin-left: var(--space-3);
+    margin-right: var(--space-3);
+    text-align: left;
+  }
+
+  .innovation__stats-header,
+  .innovation__stats-grid,
+  .innovation__stats-footer {
+    text-align: left;
+  }
+}
+
+/* Extra small — tighten further */
+@media (max-width: 480px) {
+  .hero__ctas .btn,
+  .contact__ctas .btn {
+    width: 100%;
+  }
+
+  .hero__ctas,
+  .contact__ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+}
