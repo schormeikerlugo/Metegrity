@@ -1,0 +1,189 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import FeatureSplit from '../../components/shared/FeatureSplit.astro';
+import FeatureGrid from '../../components/shared/FeatureGrid.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const partnerTypes = [
+  {
+    title: 'Technology Partners',
+    description: 'Integrated platforms: SAP, Oracle, Microsoft, Autodesk, Esri. Our technology partners extend Metegrity\'s reach into the full enterprise stack.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="5" width="22" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9 23h10M14 19v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Consulting Partners',
+    description: 'Engineering firms and integrity consultancies that deliver RBI studies, FFS assessments, and turnaround services using Metegrity.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="9" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M6 23c0-4 4-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'NDT Service Partners',
+    description: 'Global inspection companies whose field crews capture data directly into Visions — zero data re-entry, full chain of custody.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M17 17l6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Academic & Research',
+    description: 'Universities and research institutions collaborating on damage mechanism modeling, corrosion science, and next-gen AIM methodologies.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3l11 6-11 6L3 9l11-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 12v6c0 2 3 4 6 4s6-2 6-4v-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+];
+
+const techPartners = ['SAP', 'Oracle', 'Microsoft', 'Autodesk', 'Esri', 'IBM Maximo', 'Infor', 'AVEVA'];
+
+const benefits = [
+  {
+    title: 'Revenue Share',
+    description: 'Attractive commission structures for referrals and resale partners across our product suite.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M11 10h4a2.5 2.5 0 010 5h-4a2.5 2.5 0 000 5h4M14 7v3M14 20v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Training & Certification',
+    description: 'Full access to Metegrity University. Certified partner badges and priority access to product roadmaps.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="8" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M10 8v-2a4 4 0 018 0v2M9 14l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Technical Support',
+    description: 'Dedicated partner success managers. Direct access to engineering teams and priority technical escalation.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3a11 11 0 00-11 11v5a3 3 0 003 3h2v-8H5v-0a9 9 0 0118 0v0h-3v8h2a3 3 0 003-3v-5A11 11 0 0014 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Go-to-Market',
+    description: 'Joint marketing campaigns, co-branded collateral, lead-sharing programs, and industry event sponsorships.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 14h18l3-4v12l-3-4H4v-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 18v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+];
+---
+
+<Layout title="Partner Network | Metegrity" description="Join the Metegrity partner ecosystem — technology, consulting, NDT services, and academic partnerships.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'About', href: '/about' },
+        { label: 'Partner Network' }
+      ]}
+      eyebrow="Partner Network"
+      titleLight="Stronger together."
+      titleBold="A global ecosystem."
+      description="Metegrity thrives on partnerships. Technology integrators, consulting firms, NDT service providers, and research institutions collaborate with us to deliver end-to-end asset integrity solutions."
+      image="/images/photos/handshake.jpg"
+    >
+      <div slot="cta" style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="/contact" class="btn btn-primary">Become a Partner</a>
+        <a href="#types" class="btn btn-outline">Partnership Types</a>
+      </div>
+    </PageHero>
+
+    <!-- Partnership Types -->
+    <section id="types">
+      <FeatureGrid
+        eyebrow="Partnership Types"
+        titleLight="Four ways"
+        titleBold="to collaborate with us."
+        description="Whether you're a software vendor, consultancy, NDT provider, or academic institution — there's a partnership model built for you."
+        features={partnerTypes}
+        columns={2}
+      />
+    </section>
+
+    <!-- Technology Partners Logo Strip -->
+    <section class="pn-tech">
+      <div class="container">
+        <p class="pn-tech__label">Integrated with industry-leading platforms</p>
+        <div class="pn-tech__grid">
+          {techPartners.map(p => <span>{p}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <!-- Partnership with Lloyd's Register origin -->
+    <FeatureSplit
+      eyebrow="Our Origin Story"
+      titleLight="From Lloyd's Register"
+      titleBold="to global independent."
+      description="Metegrity's software was originally conceptualized in 1992 within the Lloyd's Register group — a heritage of engineering rigor that lives on in our platform today. When the software division spun off to form Metegrity, we kept the operational DNA and added independence."
+      bullets={[
+        'Lloyd\'s Register heritage since 1992',
+        'Engineering rigor embedded in the platform',
+        'Independent since spin-off',
+        'Continued industry partnership',
+      ]}
+      image="/images/photos/meeting.jpg"
+      imagePosition="right"
+    />
+
+    <!-- Benefits -->
+    <FeatureGrid
+      eyebrow="Partner Benefits"
+      titleLight="Why partner"
+      titleBold="with Metegrity?"
+      features={benefits}
+      columns={4}
+      dark={true}
+    />
+
+    <!-- Global Reach -->
+    <FeatureSplit
+      eyebrow="Global Reach"
+      titleLight="Partners in"
+      titleBold="40+ countries."
+      description="Metegrity partners operate across five continents — from the Gulf of Mexico to the Middle East, from the North Sea to Southeast Asia. Wherever your clients operate, our partner network has a presence."
+      bullets={[
+        'Active partners in 40+ countries',
+        'Local language & regulatory expertise',
+        'Regional certification and training',
+        'Tiered partner program (Silver/Gold/Platinum)',
+      ]}
+      image="/images/photos/globe.jpg"
+      imagePosition="left"
+    />
+
+    <CTASection
+      titleLight="Ready to grow"
+      titleBold="together?"
+      description="Join a partner network that's been expanding for 30+ years. Let's discuss how we can deliver more value to your clients together."
+      primaryLabel="Apply to Partner Program"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .pn-tech {
+    padding: var(--space-16) 0;
+    background: var(--color-bg-alt);
+    text-align: center;
+  }
+
+  .pn-tech__label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-dark);
+    margin-bottom: var(--space-6);
+  }
+
+  .pn-tech__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4) var(--space-10);
+  }
+
+  .pn-tech__grid span {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-bold);
+    color: var(--color-text-muted);
+    letter-spacing: -0.01em;
+    transition: color var(--transition-fast);
+  }
+
+  .pn-tech__grid span:hover {
+    color: var(--color-primary);
+  }
+</style>

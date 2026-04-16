@@ -1,0 +1,295 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import ResourceCard from '../../components/shared/ResourceCard.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const categories = [
+  {
+    title: 'Success Stories',
+    description: 'Real-world outcomes from 1,350+ facilities worldwide.',
+    count: '50+',
+    href: '/insights/success-stories',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Whitepapers',
+    description: 'In-depth technical research and industry analysis.',
+    count: '25+',
+    href: '/insights/whitepapers',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 4h12l4 4v16H6V4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 14h8M10 18h8M10 10h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Blog Articles',
+    description: 'Expert commentary on AIM trends and best practices.',
+    count: '120+',
+    href: '/insights/blogs',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9 10h10M9 14h10M9 18h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'eBooks',
+    description: 'Comprehensive guides for integrity professionals.',
+    count: '10+',
+    href: '/insights/ebooks',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 6c3-2 8-2 10 0 2-2 7-2 10 0v16c-3-2-8-2-10 0-2-2-7-2-10 0V6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 6v16" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  },
+  {
+    title: 'News & Events',
+    description: 'Industry updates, conferences, and company news.',
+    count: 'Live',
+    href: '/insights/news-events',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="6" width="20" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 12h20M9 4v4M19 4v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Video Gallery',
+    description: 'Product demos, webinars, and customer interviews.',
+    count: '40+',
+    href: '/insights/video-gallery',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="5" width="22" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M12 10l6 4-6 4v-8z" fill="currentColor"/></svg>`,
+  },
+];
+
+const featured = [
+  {
+    type: 'Success Story',
+    title: 'Chevron Agbami FPSO — 20 Years of Uninterrupted Integrity',
+    description: 'How one of the world\'s largest deepwater FPSOs has achieved zero unplanned integrity shutdowns across two decades of operation.',
+    image: '/images/photos/offshore.jpg',
+    meta: 'Oil & Gas · 8 min read',
+    tag: 'Flagship',
+    href: '/insights/success-stories',
+    featured: true,
+  },
+  {
+    type: 'Whitepaper',
+    title: 'Risk-Based Inspection in 2026',
+    description: 'A comprehensive guide to modern RBI methodologies.',
+    image: '/images/photos/research.jpg',
+    meta: '32 pages · PDF',
+    href: '/insights/whitepapers',
+  },
+  {
+    type: 'Webinar',
+    title: 'IOW Monitoring for Chemical Plants',
+    description: 'Expert discussion on process safety and integrity.',
+    image: '/images/photos/webinar.jpg',
+    meta: '45 min · On-demand',
+    href: '/insights/video-gallery',
+  },
+];
+
+const latest = [
+  { type: 'Blog', title: 'Why damage mechanism libraries matter in PSM compliance', image: '/images/photos/chem-plant.jpg', meta: 'Dec 2026 · 5 min', tag: 'PSM', href: '#' },
+  { type: 'eBook', title: 'The Ultimate Guide to Corrosion Monitoring', image: '/images/photos/corrosion.jpg', meta: '64 pages · Free', tag: 'Guide', href: '#' },
+  { type: 'Case Study', title: 'Marathon Oil: 40% deployment time reduction', image: '/images/photos/refinery.jpg', meta: 'Oil & Gas', tag: 'Case Study', href: '#' },
+  { type: 'News', title: 'Metegrity announces API 581 compliance update', image: '/images/photos/team.jpg', meta: 'Nov 2026', tag: 'Product', href: '#' },
+];
+---
+
+<Layout title="Insights | Metegrity" description="Resources hub — success stories, whitepapers, blogs, eBooks, videos, and news from the asset integrity industry.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Insights' }]}
+      eyebrow="Insights Hub"
+      titleLight="Knowledge for"
+      titleBold="Integrity Leaders."
+      description="Three decades of industry research, customer success stories, technical deep dives, and expert commentary — all in one place."
+      align="center"
+    />
+
+    <!-- Categories grid -->
+    <section class="ins-cats section">
+      <div class="container">
+        <div class="ins-cats__grid">
+          {categories.map((c, i) => (
+            <a href={c.href} class="ins-cat reveal" style={`transition-delay: ${i * 60}ms`}>
+              <div class="ins-cat__icon" set:html={c.icon} />
+              <div class="ins-cat__content">
+                <h3>{c.title}</h3>
+                <p>{c.description}</p>
+              </div>
+              <span class="ins-cat__count">{c.count}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Content -->
+    <section class="ins-featured section">
+      <div class="container">
+        <div class="ins-featured__header reveal">
+          <div class="section-label">Featured</div>
+          <h2>
+            <span class="text-light">Must-read</span>
+            <span class="text-bold">resources.</span>
+          </h2>
+        </div>
+        <div class="ins-featured__grid">
+          {featured.map(f => (
+            <ResourceCard {...f} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest -->
+    <section class="ins-latest section">
+      <div class="container">
+        <div class="ins-latest__header reveal">
+          <div class="section-label">Latest</div>
+          <h2>
+            <span class="text-light">Fresh from</span>
+            <span class="text-bold">the Metegrity desk.</span>
+          </h2>
+        </div>
+        <div class="ins-latest__grid">
+          {latest.map(l => (
+            <ResourceCard {...l} compact={true} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      titleLight="Subscribe for"
+      titleBold="industry insights."
+      description="Monthly newsletter with the best of our research, customer stories, and industry analysis. No spam — ever."
+      primaryLabel="Subscribe Newsletter"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .ins-cats__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+  }
+
+  .ins-cat {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ins-cat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .ins-cat:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 107, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+
+  .ins-cat:hover::before { transform: scaleX(1); }
+
+  .ins-cat__icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 107, 0, 0.08);
+    border-radius: var(--radius-md);
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .ins-cat__content {
+    flex: 1;
+  }
+
+  .ins-cat__content h3 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+    margin-bottom: 2px;
+  }
+
+  .ins-cat__content p {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .ins-cat__count {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+  }
+
+  /* Featured */
+  .ins-featured__header,
+  .ins-latest__header {
+    max-width: 640px;
+    margin-bottom: var(--space-10);
+  }
+
+  .ins-featured__header h2,
+  .ins-latest__header h2 {
+    margin-bottom: 0;
+  }
+
+  .ins-featured__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+  }
+
+  .ins-featured__grid > :global(.rcard--featured) {
+    grid-column: span 2;
+  }
+
+  .ins-latest {
+    background: var(--color-bg-alt);
+  }
+
+  .ins-latest__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 1024px) {
+    .ins-cats__grid { grid-template-columns: repeat(2, 1fr); }
+    .ins-latest__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .ins-cats__grid { grid-template-columns: 1fr; }
+    .ins-featured__grid { grid-template-columns: 1fr; }
+    .ins-featured__grid > :global(.rcard--featured) { grid-column: span 1; }
+    .ins-featured__header,
+    .ins-latest__header { text-align: center; margin-left: auto; margin-right: auto; }
+  }
+
+  @media (max-width: 560px) {
+    .ins-latest__grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,310 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import FeatureSplit from '../../components/shared/FeatureSplit.astro';
+import FeatureGrid from '../../components/shared/FeatureGrid.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const pillars = [
+  {
+    title: 'Regulatory Compliance',
+    description: 'Navigate OSHA PSM, API standards, ASME codes, and emerging regulations with confidence. Our consultants help you build audit-ready programs.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3l9 4v8c0 6-4 9-9 10-5-1-9-4-9-10V7l9-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 14l3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Cost Optimization',
+    description: 'Extend inspection intervals for low-risk assets. Quantify the ROI of integrity investments. Turn data into budget savings.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M11 10h4a2.5 2.5 0 010 5h-4a2.5 2.5 0 000 5h4M14 7v3M14 20v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Process Efficiency',
+    description: 'Streamline inspection workflows, reduce paperwork, and accelerate decision cycles. Audits of existing programs identify quick wins.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 14a10 10 0 0118-6M24 14a10 10 0 01-18 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M18 4l4 4-4 4M10 24l-4-4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Insurance Risk',
+    description: 'Lower insurance premiums with defensible integrity programs. Our consultants help you demonstrate risk-based rigor to insurers.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 10l10-6 10 6v8c0 5-5 7-10 8-5-1-10-3-10-8v-8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+  },
+];
+
+const engagements = [
+  {
+    title: 'RBI Implementation',
+    description: 'End-to-end risk-based inspection program setup. From methodology selection to study execution and RBI-driven inspection planning.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9 14l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Mechanical Integrity Audits',
+    description: 'Independent review of your MI program against PSM requirements and industry best practice. Gap analysis with prioritized recommendations.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="6" y="4" width="16" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M10 10h8M10 14h8M10 18h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Fitness-for-Service',
+    description: 'API 579 Level 1, 2, or 3 assessments by authorized engineers. Run-repair-replace decisions backed by rigorous analysis.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M14 8v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Corrosion Management',
+    description: 'Design and optimize corrosion circuits. Damage mechanism assessments, monitoring strategy, and CML placement guidance.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4c-4 6 4 8 0 16M9 6c-3 6 3 6 0 12M19 6c-3 6 3 6 0 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Turnaround Planning',
+    description: 'Plan TARs months in advance. Scope development, inspection prioritization, and execution optimization.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M14 6v8l5 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Digital Transformation',
+    description: 'Modernize legacy integrity programs. Technology roadmaps, change management, and organizational enablement.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="5" width="22" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9 23h10M14 19v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+];
+---
+
+<Layout title="Strategic Consulting | Metegrity" description="Expert consulting for regulatory compliance, cost control, process efficiency, and insurance risk reduction.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'Services', href: '/services' },
+        { label: 'Strategic Consulting' }
+      ]}
+      eyebrow="Strategic Consulting"
+      titleLight="Consulting Services for"
+      titleBold="Asset Integrity Optimization."
+      description="Software gets you data. Consulting turns data into decisions. Our consultants are former chief inspectors, API-authorized engineers, and integrity veterans — not generalists with slide decks."
+      image="/images/photos/consulting.jpg"
+    >
+      <div slot="cta" style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="/contact" class="btn btn-primary">Book a Consultation</a>
+        <a href="#engagements" class="btn btn-outline">See Engagements</a>
+      </div>
+    </PageHero>
+
+    <!-- Why Strategic Consulting -->
+    <section class="cs-intro section">
+      <div class="container">
+        <div class="cs-intro__inner reveal">
+          <div class="section-label">Why Strategic Consulting</div>
+          <h2>
+            <span class="text-light">Beyond software —</span>
+            <span class="text-bold">operational partnership.</span>
+          </h2>
+          <p>
+            Visions Enterprise is the foundation. Our consulting practice turns that foundation into measurable improvement: lower insurance premiums, fewer compliance findings, extended run times, and defensible risk-based decisions. We've delivered over 500 consulting engagements across 40+ countries.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Four Pillars -->
+    <FeatureGrid
+      eyebrow="Four Pillars of Impact"
+      titleLight="Where we drive"
+      titleBold="measurable results."
+      description="Our consulting engagements focus on outcomes that matter — regulatory certainty, cost reduction, operational efficiency, and risk mitigation."
+      features={pillars}
+      columns={2}
+    />
+
+    <!-- Split: Engineers, not generalists -->
+    <FeatureSplit
+      eyebrow="Our Consultants"
+      titleLight="Former engineers."
+      titleBold="Now trusted advisors."
+      description="Every Metegrity consultant has spent years on the operational side — inspecting pressure vessels, running RBI studies, managing turnarounds. When they walk into your plant, they speak your language because they've lived your challenges."
+      bullets={[
+        'API 510, 570, 653, 580 certifications',
+        'Former chief inspectors and integrity managers',
+        'Average 15+ years operational experience',
+        'Published authors and industry speakers',
+      ]}
+      image="/images/photos/strategy.jpg"
+      imagePosition="right"
+    />
+
+    <!-- Engagement Types -->
+    <section id="engagements">
+      <FeatureGrid
+        eyebrow="Engagement Types"
+        titleLight="From focused studies"
+        titleBold="to enterprise transformations."
+        features={engagements}
+        columns={3}
+        dark={true}
+      />
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="cs-process section">
+      <div class="container">
+        <div class="cs-process__header reveal">
+          <div class="section-label">How We Work</div>
+          <h2>
+            <span class="text-light">A proven approach</span><br />
+            <span class="text-bold">refined over 30+ years.</span>
+          </h2>
+        </div>
+
+        <div class="cs-process__timeline">
+          <div class="cs-process__step reveal">
+            <span class="cs-process__step-num">01</span>
+            <div class="cs-process__step-content">
+              <h4>Assess</h4>
+              <p>We audit your current state — processes, data, tools, and capabilities. Identify gaps and quick wins.</p>
+            </div>
+          </div>
+          <div class="cs-process__step reveal" style="transition-delay: 100ms">
+            <span class="cs-process__step-num">02</span>
+            <div class="cs-process__step-content">
+              <h4>Design</h4>
+              <p>Tailored roadmap with prioritized initiatives, timelines, resources, and success metrics.</p>
+            </div>
+          </div>
+          <div class="cs-process__step reveal" style="transition-delay: 200ms">
+            <span class="cs-process__step-num">03</span>
+            <div class="cs-process__step-content">
+              <h4>Implement</h4>
+              <p>Hands-on execution — configuration, training, change management, and go-live support.</p>
+            </div>
+          </div>
+          <div class="cs-process__step reveal" style="transition-delay: 300ms">
+            <span class="cs-process__step-num">04</span>
+            <div class="cs-process__step-content">
+              <h4>Sustain</h4>
+              <p>Ongoing coaching, governance reviews, and continuous optimization to lock in results.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial feature -->
+    <FeatureSplit
+      eyebrow="Proof in Practice"
+      titleLight="Chevron Agbami FPSO —"
+      titleBold="20 years of partnership."
+      description="Our consulting team has supported Chevron's Agbami deepwater FPSO since 2006. What began as a software deployment became a decades-long partnership spanning RBI studies, turnaround planning, and integrity optimization — with zero unplanned shutdowns from integrity events."
+      bullets={[
+        '20+ years continuous partnership',
+        'RBI studies across 2,000+ circuits',
+        'Turnaround optimization saving $M annually',
+        'Zero integrity-driven unplanned shutdowns',
+      ]}
+      image="/images/photos/offshore.jpg"
+      imagePosition="left"
+    />
+
+    <CTASection
+      titleLight="Ready for strategic"
+      titleBold="integrity transformation?"
+      description="Let's discuss your integrity challenges. Schedule a no-obligation consultation with our strategic advisors."
+      primaryLabel="Schedule Consultation"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .cs-intro__inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cs-intro__inner h2 {
+    margin-bottom: var(--space-5);
+  }
+
+  .cs-intro__inner p {
+    font-size: var(--font-size-md);
+    line-height: 1.7;
+  }
+
+  /* Process timeline */
+  .cs-process {
+    background: var(--color-bg-alt);
+  }
+
+  .cs-process__header {
+    max-width: 640px;
+    margin: 0 auto var(--space-16);
+    text-align: center;
+  }
+
+  .cs-process__timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .cs-process__timeline::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    left: 28px;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(255, 107, 0, 0.2), rgba(255, 107, 0, 0.4), rgba(255, 107, 0, 0.2));
+  }
+
+  .cs-process__step {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-5);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    position: relative;
+    z-index: 1;
+    transition: all var(--transition-base);
+  }
+
+  .cs-process__step:hover {
+    transform: translateX(6px);
+    border-color: rgba(255, 107, 0, 0.25);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+  }
+
+  .cs-process__step-num {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-bold);
+    border-radius: var(--radius-md);
+    box-shadow: 0 0 0 6px rgba(255, 107, 0, 0.1);
+  }
+
+  .cs-process__step-content h4 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-1);
+  }
+
+  .cs-process__step-content p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 560px) {
+    .cs-process__timeline::before { left: 22px; }
+    .cs-process__step { padding: var(--space-4); gap: var(--space-3); }
+    .cs-process__step-num { width: 40px; height: 40px; }
+  }
+</style>

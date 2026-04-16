@@ -1,0 +1,239 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import ResourceCard from '../../components/shared/ResourceCard.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const featured = {
+  type: 'Featured Article',
+  title: 'Why damage mechanism libraries matter more than ever in 2026',
+  description: 'With API 581 Third Edition published and PSM audits intensifying, the damage mechanism library is becoming the single most important asset in your integrity program. Here\'s why — and how to build one that actually works.',
+  image: '/images/photos/corrosion.jpg',
+  meta: 'By Dr. Sarah Chen · Dec 18, 2026 · 8 min read',
+  tag: 'Editor\'s Pick',
+  href: '#',
+  featured: true,
+};
+
+const categories = ['All', 'RBI', 'Corrosion', 'PSM', 'API Standards', 'Digital', 'Offshore', 'Industry News'];
+
+const posts = [
+  { type: 'Article', title: '5 lessons from deploying RBI at 50+ facilities', image: '/images/photos/control-room.jpg', meta: 'Michael Torres · 6 min', tag: 'RBI', href: '#' },
+  { type: 'Article', title: 'The hidden cost of spreadsheet integrity programs', image: '/images/photos/data-analysis.jpg', meta: 'Jennifer Park · 4 min', tag: 'Digital', href: '#' },
+  { type: 'Article', title: 'API 510: What\'s changing in the 11th edition', image: '/images/photos/inspector.jpg', meta: 'Robert Kim · 7 min', tag: 'API Standards', href: '#' },
+  { type: 'Article', title: 'CUI detection: Traditional vs. modern approaches', image: '/images/photos/corrosion.jpg', meta: 'Maria Gonzalez · 5 min', tag: 'Corrosion', href: '#' },
+  { type: 'Article', title: 'Offshore inspection in extreme weather conditions', image: '/images/photos/offshore.jpg', meta: 'David Lindqvist · 8 min', tag: 'Offshore', href: '#' },
+  { type: 'Article', title: 'How to structure PSM mechanical integrity programs', image: '/images/photos/chem-plant.jpg', meta: 'Lisa Chen · 6 min', tag: 'PSM', href: '#' },
+  { type: 'Article', title: 'Digital twins in asset integrity: hype vs. reality', image: '/images/photos/engineer-field.jpg', meta: 'Ahmed Al-Mansoori · 9 min', tag: 'Digital', href: '#' },
+  { type: 'Article', title: 'Why RBI studies fail (and how to prevent it)', image: '/images/photos/research.jpg', meta: 'Michael Torres · 7 min', tag: 'RBI', href: '#' },
+  { type: 'Article', title: 'Integrity operating windows: a practical guide', image: '/images/photos/refinery.jpg', meta: 'Jennifer Park · 8 min', tag: 'IOW', href: '#' },
+];
+---
+
+<Layout title="Blog | Metegrity" description="Expert commentary on asset integrity management trends, best practices, and industry analysis.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Insights', href: '/insights' }, { label: 'Blog' }]}
+      eyebrow="Blog"
+      titleLight="Expert commentary"
+      titleBold="on AIM trends."
+      description="Weekly articles from Metegrity engineers, consultants, and industry veterans. Practical insights you can apply to your integrity programs today."
+      align="center"
+    />
+
+    <!-- Filters -->
+    <section class="filters-bar">
+      <div class="container">
+        <div class="filters-bar__inner">
+          <span class="filters-bar__label">Category</span>
+          <div class="filters-bar__list">
+            {categories.map((c, i) => (
+              <button class={`filters-bar__pill ${i === 0 ? 'filters-bar__pill--active' : ''}`}>{c}</button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured -->
+    <section class="blog-featured section">
+      <div class="container">
+        <ResourceCard {...featured} />
+      </div>
+    </section>
+
+    <!-- Posts grid -->
+    <section class="blog-grid section">
+      <div class="container">
+        <div class="blog-grid__header reveal">
+          <div class="section-label">Recent Articles</div>
+          <h2>
+            <span class="text-light">Fresh thinking</span>
+            <span class="text-bold">every week.</span>
+          </h2>
+        </div>
+
+        <div class="blog-grid__list">
+          {posts.map((p, i) => (
+            <div class="blog-grid__item reveal" style={`transition-delay: ${(i % 3) * 80}ms`}>
+              <ResourceCard {...p} />
+            </div>
+          ))}
+        </div>
+
+        <div class="blog-grid__pagination reveal">
+          <button class="blog-page blog-page--prev" disabled aria-label="Previous page">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M12 8H4M4 8L8 4M4 8L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="blog-page blog-page--active">1</button>
+          <button class="blog-page">2</button>
+          <button class="blog-page">3</button>
+          <span class="blog-page blog-page--dots">…</span>
+          <button class="blog-page">12</button>
+          <button class="blog-page blog-page--next" aria-label="Next page">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M4 8H12M12 8L8 4M12 8L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      titleLight="Get blog updates"
+      titleBold="in your inbox."
+      description="Weekly digest of the best articles — curated by our editorial team. Unsubscribe anytime."
+      primaryLabel="Subscribe"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .filters-bar {
+    padding: var(--space-6) 0;
+    background: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .filters-bar__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .filters-bar__label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary);
+  }
+
+  .filters-bar__list {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .filters-bar__pill {
+    padding: 6px 14px;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-secondary);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: inherit;
+  }
+
+  .filters-bar__pill:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .filters-bar__pill--active {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+  }
+
+  .blog-featured :global(.rcard--featured) { max-width: 100%; }
+
+  .blog-grid__header {
+    max-width: 640px;
+    margin-bottom: var(--space-10);
+  }
+
+  .blog-grid__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+    margin-bottom: var(--space-12);
+  }
+
+  /* Pagination */
+  .blog-grid__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+  }
+
+  .blog-page {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 var(--space-2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-secondary);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: inherit;
+  }
+
+  .blog-page:hover:not(:disabled):not(.blog-page--dots) {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .blog-page--active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white) !important;
+  }
+
+  .blog-page:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .blog-page--dots {
+    border: none;
+    cursor: default;
+  }
+
+  @media (max-width: 900px) {
+    .blog-grid__list { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .blog-grid__list { grid-template-columns: 1fr; }
+    .blog-grid__header { text-align: center; margin-left: auto; margin-right: auto; }
+  }
+</style>

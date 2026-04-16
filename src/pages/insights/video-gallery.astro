@@ -1,0 +1,493 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const featured = {
+  title: 'Visions Enterprise — Platform Walkthrough',
+  description: 'A comprehensive 15-minute tour of the Visions Enterprise platform. See dashboards, RBI workflows, inspection management, and reporting in action.',
+  image: '/images/photos/control-room.jpg',
+  duration: '15:42',
+  category: 'Product Demo',
+  views: '12.4K',
+};
+
+const categories = ['All', 'Product Demos', 'Webinars', 'Customer Stories', 'Training', 'Industry Talks'];
+
+const videos = [
+  { title: 'VISIONSGO — Field Inspection Mobile App', image: '/images/photos/engineer-field.jpg', duration: '8:32', category: 'Product Demo', views: '8.1K' },
+  { title: 'Introduction to Risk-Based Inspection', image: '/images/photos/research.jpg', duration: '22:15', category: 'Training', views: '15.2K' },
+  { title: 'Chevron Agbami Case Study — Customer Talk', image: '/images/photos/offshore.jpg', duration: '18:40', category: 'Customer Stories', views: '6.3K' },
+  { title: 'API 581 Third Edition — What\'s New', image: '/images/photos/whitepaper.jpg', duration: '45:00', category: 'Webinars', views: '9.8K' },
+  { title: 'Damage Mechanism Library Best Practices', image: '/images/photos/corrosion.jpg', duration: '12:20', category: 'Training', views: '7.5K' },
+  { title: 'Visions RBI — Quantitative Analysis Demo', image: '/images/photos/data-analysis.jpg', duration: '9:55', category: 'Product Demo', views: '5.9K' },
+  { title: 'IOW Monitoring in Chemical Plants', image: '/images/photos/chem-plant.jpg', duration: '38:15', category: 'Webinars', views: '4.7K' },
+  { title: 'Marathon Oil — Digital Transformation Journey', image: '/images/photos/refinery.jpg', duration: '24:18', category: 'Customer Stories', views: '5.2K' },
+  { title: 'PSM Mechanical Integrity Fundamentals', image: '/images/photos/inspector.jpg', duration: '32:45', category: 'Training', views: '11.3K' },
+  { title: 'Offshore Integrity in Extreme Conditions', image: '/images/photos/offshore.jpg', duration: '28:30', category: 'Industry Talks', views: '6.8K' },
+  { title: 'Fugitive Emissions Module — LDAR Walkthrough', image: '/images/photos/pipeline.jpg', duration: '11:40', category: 'Product Demo', views: '4.1K' },
+  { title: 'Corrosion Under Insulation Detection', image: '/images/photos/corrosion.jpg', duration: '19:55', category: 'Training', views: '8.9K' },
+];
+
+const stats = [
+  { val: '40+', lbl: 'Videos Available' },
+  { val: '200K+', lbl: 'Total Views' },
+  { val: '15K+', lbl: 'Subscribers' },
+  { val: '4.9', lbl: 'Average Rating' },
+];
+---
+
+<Layout title="Video Gallery | Metegrity" description="Product demos, webinars, customer stories, and training videos from Metegrity.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Insights', href: '/insights' }, { label: 'Video Gallery' }]}
+      eyebrow="Video Gallery"
+      titleLight="See Metegrity"
+      titleBold="in action."
+      description="Product demos, customer testimonials, on-demand webinars, and training content — all searchable, all free."
+      align="center"
+    />
+
+    <!-- Featured video -->
+    <section class="vg-featured section">
+      <div class="container">
+        <article class="vg-feature reveal">
+          <div class="vg-feature__player">
+            <img src={featured.image} alt={featured.title} />
+            <button class="vg-feature__play" aria-label="Play video">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M10 8L24 16L10 24V8Z" fill="currentColor"/>
+              </svg>
+            </button>
+            <div class="vg-feature__overlay"></div>
+            <span class="vg-feature__duration">{featured.duration}</span>
+          </div>
+          <div class="vg-feature__content">
+            <span class="vg-feature__cat">{featured.category}</span>
+            <h2>{featured.title}</h2>
+            <p>{featured.description}</p>
+            <div class="vg-feature__meta">
+              <span>
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M8 4v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                {featured.duration}
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                  <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                {featured.views} views
+              </span>
+            </div>
+            <a href="#" class="btn btn-primary">Watch Now</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Stats strip -->
+    <section class="vg-stats">
+      <div class="container vg-stats__inner">
+        {stats.map(s => (
+          <div class="vg-stats__item">
+            <span>{s.val}</span>
+            <label>{s.lbl}</label>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters-bar">
+      <div class="container">
+        <div class="filters-bar__inner">
+          <span class="filters-bar__label">Category</span>
+          <div class="filters-bar__list">
+            {categories.map((c, i) => (
+              <button class={`filters-bar__pill ${i === 0 ? 'filters-bar__pill--active' : ''}`}>{c}</button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videos grid -->
+    <section class="vg-grid section">
+      <div class="container">
+        <div class="vg-grid__list">
+          {videos.map((v, i) => (
+            <a href="#" class="vg-video reveal" style={`transition-delay: ${(i % 4) * 60}ms`}>
+              <div class="vg-video__thumb">
+                <img src={v.image} alt={v.title} loading="lazy" />
+                <div class="vg-video__overlay"></div>
+                <button class="vg-video__play" aria-label="Play">
+                  <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+                    <path d="M10 8L24 16L10 24V8Z" fill="currentColor"/>
+                  </svg>
+                </button>
+                <span class="vg-video__duration">{v.duration}</span>
+              </div>
+              <div class="vg-video__info">
+                <span class="vg-video__cat">{v.category}</span>
+                <h3>{v.title}</h3>
+                <span class="vg-video__views">{v.views} views</span>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="vg-grid__more reveal">
+          <button class="btn btn-outline">Load More Videos</button>
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      titleLight="Subscribe for new"
+      titleBold="video content."
+      description="Follow our YouTube channel and LinkedIn for fresh product demos, customer stories, and industry talks every week."
+      primaryLabel="Follow on YouTube"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Featured */
+  .vg-feature {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: var(--space-10);
+    align-items: center;
+  }
+
+  .vg-feature__player {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+  }
+
+  .vg-feature__player img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .vg-feature__player:hover img {
+    transform: scale(1.04);
+  }
+
+  .vg-feature__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 100%);
+  }
+
+  .vg-feature__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 40px rgba(255,107,0,0.5), 0 0 0 12px rgba(255,107,0,0.2);
+    transition: all var(--transition-base);
+  }
+
+  .vg-feature__play:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 10px 40px rgba(255,107,0,0.6), 0 0 0 18px rgba(255,107,0,0.15);
+  }
+
+  .vg-feature__play svg {
+    margin-left: 4px;
+  }
+
+  .vg-feature__duration {
+    position: absolute;
+    bottom: var(--space-4);
+    right: var(--space-4);
+    padding: 4px 10px;
+    background: rgba(0,0,0,0.75);
+    color: var(--color-white);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-bold);
+    border-radius: var(--radius-sm);
+    backdrop-filter: blur(10px);
+  }
+
+  .vg-feature__cat {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(255, 107, 0, 0.12);
+    color: var(--color-primary);
+    font-size: 10px;
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-4);
+  }
+
+  .vg-feature__content h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-bold);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-4);
+  }
+
+  .vg-feature__content p {
+    font-size: var(--font-size-md);
+    line-height: 1.7;
+    margin-bottom: var(--space-5);
+    max-width: 520px;
+  }
+
+  .vg-feature__meta {
+    display: flex;
+    gap: var(--space-5);
+    margin-bottom: var(--space-6);
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vg-feature__meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-medium);
+  }
+
+  /* Stats strip */
+  .vg-stats {
+    background: var(--color-dark);
+    color: var(--color-white);
+    padding: var(--space-10) 0;
+  }
+
+  .vg-stats__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    text-align: center;
+  }
+
+  .vg-stats__item span {
+    display: block;
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-1);
+  }
+
+  .vg-stats__item label {
+    font-size: var(--font-size-xs);
+    color: rgba(255,255,255,0.6);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* Filters bar (reusing pattern) */
+  .filters-bar {
+    padding: var(--space-6) 0;
+    background: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .filters-bar__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .filters-bar__label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary);
+  }
+
+  .filters-bar__list {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .filters-bar__pill {
+    padding: 6px 14px;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-secondary);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: inherit;
+  }
+
+  .filters-bar__pill:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .filters-bar__pill--active {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+  }
+
+  /* Videos grid */
+  .vg-grid__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-5);
+    margin-bottom: var(--space-12);
+  }
+
+  .vg-video {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--transition-base);
+  }
+
+  .vg-video:hover { transform: translateY(-4px); }
+
+  .vg-video__thumb {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .vg-video__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 6s ease;
+  }
+
+  .vg-video:hover .vg-video__thumb img { transform: scale(1.08); }
+
+  .vg-video__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 100%);
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
+  }
+
+  .vg-video:hover .vg-video__overlay { opacity: 1; }
+
+  .vg-video__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--color-white);
+    border: 2px solid rgba(255,255,255,0.6);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+    opacity: 0;
+  }
+
+  .vg-video:hover .vg-video__play {
+    opacity: 1;
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .vg-video__play svg { margin-left: 2px; }
+
+  .vg-video__duration {
+    position: absolute;
+    bottom: var(--space-2);
+    right: var(--space-2);
+    padding: 2px 6px;
+    background: rgba(0,0,0,0.8);
+    color: var(--color-white);
+    font-size: 10px;
+    font-weight: var(--font-bold);
+    border-radius: 3px;
+  }
+
+  .vg-video__cat {
+    font-size: 10px;
+    font-weight: var(--font-bold);
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .vg-video__info h3 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-dark);
+    line-height: 1.4;
+    margin: var(--space-1) 0 var(--space-1);
+  }
+
+  .vg-video__views {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    font-weight: var(--font-medium);
+  }
+
+  .vg-grid__more { text-align: center; }
+
+  @media (max-width: 1024px) {
+    .vg-feature { grid-template-columns: 1fr; gap: var(--space-8); }
+    .vg-grid__list { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .vg-stats__inner { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+    .vg-grid__list { grid-template-columns: repeat(2, 1fr); }
+    .vg-feature__play { width: 64px; height: 64px; }
+  }
+
+  @media (max-width: 560px) {
+    .vg-grid__list { grid-template-columns: 1fr; }
+  }
+</style>

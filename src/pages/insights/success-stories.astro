@@ -1,0 +1,186 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import ResourceCard from '../../components/shared/ResourceCard.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const flagship = {
+  type: 'Flagship Case Study',
+  title: 'Chevron Agbami FPSO — 20 Years of Uninterrupted Integrity',
+  description: 'How one of the world\'s largest deepwater FPSOs has achieved zero unplanned integrity shutdowns across two decades of operation using Visions Enterprise.',
+  image: '/images/photos/offshore.jpg',
+  meta: 'Oil & Gas · 8 min read',
+  tag: 'Flagship',
+  href: '#',
+  featured: true,
+};
+
+const stories = [
+  { type: 'Success Story', title: 'Marathon Oil: 40% faster deployment with Visions', image: '/images/photos/refinery.jpg', meta: 'Oil & Gas · 6 min', tag: 'Oil & Gas', href: '#' },
+  { type: 'Success Story', title: 'LyondellBasell: Unifying MI across 10 plants', image: '/images/photos/chem-plant.jpg', meta: 'Chemical · 7 min', tag: 'Chemical', href: '#' },
+  { type: 'Success Story', title: 'Saudi Aramco: RBI across 500+ pressure vessels', image: '/images/photos/upstream.jpg', meta: 'Oil & Gas · 9 min', tag: 'Oil & Gas', href: '#' },
+  { type: 'Success Story', title: 'BASF: Damage mechanism library at scale', image: '/images/photos/corrosion.jpg', meta: 'Chemical · 5 min', tag: 'Chemical', href: '#' },
+  { type: 'Success Story', title: 'Equinor: Offshore integrity in the North Sea', image: '/images/photos/offshore.jpg', meta: 'Oil & Gas · 8 min', tag: 'Offshore', href: '#' },
+  { type: 'Success Story', title: 'Petrobras: Subsea pipeline integrity program', image: '/images/photos/pipeline.jpg', meta: 'Oil & Gas · 6 min', tag: 'Midstream', href: '#' },
+  { type: 'Success Story', title: 'ExxonMobil: PSM compliance transformation', image: '/images/photos/control-room.jpg', meta: 'Chemical · 7 min', tag: 'PSM', href: '#' },
+  { type: 'Success Story', title: 'Shell: Turnaround planning with Visions RBI', image: '/images/photos/downstream.jpg', meta: 'Oil & Gas · 6 min', tag: 'Refining', href: '#' },
+  { type: 'Success Story', title: 'Dow Chemical: IOW monitoring reduces upsets', image: '/images/photos/chem-plant.jpg', meta: 'Chemical · 5 min', tag: 'IOW', href: '#' },
+];
+
+const filters = ['All', 'Oil & Gas', 'Chemical', 'Power', 'Offshore', 'PSM', 'RBI'];
+---
+
+<Layout title="Success Stories | Metegrity" description="Real-world case studies from 1,350+ Metegrity clients across oil & gas, chemical, and power industries.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Insights', href: '/insights' }, { label: 'Success Stories' }]}
+      eyebrow="Success Stories"
+      titleLight="Real operators."
+      titleBold="Real outcomes."
+      description="Deep dives into how the world's most critical operations use Metegrity to reduce risk, optimize inspections, and keep production running safely."
+      align="center"
+    />
+
+    <!-- Filters bar -->
+    <section class="filters-bar">
+      <div class="container">
+        <div class="filters-bar__inner">
+          <span class="filters-bar__label">Filter by</span>
+          <div class="filters-bar__list">
+            {filters.map((f, i) => (
+              <button class={`filters-bar__pill ${i === 0 ? 'filters-bar__pill--active' : ''}`}>{f}</button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flagship -->
+    <section class="ss-flagship section">
+      <div class="container">
+        <div class="ss-flagship__inner">
+          <ResourceCard {...flagship} />
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid -->
+    <section class="ss-grid section">
+      <div class="container">
+        <div class="ss-grid__header reveal">
+          <div class="section-label">All Stories</div>
+          <h2>
+            <span class="text-light">Browse by</span>
+            <span class="text-bold">industry and use case.</span>
+          </h2>
+        </div>
+
+        <div class="ss-grid__list">
+          {stories.map((s, i) => (
+            <div class="ss-grid__item reveal" style={`transition-delay: ${(i % 3) * 80}ms`}>
+              <ResourceCard {...s} />
+            </div>
+          ))}
+        </div>
+
+        <div class="ss-grid__more reveal">
+          <button class="btn btn-outline">Load More Stories</button>
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      titleLight="Have a story"
+      titleBold="worth telling?"
+      description="We love showcasing our clients' successes. Let's collaborate on a case study that inspires the industry."
+      primaryLabel="Share Your Story"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .filters-bar {
+    padding: var(--space-6) 0;
+    background: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .filters-bar__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .filters-bar__label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary);
+  }
+
+  .filters-bar__list {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .filters-bar__pill {
+    padding: 6px 14px;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-secondary);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: inherit;
+  }
+
+  .filters-bar__pill:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .filters-bar__pill--active {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+  }
+
+  .ss-flagship__inner :global(.rcard--featured) {
+    max-width: 100%;
+  }
+
+  .ss-grid__header {
+    max-width: 640px;
+    margin-bottom: var(--space-10);
+  }
+
+  .ss-grid__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+    margin-bottom: var(--space-12);
+  }
+
+  .ss-grid__more {
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .ss-grid__list { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .ss-grid__list { grid-template-columns: 1fr; }
+    .ss-grid__header { text-align: center; margin-left: auto; margin-right: auto; }
+  }
+</style>

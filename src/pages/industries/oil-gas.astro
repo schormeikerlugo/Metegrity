@@ -1,0 +1,277 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import FeatureSplit from '../../components/shared/FeatureSplit.astro';
+import FeatureGrid from '../../components/shared/FeatureGrid.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const segments = [
+  {
+    title: 'Upstream',
+    description: 'Wellheads, offshore platforms, FPSOs, and production facilities. Manage integrity across the most challenging operating environments on Earth.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2v20M8 6h12M6 22h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M10 6l4-3 4 3" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+    image: '/images/photos/upstream.jpg',
+  },
+  {
+    title: 'Midstream',
+    description: 'Pipelines, compressor stations, storage terminals, and gas processing plants. Ensure safe transit of hydrocarbons across thousands of miles.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M2 14h24M6 10v8M10 10v8M14 10v8M18 10v8M22 10v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+    image: '/images/photos/midstream.jpg',
+  },
+  {
+    title: 'Downstream',
+    description: 'Refineries, petrochemical complexes, and distribution. Optimize turnarounds and inspection intervals across thousands of circuits.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="6" width="6" height="18" stroke="currentColor" stroke-width="1.5"/><rect x="12" y="2" width="6" height="22" stroke="currentColor" stroke-width="1.5"/><rect x="20" y="10" width="4" height="14" stroke="currentColor" stroke-width="1.5"/></svg>`,
+    image: '/images/photos/downstream.jpg',
+  },
+];
+
+const solutions = [
+  {
+    title: 'RBI for Critical Assets',
+    description: 'API 580/581 compliant risk assessments for pressure vessels, piping, and heat exchangers. Optimize inspection intervals and focus resources on what matters.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M14 7l3 5-6 3 3-8z" fill="currentColor"/></svg>`,
+  },
+  {
+    title: 'Corrosion Management',
+    description: 'Track thickness trends, calculate corrosion rates, and predict remaining life. Proactively manage sweet, sour, and HT/HP environments.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 20L10 14L14 16L24 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Regulatory Compliance',
+    description: 'OSHA PSM, API, ASME, and global standards. One-click audit reports keep you inspection-ready, year-round.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3l9 4v8c0 6-4 9-9 10-5-1-9-4-9-10V7l9-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 14l3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Turnaround Planning',
+    description: 'Plan and execute major turnarounds with confidence. Coordinate inspections, manage work scope, and track progress in real time.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 14a10 10 0 0118-6M24 14a10 10 0 01-18 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M18 4l4 4-4 4M10 24l-4-4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Fugitive Emissions',
+    description: 'LDAR program management. Detect, track, and repair methane and VOC leaks. Meet EPA and state regulations with confidence.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4c-4 8 4 8 0 16M9 6c-3 6 3 6 0 12M19 6c-3 6 3 6 0 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Fitness-for-Service',
+    description: 'API 579 / FFS assessments for damaged equipment. Make informed run-repair-replace decisions backed by rigorous analysis.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9 14l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+];
+---
+
+<Layout title="Oil & Gas | Metegrity" description="Asset Integrity Management for Upstream, Midstream, and Downstream operations. 800+ facilities trust Metegrity.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'Industries', href: '/industries' },
+        { label: 'Oil & Gas' }
+      ]}
+      eyebrow="Oil & Gas"
+      titleLight="From Wellhead to"
+      titleBold="Shipping Terminal."
+      description="Purpose-built for hydrocarbon operations. Metegrity powers 800+ oil and gas facilities worldwide — from deepwater FPSOs to complex refining operations."
+      image="/images/industries/oil-gas.png"
+    >
+      <div slot="cta" style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="/contact" class="btn btn-primary">Book a Demo</a>
+        <a href="#segments" class="btn btn-outline">Our Coverage</a>
+      </div>
+    </PageHero>
+
+    <!-- Segments with photos -->
+    <section id="segments" class="og-segments section">
+      <div class="container">
+        <div class="og-segments__header reveal">
+          <div class="section-label">Value Chain Coverage</div>
+          <h2>
+            <span class="text-light">Complete lifecycle support,</span><br />
+            <span class="text-bold">from source to shipping.</span>
+          </h2>
+        </div>
+        <div class="og-segments__grid">
+          {segments.map((seg, i) => (
+            <article class="og-segment reveal" style={`transition-delay: ${i * 120}ms`}>
+              <div class="og-segment__image">
+                <img src={seg.image} alt={seg.title} loading="lazy" />
+              </div>
+              <div class="og-segment__content">
+                <div class="og-segment__icon" set:html={seg.icon} />
+                <h3>{seg.title}</h3>
+                <p>{seg.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Case study split -->
+    <FeatureSplit
+      eyebrow="Success Story"
+      titleLight="Chevron Agbami FPSO —"
+      titleBold="20 years deepwater operation."
+      description="One of the world's largest deepwater FPSOs, operating in 1,400m water depth off Nigeria, has relied on Visions Enterprise for over two decades. The platform processes 250,000 barrels per day with industry-leading reliability."
+      bullets={[
+        '20+ years continuous Visions operation',
+        'RBI studies across 2,000+ circuits',
+        'SAP bidirectional CMMS integration',
+        'Zero unplanned shutdowns from integrity events',
+      ]}
+      image="/images/photos/offshore.jpg"
+      imagePosition="right"
+      ctaLabel="Read Case Study"
+      ctaHref="#"
+    />
+
+    <!-- Solutions grid dark -->
+    <FeatureGrid
+      eyebrow="Solutions for O&G"
+      titleLight="Purpose-built capabilities"
+      titleBold="for hydrocarbon operations."
+      description="Metegrity combines industry expertise with cutting-edge software to solve the unique integrity challenges of oil and gas."
+      features={solutions}
+      columns={3}
+      dark={true}
+    />
+
+    <!-- Key stats strip -->
+    <section class="og-stats">
+      <div class="container og-stats__inner">
+        <div class="og-stats__item"><span>800+</span><label>O&G Facilities</label></div>
+        <div class="og-stats__item"><span>$850B+</span><label>Assets Managed</label></div>
+        <div class="og-stats__item"><span>2M+</span><label>Circuits Tracked</label></div>
+        <div class="og-stats__item"><span>30+</span><label>Years Experience</label></div>
+      </div>
+    </section>
+
+    <CTASection
+      titleLight="Power your"
+      titleBold="O&G integrity program."
+      description="Join operators like Chevron, Marathon, and global leaders who trust Metegrity for their most critical assets."
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .og-segments__header {
+    max-width: 640px;
+    margin: 0 auto var(--space-16);
+    text-align: center;
+  }
+
+  .og-segments__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .og-segment {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .og-segment:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-color: rgba(255, 107, 0, 0.25);
+  }
+
+  .og-segment__image {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+
+  .og-segment__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 6s ease;
+  }
+
+  .og-segment:hover .og-segment__image img {
+    transform: scale(1.06);
+  }
+
+  .og-segment__content {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .og-segment__icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 107, 0, 0.08);
+    border-radius: var(--radius-md);
+    color: var(--color-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .og-segment h3 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+  }
+
+  .og-segment p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .og-stats {
+    background: var(--color-dark);
+    color: var(--color-white);
+    padding: var(--space-12) 0;
+  }
+
+  .og-stats__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    text-align: center;
+  }
+
+  .og-stats__item span {
+    display: block;
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2);
+  }
+
+  .og-stats__item label {
+    font-size: var(--font-size-xs);
+    color: rgba(255,255,255,0.6);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 900px) {
+    .og-segments__grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .og-stats__inner { grid-template-columns: repeat(2, 1fr); gap: var(--space-8); }
+    .og-stats__item span { font-size: var(--font-size-3xl); }
+  }
+</style>

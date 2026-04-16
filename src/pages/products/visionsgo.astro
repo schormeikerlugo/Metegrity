@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import FeatureGrid from '../../components/shared/FeatureGrid.astro';
+import FeatureSplit from '../../components/shared/FeatureSplit.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const features = [
+  {
+    title: 'Offline-First',
+    description: 'Work anywhere — from offshore platforms to remote pipelines. Data syncs automatically when connectivity returns.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M3 12a11 11 0 0122 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M7 15a7 7 0 0114 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="20" r="2" fill="currentColor"/><path d="M4 4l20 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Real-Time Capture',
+    description: 'Photos, measurements, voice notes, and barcodes — capture everything inline with guided workflows.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="7" width="22" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="14" cy="15" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M9 7l2-3h6l2 3" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Guided Inspections',
+    description: 'Step-by-step routes with checklists, acceptance criteria, and automatic pass/fail flags.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="6" y="4" width="16" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M10 10l2 2 5-5M10 17h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Barcode & QR',
+    description: 'Scan equipment tags to instantly pull history, drawings, and inspection records.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 4v20M8 4v20M12 4v16M16 4v20M20 4v16M24 4v20" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  },
+  {
+    title: 'Digital Signatures',
+    description: 'Sign off inspections on device. Full audit trail with timestamp and geolocation.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 20c2-1 6-5 10-5s5 3 4 5M8 22h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  },
+  {
+    title: 'Instant Sync',
+    description: 'Two-way sync with Visions Enterprise. Field data appears in head-office dashboards in real time.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 14a10 10 0 0118-6M24 14a10 10 0 01-18 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M18 4l4 4-4 4M10 24l-4-4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+];
+---
+
+<Layout title="VISIONSGO | Metegrity" description="Field inspections, anywhere, anytime. Mobile data management with real-time syncing.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Products', href: '/products' }, { label: 'VISIONSGO' }]}
+      eyebrow="VISIONSGO"
+      titleLight="Field Insights —"
+      titleBold="Anywhere, Anytime."
+      description="Execute inspection management from the field with our rugged mobile data management solution. Real-time capture, offline-first, and fully synchronized with Visions Enterprise."
+      image="/images/photos/engineer-field.jpg"
+    >
+      <div slot="cta" style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="/contact" class="btn btn-primary">Book a Demo</a>
+        <a href="#features" class="btn btn-outline">See Features</a>
+      </div>
+    </PageHero>
+
+    <FeatureSplit
+      eyebrow="Built for the Field"
+      titleLight="From offshore platforms to"
+      titleBold="remote pipelines."
+      description="VISIONSGO is engineered for the toughest environments. Offline-first design means inspectors never lose data — even in the most remote locations. When connectivity returns, everything syncs instantly to head office."
+      bullets={[
+        'Works fully offline — no connection required',
+        'Rugged iOS & Android tablets supported',
+        'Automatic sync when network available',
+        'End-to-end encryption for sensitive data',
+      ]}
+      image="/images/photos/offshore.jpg"
+      imagePosition="right"
+    />
+
+    <section id="features">
+      <FeatureGrid
+        eyebrow="Key Features"
+        titleLight="Everything your inspectors need"
+        titleBold="in one mobile app."
+        features={features}
+        columns={3}
+        dark={true}
+      />
+    </section>
+
+    <FeatureSplit
+      eyebrow="Inspector Productivity"
+      titleLight="Reduce inspection time by"
+      titleBold="up to 50%."
+      description="Digital forms, pre-populated data, and guided workflows mean inspectors spend less time on paperwork and more time on critical analysis. Data quality improves while reporting accelerates."
+      bullets={[
+        'Pre-populated forms from asset history',
+        'Automatic calculations and corrosion rates',
+        'Photo annotation and mark-up tools',
+        'Voice-to-text note taking',
+      ]}
+      image="/images/photos/inspector.jpg"
+      imagePosition="left"
+    />
+
+    <CTASection
+      titleLight="Empower your"
+      titleBold="field inspectors today."
+      description="See how VISIONSGO transforms field inspection workflows. Book a personalized demo with our team."
+    />
+  </main>
+  <Footer />
+</Layout>

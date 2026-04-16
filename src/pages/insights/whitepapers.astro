@@ -1,0 +1,235 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import ResourceCard from '../../components/shared/ResourceCard.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const papers = [
+  { type: 'Whitepaper', title: 'The State of Risk-Based Inspection in 2026', image: '/images/photos/research.jpg', meta: '32 pages · PDF', tag: 'RBI', href: '#' },
+  { type: 'Whitepaper', title: 'API 581 Third Edition: What Changed and Why', image: '/images/photos/whitepaper.jpg', meta: '18 pages · PDF', tag: 'API 581', href: '#' },
+  { type: 'Whitepaper', title: 'Damage Mechanism Libraries for Process Plants', image: '/images/photos/corrosion.jpg', meta: '24 pages · PDF', tag: 'Corrosion', href: '#' },
+  { type: 'Whitepaper', title: 'Digital Transformation in Integrity Programs', image: '/images/photos/data-analysis.jpg', meta: '20 pages · PDF', tag: 'Digital', href: '#' },
+  { type: 'Whitepaper', title: 'Fugitive Emissions: EPA OOOOb Compliance Guide', image: '/images/photos/pipeline.jpg', meta: '28 pages · PDF', tag: 'Compliance', href: '#' },
+  { type: 'Whitepaper', title: 'Integrity Operating Windows: Theory to Practice', image: '/images/photos/control-room.jpg', meta: '22 pages · PDF', tag: 'IOW', href: '#' },
+  { type: 'Whitepaper', title: 'Fitness-for-Service: API 579 Implementation', image: '/images/photos/engineer-field.jpg', meta: '36 pages · PDF', tag: 'FFS', href: '#' },
+  { type: 'Whitepaper', title: 'Corrosion Under Insulation (CUI) Management', image: '/images/photos/refinery.jpg', meta: '26 pages · PDF', tag: 'Corrosion', href: '#' },
+];
+
+const featured = {
+  type: 'Featured Whitepaper',
+  title: 'The State of Risk-Based Inspection in 2026',
+  description: 'A comprehensive 32-page analysis covering the evolution of RBI methodologies, the latest API 581 updates, and emerging trends in risk-based integrity management. Includes case studies and practical implementation frameworks.',
+  image: '/images/photos/research.jpg',
+  meta: '32 pages · 4.5MB PDF',
+  tag: 'New',
+  href: '#',
+  featured: true,
+};
+---
+
+<Layout title="Whitepapers | Metegrity" description="In-depth technical research and industry analysis from Metegrity's integrity experts.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Insights', href: '/insights' }, { label: 'Whitepapers' }]}
+      eyebrow="Whitepapers"
+      titleLight="Deep technical"
+      titleBold="research & analysis."
+      description="Rigorous industry research on risk-based inspection, corrosion management, regulatory compliance, and digital transformation — authored by our integrity engineers."
+      align="center"
+    />
+
+    <!-- Featured -->
+    <section class="wp-featured section">
+      <div class="container">
+        <ResourceCard {...featured} />
+      </div>
+    </section>
+
+    <!-- Grid with inline download form -->
+    <section class="wp-grid section">
+      <div class="container">
+        <div class="wp-grid__inner">
+          <div class="wp-grid__list">
+            <div class="wp-grid__header reveal">
+              <div class="section-label">All Whitepapers</div>
+              <h2>
+                <span class="text-light">Browse our</span>
+                <span class="text-bold">research library.</span>
+              </h2>
+            </div>
+            <div class="wp-grid__items">
+              {papers.map((p, i) => (
+                <div class="wp-grid__item reveal" style={`transition-delay: ${(i % 2) * 60}ms`}>
+                  <ResourceCard {...p} compact={true} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Sidebar subscribe -->
+          <aside class="wp-sidebar">
+            <div class="wp-sidebar__card">
+              <h3>Never miss a paper</h3>
+              <p>Get notified when we publish new research. No spam, just the good stuff.</p>
+              <form class="wp-sidebar__form" onsubmit="event.preventDefault()">
+                <input type="email" placeholder="your@email.com" required />
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+              </form>
+              <p class="wp-sidebar__note">Unsubscribe anytime. Read our privacy policy.</p>
+            </div>
+
+            <div class="wp-sidebar__topics">
+              <h4>Topics</h4>
+              <ul>
+                <li><a href="#">Risk-Based Inspection (12)</a></li>
+                <li><a href="#">Corrosion Management (8)</a></li>
+                <li><a href="#">API Standards (15)</a></li>
+                <li><a href="#">Compliance (6)</a></li>
+                <li><a href="#">Digital Transformation (4)</a></li>
+                <li><a href="#">Offshore Integrity (7)</a></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      titleLight="Need specific"
+      titleBold="research for your team?"
+      description="Our integrity engineers can deliver custom research and white-label analysis tailored to your operational challenges."
+      primaryLabel="Request Research"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .wp-featured :global(.rcard--featured) {
+    max-width: 100%;
+  }
+
+  .wp-grid__inner {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  .wp-grid__header {
+    margin-bottom: var(--space-8);
+  }
+
+  .wp-grid__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  /* Sidebar */
+  .wp-sidebar {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .wp-sidebar__card {
+    padding: var(--space-6);
+    background: var(--color-dark);
+    color: var(--color-white);
+    border-radius: var(--radius-xl);
+  }
+
+  .wp-sidebar__card h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-2);
+  }
+
+  .wp-sidebar__card p {
+    font-size: var(--font-size-sm);
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+  }
+
+  .wp-sidebar__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .wp-sidebar__form input {
+    padding: var(--space-3) var(--space-4);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--color-white);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+  }
+
+  .wp-sidebar__form input::placeholder { color: rgba(255,255,255,0.4); }
+
+  .wp-sidebar__form input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .wp-sidebar__form button {
+    width: 100%;
+  }
+
+  .wp-sidebar__note {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0 !important;
+  }
+
+  .wp-sidebar__topics {
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+  }
+
+  .wp-sidebar__topics h4 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+    margin-bottom: var(--space-4);
+  }
+
+  .wp-sidebar__topics ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .wp-sidebar__topics a {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+    font-weight: var(--font-medium);
+  }
+
+  .wp-sidebar__topics a:hover { color: var(--color-primary); }
+
+  @media (max-width: 1024px) {
+    .wp-grid__inner { grid-template-columns: 1fr; }
+    .wp-sidebar { position: static; flex-direction: row; gap: var(--space-5); }
+    .wp-sidebar > * { flex: 1; }
+  }
+
+  @media (max-width: 768px) {
+    .wp-grid__items { grid-template-columns: 1fr; }
+    .wp-sidebar { flex-direction: column; }
+    .wp-grid__header { text-align: center; }
+  }
+</style>

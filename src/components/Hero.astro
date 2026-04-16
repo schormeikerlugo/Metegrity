@@ -10,6 +10,25 @@
     class="hero__bg"
     aria-hidden="true"
   />
+
+  <!-- Animated grid overlay -->
+  <div class="hero__grid" aria-hidden="true"></div>
+
+  <!-- Floating orbs / light spots -->
+  <div class="hero__orbs" aria-hidden="true">
+    <span class="hero__orb hero__orb--1"></span>
+    <span class="hero__orb hero__orb--2"></span>
+    <span class="hero__orb hero__orb--3"></span>
+  </div>
+
+  <!-- Scanning line -->
+  <div class="hero__scan" aria-hidden="true"></div>
+
+  <!-- Particles -->
+  <div class="hero__particles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
   <div class="hero__bg-overlay"></div>
 
   <div class="hero__inner container">
@@ -437,21 +456,182 @@
 
   .hero__bg {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    inset: -5%;
+    width: 110%;
+    height: 110%;
     object-fit: cover;
     z-index: 0;
     pointer-events: none;
-    animation: bg-zoom 20s ease-out forwards;
+    animation: bg-drift 30s ease-in-out infinite;
+    will-change: transform;
   }
 
-  @keyframes bg-zoom {
-    from {
-      transform: scale(1.05);
-    }
-    to {
-      transform: scale(1);
+  @keyframes bg-drift {
+    0%   { transform: scale(1.06) translate(0, 0); }
+    25%  { transform: scale(1.08) translate(-1.5%, -0.8%); }
+    50%  { transform: scale(1.05) translate(1%, -1.2%); }
+    75%  { transform: scale(1.07) translate(1.5%, 0.6%); }
+    100% { transform: scale(1.06) translate(0, 0); }
+  }
+
+  /* Animated grid overlay */
+  .hero__grid {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(26, 26, 26, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 26, 26, 0.05) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+    animation: grid-pan 40s linear infinite;
+  }
+
+  @keyframes grid-pan {
+    from { background-position: 0 0; }
+    to   { background-position: 80px 80px; }
+  }
+
+  /* Orbs — colored light spots floating */
+  .hero__orbs {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.55;
+    will-change: transform;
+  }
+
+  .hero__orb--1 {
+    width: 380px;
+    height: 380px;
+    top: -10%;
+    left: -8%;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.35), transparent 70%);
+    animation: orb-float-1 18s ease-in-out infinite;
+  }
+
+  .hero__orb--2 {
+    width: 460px;
+    height: 460px;
+    bottom: -15%;
+    right: -10%;
+    background: radial-gradient(circle, rgba(255, 138, 51, 0.25), transparent 70%);
+    animation: orb-float-2 22s ease-in-out infinite;
+  }
+
+  .hero__orb--3 {
+    width: 280px;
+    height: 280px;
+    top: 40%;
+    left: 55%;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.15), transparent 70%);
+    animation: orb-float-3 26s ease-in-out infinite;
+  }
+
+  @keyframes orb-float-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(60px, 40px) scale(1.15); }
+    66%      { transform: translate(-40px, 80px) scale(0.95); }
+  }
+
+  @keyframes orb-float-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%      { transform: translate(-80px, -60px) scale(1.1); }
+  }
+
+  @keyframes orb-float-3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25%      { transform: translate(-50px, 30px) scale(1.2); }
+    50%      { transform: translate(40px, -50px) scale(0.9); }
+    75%      { transform: translate(30px, 60px) scale(1.05); }
+  }
+
+  /* Horizontal scanning line */
+  .hero__scan {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero__scan::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 107, 0, 0.4) 30%,
+      rgba(255, 107, 0, 0.7) 50%,
+      rgba(255, 107, 0, 0.4) 70%,
+      transparent 100%);
+    filter: blur(1px);
+    animation: scan-line 8s linear infinite;
+    opacity: 0.5;
+  }
+
+  @keyframes scan-line {
+    0%   { top: -5%; opacity: 0; }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.6; }
+    100% { top: 105%; opacity: 0; }
+  }
+
+  /* Drifting particles */
+  .hero__particles {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero__particles span {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    opacity: 0;
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.7);
+  }
+
+  .hero__particles span:nth-child(1) { left: 10%; animation: particle-rise 12s linear infinite 0s; }
+  .hero__particles span:nth-child(2) { left: 22%; animation: particle-rise 15s linear infinite 2s; }
+  .hero__particles span:nth-child(3) { left: 35%; animation: particle-rise 10s linear infinite 4s; }
+  .hero__particles span:nth-child(4) { left: 48%; animation: particle-rise 14s linear infinite 1s; }
+  .hero__particles span:nth-child(5) { left: 60%; animation: particle-rise 13s linear infinite 3s; }
+  .hero__particles span:nth-child(6) { left: 72%; animation: particle-rise 11s linear infinite 5s; }
+  .hero__particles span:nth-child(7) { left: 84%; animation: particle-rise 16s linear infinite 0s; }
+  .hero__particles span:nth-child(8) { left: 92%; animation: particle-rise 12s linear infinite 2.5s; }
+
+  @keyframes particle-rise {
+    0%   { top: 100%; opacity: 0; transform: translateX(0); }
+    10%  { opacity: 0.7; }
+    50%  { transform: translateX(30px); }
+    90%  { opacity: 0.7; }
+    100% { top: -5%; opacity: 0; transform: translateX(-20px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__bg,
+    .hero__grid,
+    .hero__orb,
+    .hero__scan::before,
+    .hero__particles span {
+      animation: none !important;
     }
   }
 
@@ -470,7 +650,7 @@
 
   .hero__inner {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-16);

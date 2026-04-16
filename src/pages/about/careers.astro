@@ -1,0 +1,429 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import FeatureSplit from '../../components/shared/FeatureSplit.astro';
+import FeatureGrid from '../../components/shared/FeatureGrid.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const benefits = [
+  {
+    title: 'Remote-First Culture',
+    description: 'Work from anywhere. Our geographically distributed team collaborates across time zones with strong async practices.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M3 14h22M14 3c3 4 3 18 0 22M14 3c-3 4-3 18 0 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Competitive Compensation',
+    description: 'Market-leading salaries, equity participation, and annual performance bonuses aligned with company success.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M11 10h4a2.5 2.5 0 010 5h-4a2.5 2.5 0 000 5h4M14 7v3M14 20v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Health & Wellness',
+    description: 'Comprehensive medical, dental, and vision coverage for you and your family. Mental health support and wellness stipends.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 24s-10-6-10-13a6 6 0 0110-4 6 6 0 0110 4c0 7-10 13-10 13z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Learning Budget',
+    description: '$3,000 annual learning budget. Conferences, certifications, books, courses — invest in yourself, we\'ll support it.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 6h14a4 4 0 014 4v14M4 6v18M4 24h14a4 4 0 014-4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Paid Time Off',
+    description: 'Generous PTO, paid holidays, parental leave, and sabbaticals after 5 years. Your time off is respected and protected.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="6" width="20" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 12h20M9 4v4M19 4v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Retirement Plans',
+    description: '401(k) with 5% company match, RRSP in Canada, pension programs in Europe. Building security for the long term.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 22v-8l8-4 8 4v8M6 22h16" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 22v-6h4v6" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  },
+];
+
+const positions = [
+  {
+    title: 'Senior Integrity Engineer',
+    department: 'Engineering Services',
+    location: 'Houston, TX · Remote',
+    type: 'Full-time',
+  },
+  {
+    title: 'Full-Stack Developer',
+    department: 'Product Engineering',
+    location: 'Edmonton, CA · Remote',
+    type: 'Full-time',
+  },
+  {
+    title: 'Customer Success Manager',
+    department: 'Customer Success',
+    location: 'Remote · EMEA',
+    type: 'Full-time',
+  },
+  {
+    title: 'Product Manager — RBI',
+    department: 'Product',
+    location: 'Remote · Americas',
+    type: 'Full-time',
+  },
+  {
+    title: 'Technical Consultant',
+    department: 'Professional Services',
+    location: 'Wroclaw, PL',
+    type: 'Full-time',
+  },
+  {
+    title: 'DevOps Engineer',
+    department: 'Engineering',
+    location: 'Remote',
+    type: 'Full-time',
+  },
+];
+
+const values = [
+  'Genuine care for clients and colleagues',
+  'Ownership — we sweat the details',
+  'Continuous learning mindset',
+  'Celebrate diversity of thought and background',
+  'Bias toward action, grounded in rigor',
+];
+---
+
+<Layout title="Careers | Metegrity" description="Join Metegrity — build the future of asset integrity management. Remote-first, global team.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'About', href: '/about' },
+        { label: 'Careers' }
+      ]}
+      eyebrow="Careers"
+      titleLight="Our Team is"
+      titleBold="Our Strength."
+      description="Build a career solving some of the world's most demanding engineering challenges. Join a geographically distributed team of integrity engineers, software specialists, and industry veterans."
+      image="/images/photos/diverse-team.jpg"
+    >
+      <div slot="cta" style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="#positions" class="btn btn-primary">View Open Roles</a>
+        <a href="#culture" class="btn btn-outline">Our Culture</a>
+      </div>
+    </PageHero>
+
+    <!-- Stats strip -->
+    <section class="car-stats">
+      <div class="container car-stats__inner">
+        <div class="car-stats__item"><span>180+</span><label>Team Members</label></div>
+        <div class="car-stats__item"><span>3</span><label>Continents</label></div>
+        <div class="car-stats__item"><span>15+</span><label>Languages Spoken</label></div>
+        <div class="car-stats__item"><span>4.8/5</span><label>Employee Rating</label></div>
+      </div>
+    </section>
+
+    <!-- Culture split -->
+    <FeatureSplit
+      eyebrow="Our Culture"
+      titleLight="Collective spirit."
+      titleBold="Individual impact."
+      description="Metegrity is built on collective team spirit — a geographically distributed team that celebrates diversity and cares genuinely about our clients and each other. We work hard on hard problems, but we don't take ourselves too seriously."
+      bullets={values}
+      image="/images/photos/workplace.jpg"
+      imagePosition="right"
+    />
+
+    <!-- Benefits -->
+    <section id="culture">
+      <FeatureGrid
+        eyebrow="Benefits & Perks"
+        titleLight="What you get"
+        titleBold="for working with us."
+        description="We invest in our team because great people build great products. Here's what life at Metegrity looks like."
+        features={benefits}
+        columns={3}
+        dark={true}
+      />
+    </section>
+
+    <!-- Open Positions -->
+    <section id="positions" class="car-positions section">
+      <div class="container">
+        <div class="car-positions__header reveal">
+          <div class="section-label">Open Positions</div>
+          <h2>
+            <span class="text-light">Join us in building</span><br />
+            <span class="text-bold">the future of AIM.</span>
+          </h2>
+          <p>We're hiring across engineering, product, customer success, and professional services. Don't see a perfect fit? We're always excited to meet exceptional talent.</p>
+        </div>
+
+        <div class="car-positions__list">
+          {positions.map((p, i) => (
+            <a href="/contact" class="car-position reveal" style={`transition-delay: ${i * 60}ms`}>
+              <div class="car-position__main">
+                <h4>{p.title}</h4>
+                <div class="car-position__meta">
+                  <span class="car-position__dept">{p.department}</span>
+                  <span class="car-position__sep">·</span>
+                  <span>{p.location}</span>
+                  <span class="car-position__sep">·</span>
+                  <span class="car-position__type">{p.type}</span>
+                </div>
+              </div>
+              <div class="car-position__cta">
+                Apply
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 8H12M12 8L8 4M12 8L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="car-positions__footer reveal">
+          <p>Don't see your role? <a href="/contact">Introduce yourself anyway →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="car-process">
+      <div class="container">
+        <div class="car-process__header reveal">
+          <div class="section-label">Hiring Process</div>
+          <h2>
+            <span class="text-light">What to expect</span>
+            <span class="text-bold">when you apply.</span>
+          </h2>
+        </div>
+        <div class="car-process__grid">
+          <div class="car-process__step reveal">
+            <span class="car-process__step-num">01</span>
+            <h4>Application Review</h4>
+            <p>We review every application within 5 business days. No black holes.</p>
+          </div>
+          <div class="car-process__step reveal" style="transition-delay: 100ms">
+            <span class="car-process__step-num">02</span>
+            <h4>Intro Chat</h4>
+            <p>30-minute conversation with the hiring manager. Mutual fit check.</p>
+          </div>
+          <div class="car-process__step reveal" style="transition-delay: 200ms">
+            <span class="car-process__step-num">03</span>
+            <h4>Technical / Craft</h4>
+            <p>Role-specific deep dive. Technical screening, take-home, or case study.</p>
+          </div>
+          <div class="car-process__step reveal" style="transition-delay: 300ms">
+            <span class="car-process__step-num">04</span>
+            <h4>Team Interviews</h4>
+            <p>Meet 3-4 future teammates. Collaborative, not adversarial.</p>
+          </div>
+          <div class="car-process__step reveal" style="transition-delay: 400ms">
+            <span class="car-process__step-num">05</span>
+            <h4>Offer</h4>
+            <p>Transparent offer within 48 hours of final interview. No games.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      titleLight="Ready to build"
+      titleBold="something meaningful?"
+      description="Join a team that's been shaping the asset integrity industry for 30+ years — and is just getting started on the next chapter."
+      primaryLabel="See Open Roles"
+      primaryHref="#positions"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .car-stats {
+    background: var(--color-dark);
+    color: var(--color-white);
+    padding: var(--space-12) 0;
+  }
+
+  .car-stats__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    text-align: center;
+  }
+
+  .car-stats__item span {
+    display: block;
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2);
+  }
+
+  .car-stats__item label {
+    font-size: var(--font-size-xs);
+    color: rgba(255,255,255,0.6);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* Positions */
+  .car-positions__header {
+    max-width: 640px;
+    margin: 0 auto var(--space-12);
+    text-align: center;
+  }
+
+  .car-positions__header h2 { margin-bottom: var(--space-4); }
+  .car-positions__header p { font-size: var(--font-size-md); line-height: 1.7; }
+
+  .car-positions__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .car-position {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-5) var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+  }
+
+  .car-position:hover {
+    transform: translateX(6px);
+    border-color: rgba(255, 107, 0, 0.3);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  }
+
+  .car-position:hover .car-position__cta { color: var(--color-primary); gap: var(--space-3); }
+
+  .car-position__main h4 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+    margin-bottom: var(--space-1);
+  }
+
+  .car-position__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    flex-wrap: wrap;
+  }
+
+  .car-position__dept { color: var(--color-primary); font-weight: var(--font-semibold); }
+  .car-position__sep { opacity: 0.4; }
+  .car-position__type { font-weight: var(--font-medium); }
+
+  .car-position__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-dark);
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .car-positions__footer {
+    text-align: center;
+    margin-top: var(--space-10);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .car-positions__footer a {
+    color: var(--color-primary);
+    font-weight: var(--font-semibold);
+  }
+
+  /* Hiring Process */
+  .car-process {
+    padding: var(--space-20) 0;
+    background: var(--color-bg-alt);
+  }
+
+  .car-process__header {
+    max-width: 640px;
+    margin: 0 auto var(--space-12);
+    text-align: center;
+  }
+
+  .car-process__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-4);
+  }
+
+  .car-process__step {
+    padding: var(--space-5);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .car-process__step:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 107, 0, 0.3);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  }
+
+  .car-process__step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 107, 0, 0.1);
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-3);
+  }
+
+  .car-process__step h4 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+    margin-bottom: var(--space-2);
+  }
+
+  .car-process__step p {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .car-process__grid { grid-template-columns: repeat(2, 1fr); }
+    .car-position {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+    .car-position:hover { transform: translateY(-4px); }
+  }
+
+  @media (max-width: 768px) {
+    .car-stats__inner { grid-template-columns: repeat(2, 1fr); gap: var(--space-8); }
+    .car-stats__item span { font-size: var(--font-size-3xl); }
+  }
+
+  @media (max-width: 560px) {
+    .car-process__grid { grid-template-columns: 1fr; }
+  }
+</style>

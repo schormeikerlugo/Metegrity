@@ -1,0 +1,268 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import FeatureSplit from '../../components/shared/FeatureSplit.astro';
+import FeatureGrid from '../../components/shared/FeatureGrid.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const challenges = [
+  {
+    title: 'Aggressive Corrosion',
+    description: 'Acids, caustics, high temperatures, and cyclic service create complex damage mechanisms. Tracking them requires specialized tools.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4c-4 6 4 8 0 16M9 6c-3 6 3 6 0 12M19 6c-3 6 3 6 0 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Process Safety',
+    description: 'OSHA PSM compliance demands rigorous mechanical integrity programs. One gap can mean regulatory action — or worse.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3l9 4v8c0 6-4 9-9 10-5-1-9-4-9-10V7l9-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 10v5M14 18h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Production Uptime',
+    description: 'Unplanned shutdowns cost millions per day. Predictive integrity management keeps plants running reliably.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M14 8v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Aging Infrastructure',
+    description: 'Many chemical plants are 40+ years old. Extending useful life safely requires sophisticated damage tracking.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 22V10l10-6 10 6v12" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 22h20M10 14v8M18 14v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+];
+
+const solutions = [
+  {
+    title: 'Damage Mechanism Library',
+    description: '60+ pre-configured mechanisms: HIC, SCC, HTHA, creep, thinning, and more. Link mechanisms to operating conditions automatically.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 22V10l8-6 8 6v12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 14h8M10 18h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'PSM Mechanical Integrity',
+    description: 'Built-in MI program management. Inspection histories, written procedures, training records — everything a PSM audit needs.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="6" y="4" width="16" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M10 10h8M10 14h8M10 18h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Integrity Operating Windows',
+    description: 'Define safe process parameters per asset. Automatic alerts when operations deviate and could accelerate damage.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="6" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 11h20M9 6V4M19 6V4M8 15l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Thickness Monitoring',
+    description: 'Track CMLs over time with predictive corrosion rates. Extend inspection intervals where trends support it.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 20L10 12L15 16L24 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4V24H24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Fitness-for-Service',
+    description: 'API 579 assessments for in-service equipment. Make defensible run-repair-replace decisions for damaged assets.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M9 14l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: 'Turnaround Management',
+    description: 'Plan TAR scope months in advance. Track inspection completion, findings, and corrective actions in real time.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 14a10 10 0 0118-6M24 14a10 10 0 01-18 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M18 4l4 4-4 4M10 24l-4-4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+];
+---
+
+<Layout title="Chemical & Petrochemical | Metegrity" description="Asset Integrity Management for chemical and petrochemical processing. PSM compliance, corrosion management, and more.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'Industries', href: '/industries' },
+        { label: 'Chemical & Petrochemical' }
+      ]}
+      eyebrow="Chemical & Petrochemical"
+      titleLight="Complex Chemistry."
+      titleBold="Simplified Integrity."
+      description="Maintain production uptime and ensure safety across chemical processing facilities. Metegrity manages the aggressive corrosion, aging assets, and regulatory demands unique to chemical operations."
+      image="/images/industries/chemical.png"
+    >
+      <div slot="cta" style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="/contact" class="btn btn-primary">Book a Demo</a>
+        <a href="#challenges" class="btn btn-outline">Our Approach</a>
+      </div>
+    </PageHero>
+
+    <!-- Challenges section -->
+    <section id="challenges" class="cp-challenges section">
+      <div class="container">
+        <div class="cp-challenges__header reveal">
+          <div class="section-label">Industry Challenges</div>
+          <h2>
+            <span class="text-light">Chemical processing demands</span><br />
+            <span class="text-bold">specialized integrity tools.</span>
+          </h2>
+        </div>
+        <div class="cp-challenges__grid">
+          {challenges.map((c, i) => (
+            <div class="cp-challenge reveal" style={`transition-delay: ${i * 100}ms`}>
+              <div class="cp-challenge__icon" set:html={c.icon} />
+              <h3>{c.title}</h3>
+              <p>{c.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Image split -->
+    <FeatureSplit
+      eyebrow="Built for Process"
+      titleLight="Corrosion data that"
+      titleBold="actually drives decisions."
+      description="Chemical plants have hundreds of thousands of inspection points. Our platform turns raw UT, RT, and PAUT data into actionable insights — identifying problem circuits before they become incidents."
+      bullets={[
+        'Automated corrosion rate calculations',
+        'Integration with UT / PAUT / RT data',
+        'Trend analysis per CML and circuit',
+        'Remaining life and retirement date',
+      ]}
+      image="/images/photos/corrosion.jpg"
+      imagePosition="right"
+    />
+
+    <!-- Solutions grid -->
+    <FeatureGrid
+      eyebrow="Solutions for Chemical"
+      titleLight="Everything you need for"
+      titleBold="safe, compliant operations."
+      features={solutions}
+      columns={3}
+      dark={true}
+    />
+
+    <!-- Compliance feature -->
+    <FeatureSplit
+      eyebrow="Compliance Built-In"
+      titleLight="OSHA PSM ready."
+      titleBold="Audit-ready always."
+      description="Metegrity's mechanical integrity module is designed from the ground up for PSM compliance. Written procedures, inspection records, and training documentation — all in one system, auditable with a single click."
+      bullets={[
+        'OSHA PSM 1910.119 aligned',
+        'EPA Risk Management Program (RMP) support',
+        'One-click audit report generation',
+        'Full change history and audit trail',
+      ]}
+      image="/images/photos/chem-plant.jpg"
+      imagePosition="left"
+    />
+
+    <!-- Stats -->
+    <section class="cp-stats">
+      <div class="container cp-stats__inner">
+        <div class="cp-stats__item"><span>400+</span><label>Chemical Facilities</label></div>
+        <div class="cp-stats__item"><span>99.9%</span><label>System Uptime</label></div>
+        <div class="cp-stats__item"><span>60+</span><label>Damage Mechanisms</label></div>
+        <div class="cp-stats__item"><span>30+</span><label>Years Experience</label></div>
+      </div>
+    </section>
+
+    <CTASection
+      titleLight="Safer operations."
+      titleBold="Stronger compliance."
+      description="Discover how chemical and petrochemical operators worldwide use Metegrity to maintain integrity and compliance."
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .cp-challenges__header {
+    max-width: 640px;
+    margin: 0 auto var(--space-16);
+    text-align: center;
+  }
+
+  .cp-challenges__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+  }
+
+  .cp-challenge {
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .cp-challenge:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    border-color: rgba(255, 107, 0, 0.25);
+  }
+
+  .cp-challenge__icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 107, 0, 0.08);
+    border-radius: var(--radius-lg);
+    color: var(--color-primary);
+  }
+
+  .cp-challenge h3 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-2);
+    color: var(--color-dark);
+  }
+
+  .cp-challenge p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .cp-stats {
+    background: var(--color-dark);
+    color: var(--color-white);
+    padding: var(--space-12) 0;
+  }
+
+  .cp-stats__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    text-align: center;
+  }
+
+  .cp-stats__item span {
+    display: block;
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2);
+  }
+
+  .cp-stats__item label {
+    font-size: var(--font-size-xs);
+    color: rgba(255,255,255,0.6);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 900px) {
+    .cp-challenges__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .cp-stats__inner { grid-template-columns: repeat(2, 1fr); gap: var(--space-8); }
+    .cp-stats__item span { font-size: var(--font-size-3xl); }
+  }
+
+  @media (max-width: 560px) {
+    .cp-challenges__grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,254 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import FeatureGrid from '../../components/shared/FeatureGrid.astro';
+import FeatureSplit from '../../components/shared/FeatureSplit.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const modules = [
+  {
+    title: 'Visions RBI Module',
+    description: 'Risk-based inspection analysis with qualitative, semi-quantitative, and fully quantitative models. API 580/581 compliant.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5"/><path d="M14 6V14L20 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Integrity Manuals',
+    description: 'Digital policies and procedures built into the platform. Define inspection plans, damage mechanisms, and response workflows.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 4h12l4 4v16H6V4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 12h8M10 16h8M10 20h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Operating Window (IOW)',
+    description: 'Define and monitor integrity operating windows. Automated alerts when process parameters deviate from safe ranges.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="6" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 11h20M9 6v-2M19 6v-2M8 15l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+];
+
+const features = [
+  {
+    title: 'Alarm Ratings',
+    description: 'Prioritize alerts by severity with automated escalation paths to the right people.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 22h16l-3-3v-5a5 5 0 00-10 0v5l-3 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="19" cy="7" r="3" fill="currentColor"/></svg>`,
+  },
+  {
+    title: 'Dashboard',
+    description: 'Real-time visibility with configurable KPIs and drill-down analytics across facilities.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="15" y="4" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="15" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="15" y="15" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  },
+  {
+    title: 'Design Data',
+    description: 'Comprehensive equipment design records with full history and change tracking.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 24V8l10-4 10 4v16" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 24h20M10 14h8M10 19h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Thickness Monitoring',
+    description: 'Track wall thickness over time with predictive corrosion rate analytics.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 20L10 12L15 16L24 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4V24H24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'NCR Management',
+    description: 'Non-conformance reports with corrective action workflows and audit trails.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M14 9v5M14 18h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Excel Wizard',
+    description: 'Import bulk data from Excel templates. Export reports in one click, formatted and ready.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 10h20M10 4v20" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  },
+  {
+    title: 'KPIs & Reports',
+    description: 'Pre-built reports and custom KPIs. Schedule automated delivery to stakeholders.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="14" width="4" height="10" stroke="currentColor" stroke-width="1.5"/><rect x="12" y="8" width="4" height="16" stroke="currentColor" stroke-width="1.5"/><rect x="20" y="4" width="4" height="20" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  },
+  {
+    title: 'Security (SOC 2)',
+    description: 'Five trust service principles. Role-based access, audit logs, and enterprise-grade encryption.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3l9 4v8c0 6-4 9-9 10-5-1-9-4-9-10V7l9-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 14l3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+];
+
+const integrations = ['SAP', 'Oracle', 'Autodesk', 'Microsoft', 'Esri GIS', 'Maximo'];
+---
+
+<Layout title="Visions Enterprise | Metegrity" description="Industry-leading Asset Integrity Management System. Single platform from wellhead to shipping terminal.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Products', href: '/products' }, { label: 'Visions Enterprise' }]}
+      eyebrow="Visions Enterprise"
+      titleLight="Industry-Leading"
+      titleBold="Asset Integrity Management"
+      description="The foundation for intelligent asset integrity. A single unified platform to manage asset health from wellhead to shipping terminal — serving 1,350+ facilities worldwide."
+      image="/images/photos/refinery.jpg"
+    >
+      <div slot="cta" style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="/contact" class="btn btn-primary">Book a Demo</a>
+        <a href="#features" class="btn btn-outline">See Features</a>
+      </div>
+    </PageHero>
+
+    <!-- Stats strip -->
+    <section class="ve-stats">
+      <div class="container ve-stats__inner">
+        <div class="ve-stats__item"><span>1,350+</span><label>Facilities Worldwide</label></div>
+        <div class="ve-stats__item"><span>30+</span><label>Years in Industry</label></div>
+        <div class="ve-stats__item"><span>40-60%</span><label>Faster Deployment</label></div>
+        <div class="ve-stats__item"><span>99.9%</span><label>System Uptime</label></div>
+      </div>
+    </section>
+
+    <!-- Feature split: Comprehensive -->
+    <FeatureSplit
+      eyebrow="Comprehensive"
+      titleLight="Single platform,"
+      titleBold="Unlimited capabilities."
+      description="Manage your entire asset portfolio — from pressure vessels to pipelines — on one unified system. Replace siloed tools with a single source of truth for integrity data."
+      bullets={[
+        'Wellhead to shipping terminal coverage',
+        'Single to multi-site plant deployment',
+        'Unlimited asset types and hierarchies',
+        'Configurable workflows per facility',
+      ]}
+      image="/images/photos/control-room.jpg"
+      imagePosition="right"
+      ctaLabel="View Modules"
+      ctaHref="#modules"
+    />
+
+    <!-- Modules grid -->
+    <section id="modules">
+      <FeatureGrid
+        eyebrow="Core Modules"
+        titleLight="Modular architecture"
+        titleBold="Tailored to your needs."
+        description="Three powerful modules designed to work together seamlessly — or standalone."
+        features={modules}
+        columns={3}
+      />
+    </section>
+
+    <!-- Feature split: Integrations -->
+    <FeatureSplit
+      eyebrow="Integrations"
+      titleLight="Works with your"
+      titleBold="existing stack."
+      description="Seamless bidirectional integration with the tools you already use. Reduce data entry, eliminate silos, and let your teams work in their system of choice."
+      bullets={[
+        'SAP & Oracle ERP bidirectional sync',
+        'EAM / CMMS integration (Maximo, Infor)',
+        'GIS mapping (Esri ArcGIS)',
+        'Microsoft 365 & SharePoint connectors',
+      ]}
+      image="/images/photos/data-analysis.jpg"
+      imagePosition="left"
+    />
+
+    <!-- Integrations logos strip -->
+    <section class="ve-integrations">
+      <div class="container">
+        <p class="ve-integrations__label">Integrates with industry-leading systems</p>
+        <div class="ve-integrations__grid">
+          {integrations.map(i => <span>{i}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <!-- Features grid -->
+    <section id="features">
+      <FeatureGrid
+        eyebrow="Platform Features"
+        titleLight="Everything you need for"
+        titleBold="enterprise-grade AIM."
+        features={features}
+        columns={4}
+        dark={true}
+      />
+    </section>
+
+    <CTASection
+      titleLight="Ready to see"
+      titleBold="Visions Enterprise in action?"
+      description="Schedule a personalized demo with our integrity experts and discover how we power 1,350+ facilities worldwide."
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .ve-stats {
+    background: var(--color-dark);
+    color: var(--color-white);
+    padding: var(--space-10) 0;
+  }
+
+  .ve-stats__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-8);
+    text-align: center;
+  }
+
+  .ve-stats__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .ve-stats__item span {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .ve-stats__item label {
+    font-size: var(--font-size-xs);
+    color: rgba(255,255,255,0.6);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .ve-integrations {
+    padding: var(--space-16) 0;
+    background: var(--color-bg-alt);
+    text-align: center;
+  }
+
+  .ve-integrations__label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-dark);
+    margin-bottom: var(--space-6);
+  }
+
+  .ve-integrations__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4) var(--space-10);
+  }
+
+  .ve-integrations__grid span {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-bold);
+    color: var(--color-text-muted);
+    letter-spacing: -0.01em;
+    transition: color var(--transition-fast);
+    font-family: var(--font-family);
+  }
+
+  .ve-integrations__grid span:hover {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .ve-stats__inner { grid-template-columns: repeat(2, 1fr); }
+    .ve-stats__item span { font-size: var(--font-size-2xl); }
+  }
+</style>

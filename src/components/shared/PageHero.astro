@@ -1,0 +1,191 @@
+---
+interface Props {
+  eyebrow?: string;
+  titleLight?: string;
+  titleBold?: string;
+  description?: string;
+  image?: string;
+  breadcrumb?: { label: string; href?: string }[];
+  align?: 'left' | 'center';
+}
+
+const {
+  eyebrow,
+  titleLight,
+  titleBold,
+  description,
+  image,
+  breadcrumb = [],
+  align = 'left',
+} = Astro.props;
+
+import Breadcrumb from './Breadcrumb.astro';
+---
+
+<section class={`page-hero page-hero--${align}`}>
+  <img src="/images/backgrounds/hero.png" alt="" class="page-hero__bg" aria-hidden="true" />
+  <div class="page-hero__orbs" aria-hidden="true">
+    <span class="page-hero__orb page-hero__orb--1"></span>
+    <span class="page-hero__orb page-hero__orb--2"></span>
+  </div>
+  <div class="page-hero__overlay"></div>
+
+  <div class="container page-hero__inner">
+    <div class="page-hero__content">
+      {breadcrumb.length > 0 && <Breadcrumb items={breadcrumb} />}
+      {eyebrow && <div class="section-label" style="margin-top: var(--space-5);">{eyebrow}</div>}
+      <h1 class="page-hero__title">
+        {titleLight && <span class="text-light">{titleLight}</span>}
+        {titleLight && <br />}
+        {titleBold && <span class="text-bold">{titleBold}</span>}
+      </h1>
+      {description && <p class="page-hero__desc">{description}</p>}
+      <slot name="cta" />
+    </div>
+
+    {image && (
+      <div class="page-hero__visual">
+        <img src={image} alt="" />
+      </div>
+    )}
+
+    <slot name="visual" />
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: calc(var(--space-32) + var(--space-8)) 0 var(--space-20);
+    overflow: hidden;
+  }
+
+  .page-hero__bg {
+    position: absolute;
+    inset: -5%;
+    width: 110%;
+    height: 110%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    animation: ph-bg-drift 30s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  @keyframes ph-bg-drift {
+    0%, 100% { transform: scale(1.06) translate(0, 0); }
+    50% { transform: scale(1.08) translate(-1%, -0.8%); }
+  }
+
+  .page-hero__orbs {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .page-hero__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+  }
+
+  .page-hero__orb--1 {
+    width: 420px;
+    height: 420px;
+    top: -10%;
+    left: -5%;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.3), transparent 70%);
+    animation: ph-orb-1 20s ease-in-out infinite;
+  }
+
+  .page-hero__orb--2 {
+    width: 340px;
+    height: 340px;
+    bottom: -15%;
+    right: -8%;
+    background: radial-gradient(circle, rgba(255, 138, 51, 0.22), transparent 70%);
+    animation: ph-orb-2 24s ease-in-out infinite;
+  }
+
+  @keyframes ph-orb-1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(60px, 40px); }
+  }
+
+  @keyframes ph-orb-2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-60px, -40px); }
+  }
+
+  .page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(248, 246, 247, 0.7) 0%, rgba(248, 246, 247, 0.5) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .page-hero__inner {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .page-hero--center .page-hero__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .page-hero__title {
+    font-size: var(--font-size-5xl);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+
+  .page-hero__desc {
+    font-size: var(--font-size-md);
+    max-width: 520px;
+    margin-bottom: var(--space-6);
+    line-height: 1.6;
+  }
+
+  .page-hero__visual {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+  }
+
+  .page-hero__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 900px) {
+    .page-hero__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+      text-align: center;
+      justify-items: center;
+    }
+    .page-hero__desc {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .page-hero__title { font-size: var(--font-size-4xl); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-hero__bg, .page-hero__orb { animation: none !important; }
+  }
+</style>

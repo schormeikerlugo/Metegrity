@@ -1,0 +1,193 @@
+---
+interface Feature {
+  title: string;
+  description: string;
+  icon?: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  titleLight?: string;
+  titleBold?: string;
+  description?: string;
+  features: Feature[];
+  columns?: 2 | 3 | 4;
+  dark?: boolean;
+}
+
+const {
+  eyebrow,
+  titleLight,
+  titleBold,
+  description,
+  features,
+  columns = 3,
+  dark = false,
+} = Astro.props;
+---
+
+<section class={`feat-grid section ${dark ? 'feat-grid--dark' : ''}`}>
+  <div class="container">
+    {(eyebrow || titleLight || titleBold) && (
+      <div class="feat-grid__header reveal">
+        {eyebrow && <div class="section-label">{eyebrow}</div>}
+        <h2>
+          {titleLight && <span class="text-light">{titleLight}</span>}
+          {titleLight && <br />}
+          {titleBold && <span class="text-bold">{titleBold}</span>}
+        </h2>
+        {description && <p class="feat-grid__desc">{description}</p>}
+      </div>
+    )}
+
+    <div class={`feat-grid__grid feat-grid__grid--cols-${columns}`}>
+      {features.map((feature, i) => (
+        <div class="feat-grid__item reveal" style={`transition-delay: ${i * 80}ms`}>
+          {feature.icon && (
+            <div class="feat-grid__icon" set:html={feature.icon} />
+          )}
+          <h3>{feature.title}</h3>
+          <p>{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .feat-grid--dark {
+    background: var(--color-dark);
+    color: var(--color-white);
+  }
+
+  .feat-grid__header {
+    max-width: 640px;
+    margin-bottom: var(--space-16);
+  }
+
+  .feat-grid__header h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .feat-grid--dark .feat-grid__header h2 .text-light {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .feat-grid--dark .section-label {
+    color: var(--color-primary);
+  }
+
+  .feat-grid__desc {
+    font-size: var(--font-size-md);
+    line-height: 1.6;
+  }
+
+  .feat-grid--dark .feat-grid__desc {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .feat-grid__grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .feat-grid__grid--cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .feat-grid__grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .feat-grid__grid--cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+  .feat-grid__item {
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feat-grid__item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .feat-grid__item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    border-color: rgba(255, 107, 0, 0.25);
+  }
+
+  .feat-grid__item:hover::before {
+    transform: scaleX(1);
+  }
+
+  .feat-grid--dark .feat-grid__item {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .feat-grid--dark .feat-grid__item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 107, 0, 0.3);
+  }
+
+  .feat-grid__icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 107, 0, 0.08);
+    border-radius: var(--radius-md);
+    color: var(--color-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .feat-grid__item h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-2);
+    color: var(--color-dark);
+  }
+
+  .feat-grid--dark .feat-grid__item h3 {
+    color: var(--color-white);
+  }
+
+  .feat-grid__item p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .feat-grid--dark .feat-grid__item p {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  @media (max-width: 900px) {
+    .feat-grid__grid--cols-3,
+    .feat-grid__grid--cols-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .feat-grid__grid--cols-2,
+    .feat-grid__grid--cols-3,
+    .feat-grid__grid--cols-4 {
+      grid-template-columns: 1fr;
+    }
+    .feat-grid__header { text-align: center; margin-left: auto; margin-right: auto; }
+    .feat-grid__item { text-align: center; }
+    .feat-grid__icon { margin-left: auto; margin-right: auto; }
+  }
+</style>

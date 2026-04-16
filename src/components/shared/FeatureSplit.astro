@@ -1,0 +1,147 @@
+---
+interface Props {
+  eyebrow?: string;
+  titleLight?: string;
+  titleBold?: string;
+  description?: string;
+  bullets?: string[];
+  image: string;
+  imagePosition?: 'left' | 'right';
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  eyebrow,
+  titleLight,
+  titleBold,
+  description,
+  bullets = [],
+  image,
+  imagePosition = 'right',
+  ctaLabel,
+  ctaHref,
+} = Astro.props;
+---
+
+<section class={`split section split--${imagePosition}`}>
+  <div class="container">
+    <div class="split__inner">
+      <div class="split__content reveal">
+        {eyebrow && <div class="section-label">{eyebrow}</div>}
+        <h2>
+          {titleLight && <span class="text-light">{titleLight}</span>}
+          {titleLight && <br />}
+          {titleBold && <span class="text-bold">{titleBold}</span>}
+        </h2>
+        {description && <p class="split__desc">{description}</p>}
+
+        {bullets.length > 0 && (
+          <ul class="split__bullets">
+            {bullets.map(b => (
+              <li>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="8" stroke="#FF6B00" stroke-width="1.5"/>
+                  <path d="M5.5 9L8 11.5L12.5 6.5" stroke="#FF6B00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {ctaLabel && ctaHref && (
+          <a href={ctaHref} class="btn btn-dark split__cta">
+            {ctaLabel}
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M4 8H12M12 8L8 4M12 8L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        )}
+      </div>
+
+      <div class="split__visual reveal">
+        <img src={image} alt="" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .split__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: center;
+  }
+
+  .split--left .split__inner {
+    direction: rtl;
+  }
+
+  .split--left .split__content,
+  .split--left .split__visual {
+    direction: ltr;
+  }
+
+  .split__content h2 {
+    margin-bottom: var(--space-5);
+  }
+
+  .split__desc {
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    margin-bottom: var(--space-5);
+    max-width: 480px;
+  }
+
+  .split__bullets {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+  }
+
+  .split__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    font-size: var(--font-size-sm);
+    color: var(--color-dark);
+    font-weight: var(--font-medium);
+    line-height: 1.5;
+  }
+
+  .split__bullets svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .split__visual {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  }
+
+  .split__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 6s ease;
+  }
+
+  .split__visual:hover img {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 900px) {
+    .split__inner,
+    .split--left .split__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+      direction: ltr;
+    }
+  }
+</style>

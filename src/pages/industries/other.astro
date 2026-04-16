@@ -1,0 +1,278 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import FeatureSplit from '../../components/shared/FeatureSplit.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const sectors = [
+  {
+    name: 'Power Generation',
+    description: 'Thermal, nuclear, and combined-cycle power plants. Manage boilers, turbines, heat recovery steam generators, and balance-of-plant with confidence.',
+    bullets: ['Boiler & HRSG integrity', 'Turbine component tracking', 'Condition-based inspection'],
+    image: '/images/photos/power-plant.jpg',
+    tag: 'Energy',
+  },
+  {
+    name: 'Biofuels & Renewables',
+    description: 'Ethanol, biodiesel, renewable diesel, SAF. The growing renewables sector has unique corrosion and process challenges — and the same demand for integrity.',
+    bullets: ['Ethanol plant integrity', 'Cellulosic biofuels', 'Sustainable Aviation Fuel (SAF)'],
+    image: '/images/photos/wind-farm.jpg',
+    tag: 'Sustainable',
+  },
+  {
+    name: 'Pulp & Paper',
+    description: 'Digesters, recovery boilers, evaporators, and black liquor systems. Aggressive service conditions demand rigorous inspection programs.',
+    bullets: ['Recovery boiler management', 'Digester integrity', 'Black liquor corrosion'],
+    image: '/images/photos/pulp-paper.jpg',
+    tag: 'Process',
+  },
+  {
+    name: 'Mining & Metals',
+    description: 'Smelters, acid plants, leach tanks, and tailings infrastructure. Protect critical assets in some of the harshest industrial environments.',
+    bullets: ['Acid plant integrity', 'Tailings dam monitoring', 'Smelter reliability'],
+    image: '/images/photos/mining.jpg',
+    tag: 'Heavy Industry',
+  },
+];
+---
+
+<Layout title="Other Industries | Metegrity" description="Power generation, biofuels, pulp and paper, mining — Metegrity adapts to diverse industrial integrity challenges.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'Industries', href: '/industries' },
+        { label: 'Other Sectors' }
+      ]}
+      eyebrow="Other Industries"
+      titleLight="Beyond Oil & Chemical —"
+      titleBold="Integrity Everywhere."
+      description="From biofuels to power generation, pulp and paper, and mining — Metegrity's proven AIM platform adapts to the unique integrity challenges of diverse industrial sectors."
+      image="/images/industries/power-energy.png"
+    >
+      <div slot="cta" style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="/contact" class="btn btn-primary">Book a Demo</a>
+        <a href="#sectors" class="btn btn-outline">View Sectors</a>
+      </div>
+    </PageHero>
+
+    <!-- Sectors intro -->
+    <section class="sectors-intro section">
+      <div class="container">
+        <div class="sectors-intro__inner reveal">
+          <div class="section-label">Cross-Industry Platform</div>
+          <h2>
+            <span class="text-light">One platform.</span>
+            <span class="text-bold">Unlimited industrial applications.</span>
+          </h2>
+          <p>
+            Wherever pressure equipment, corrosive service, and regulatory demands exist, Metegrity fits. Our platform's configurable architecture means we scale to any industrial sector that demands rigorous asset integrity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sectors list with alternating images -->
+    <section id="sectors" class="sectors section">
+      <div class="container">
+        {sectors.map((s, i) => (
+          <article class={`sector reveal ${i % 2 === 1 ? 'sector--reverse' : ''}`} style={`transition-delay: ${i * 80}ms`}>
+            <div class="sector__visual">
+              <img src={s.image} alt={s.name} loading="lazy" />
+              <span class="sector__tag badge badge-primary">{s.tag}</span>
+            </div>
+            <div class="sector__content">
+              <h3>{s.name}</h3>
+              <p>{s.description}</p>
+              <ul>
+                {s.bullets.map(b => (
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="8" r="7" stroke="#FF6B00" stroke-width="1.5"/>
+                      <path d="M5 8L7 10L11 6" stroke="#FF6B00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Why Metegrity works across industries -->
+    <FeatureSplit
+      eyebrow="Cross-Industry Strength"
+      titleLight="Same platform."
+      titleBold="Industry-tuned."
+      description="Metegrity's configurable architecture means the same core platform serves a deepwater FPSO, a pulp mill in Finland, and a power plant in Texas. Industry-specific damage mechanisms, templates, and workflows come pre-configured — customization drops deployment time by 40-60%."
+      bullets={[
+        'Industry-specific damage mechanism libraries',
+        'Pre-built templates per sector',
+        'Configurable asset hierarchies',
+        'Rapid deployment across facility types',
+      ]}
+      image="/images/photos/team.jpg"
+      imagePosition="right"
+      ctaLabel="Talk to an Expert"
+      ctaHref="/contact"
+    />
+
+    <!-- Global stats -->
+    <section class="oi-stats">
+      <div class="container oi-stats__inner">
+        <div class="oi-stats__item"><span>1,350+</span><label>Facilities Worldwide</label></div>
+        <div class="oi-stats__item"><span>5</span><label>Continents</label></div>
+        <div class="oi-stats__item"><span>40+</span><label>Countries</label></div>
+        <div class="oi-stats__item"><span>30+</span><label>Years Experience</label></div>
+      </div>
+    </section>
+
+    <CTASection
+      titleLight="Your industry."
+      titleBold="Our platform."
+      description="Not seeing your sector? Our integrity experts can tailor Metegrity to virtually any asset-intensive industrial operation."
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .sectors-intro__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .sectors-intro__inner h2 {
+    margin-bottom: var(--space-5);
+  }
+
+  .sectors-intro__inner p {
+    font-size: var(--font-size-md);
+    line-height: 1.7;
+  }
+
+  .sector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: center;
+    padding: var(--space-16) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .sector:last-child { border-bottom: none; }
+
+  .sector--reverse { direction: rtl; }
+  .sector--reverse .sector__content,
+  .sector--reverse .sector__visual { direction: ltr; }
+
+  .sector__visual {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  }
+
+  .sector__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 6s ease;
+  }
+
+  .sector:hover .sector__visual img { transform: scale(1.04); }
+
+  .sector__tag {
+    position: absolute;
+    top: var(--space-4);
+    left: var(--space-4);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .sector__content h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-3);
+    letter-spacing: -0.02em;
+  }
+
+  .sector__content p {
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    margin-bottom: var(--space-5);
+    max-width: 480px;
+    color: var(--color-text-secondary);
+  }
+
+  .sector__content ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .sector__content li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--font-size-sm);
+    color: var(--color-dark);
+    font-weight: var(--font-medium);
+  }
+
+  .oi-stats {
+    background: var(--color-dark);
+    color: var(--color-white);
+    padding: var(--space-12) 0;
+  }
+
+  .oi-stats__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    text-align: center;
+  }
+
+  .oi-stats__item span {
+    display: block;
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2);
+  }
+
+  .oi-stats__item label {
+    font-size: var(--font-size-xs);
+    color: rgba(255,255,255,0.6);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 900px) {
+    .sector, .sector--reverse {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      direction: ltr;
+      text-align: center;
+    }
+    .sector__content p { margin-left: auto; margin-right: auto; }
+    .sector__content li { justify-content: center; }
+  }
+
+  @media (max-width: 768px) {
+    .oi-stats__inner { grid-template-columns: repeat(2, 1fr); gap: var(--space-8); }
+    .oi-stats__item span { font-size: var(--font-size-3xl); }
+  }
+</style>

@@ -1,16 +1,35 @@
 ---
 const navLinks = [
-  { label: 'Products', href: '#products', children: [
-    { label: 'Visions Enterprise', href: '#' },
-    { label: 'VISIONSGO', href: '#' },
-    { label: 'Visions RBI Bundle', href: '#' },
-    { label: 'Fugitive Emissions', href: '#' },
+  { label: 'Products', href: '/products', children: [
+    { label: 'Visions Enterprise', href: '/products/visions-enterprise' },
+    { label: 'VISIONSGO', href: '/products/visionsgo' },
+    { label: 'Visions RBI Bundle', href: '/products/visions-rbi' },
+    { label: 'Fugitive Emissions', href: '/products/fugitive-emissions' },
   ]},
-  { label: 'Services', href: '#services' },
-  { label: 'Industries', href: '#industries' },
-  { label: 'Insights', href: '#' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', href: '/services', children: [
+    { label: 'All Services', href: '/services' },
+    { label: 'Strategic Consulting', href: '/services/consulting' },
+  ]},
+  { label: 'Industries', href: '/industries', children: [
+    { label: 'Oil & Gas', href: '/industries/oil-gas' },
+    { label: 'Chemical & Petrochemical', href: '/industries/chemical-petrochemical' },
+    { label: 'Other Sectors', href: '/industries/other' },
+  ]},
+  { label: 'Insights', href: '/insights', children: [
+    { label: 'Success Stories', href: '/insights/success-stories' },
+    { label: 'Whitepapers', href: '/insights/whitepapers' },
+    { label: 'Blog', href: '/insights/blogs' },
+    { label: 'eBooks', href: '/insights/ebooks' },
+    { label: 'News & Events', href: '/insights/news-events' },
+    { label: 'Video Gallery', href: '/insights/video-gallery' },
+  ]},
+  { label: 'About', href: '/about', children: [
+    { label: 'About Us', href: '/about' },
+    { label: 'Partner Network', href: '/about/partner-network' },
+    { label: 'Clients', href: '/about/clients' },
+    { label: 'Careers', href: '/about/careers' },
+  ]},
+  { label: 'Contact', href: '/contact' },
 ];
 ---
 
@@ -43,7 +62,7 @@ const navLinks = [
     </ul>
 
     <div class="navbar__actions">
-      <a href="#contact" class="btn btn-primary">Book a Demo</a>
+      <a href="/book-a-demo" class="btn btn-primary">Book a Demo</a>
     </div>
 
     <button class="navbar__toggle" id="navToggle" aria-label="Toggle menu">
@@ -61,7 +80,7 @@ const navLinks = [
           <li style={`--i: ${i}`}><a href={link.href}>{link.label}</a></li>
         ))}
       </ul>
-      <a href="#contact" class="btn btn-primary navbar__mobile-cta" style={`--i: ${navLinks.length}`}>Book a Demo</a>
+      <a href="/book-a-demo" class="btn btn-primary navbar__mobile-cta" style={`--i: ${navLinks.length}`}>Book a Demo</a>
     </div>
   </div>
 </nav>

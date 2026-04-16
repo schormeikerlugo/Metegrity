@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import FeatureGrid from '../../components/shared/FeatureGrid.astro';
+import FeatureSplit from '../../components/shared/FeatureSplit.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const features = [
+  {
+    title: 'LDAR Workflow',
+    description: 'Complete Leak Detection and Repair program management. Schedule surveys, log detections, and track repairs.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M17 17l6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Real-Time Monitoring',
+    description: 'Integrate with sensors and OGI cameras for continuous methane and VOC detection.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2v4M14 22v4M2 14h4M22 14h4M6 6l2 2M22 22l-2-2M6 22l2-2M22 6l-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="14" r="6" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  },
+  {
+    title: 'Regulatory Reporting',
+    description: 'Pre-built templates for EPA, Method 21, OGI, and emerging super-emitter regulations.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="6" y="4" width="16" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M10 10h8M10 14h8M10 18h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Component Database',
+    description: 'Track valves, flanges, connectors, and relief devices. Link to maintenance history.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M14 2v4M14 22v4M2 14h4M22 14h4M6 6l3 3M19 19l3 3M6 22l3-3M19 9l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Carbon Credit Tracking',
+    description: 'Quantify emissions reductions and generate documentation for carbon credit programs.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4c5 0 9 4 9 9 0 6-9 11-9 11s-9-5-9-11c0-5 4-9 9-9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 9v8M10 13h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    title: 'Mobile Survey App',
+    description: 'Capture survey data on tablets with barcode scanning and photo documentation.',
+    icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="8" y="2" width="12" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="14" cy="22" r="1.2" fill="currentColor"/><path d="M8 6h12" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  },
+];
+---
+
+<Layout title="Fugitive Emissions | Metegrity" description="Advanced leak detection, compliance reporting, and real-time emissions monitoring.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Products', href: '/products' }, { label: 'Fugitive Emissions' }]}
+      eyebrow="Fugitive Emissions"
+      titleLight="Detect. Repair."
+      titleBold="Report. Reduce."
+      description="Advanced leak detection and repair management for methane and VOCs. Meet EPA requirements, minimize environmental impact, and turn compliance into operational efficiency."
+      image="/images/photos/pipeline.jpg"
+    >
+      <div slot="cta" style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="/contact" class="btn btn-primary">Book a Demo</a>
+        <a href="#features" class="btn btn-outline">See Features</a>
+      </div>
+    </PageHero>
+
+    <FeatureSplit
+      eyebrow="Why It Matters"
+      titleLight="Compliance is the floor."
+      titleBold="Efficiency is the goal."
+      description="Fugitive emissions cost the industry billions in lost product annually and drive regulatory scrutiny. Metegrity's emissions module turns LDAR from a compliance burden into an operational lever — reducing emissions while recovering valuable product."
+      bullets={[
+        'EPA OOOOa, OOOOb, and state regulations',
+        'Method 21 and OGI program support',
+        'Super-emitter detection workflows',
+        'Carbon credit quantification',
+      ]}
+      image="/images/photos/refinery.jpg"
+      imagePosition="right"
+    />
+
+    <section id="features">
+      <FeatureGrid
+        eyebrow="Core Capabilities"
+        titleLight="Everything you need for"
+        titleBold="end-to-end LDAR."
+        features={features}
+        columns={3}
+        dark={true}
+      />
+    </section>
+
+    <FeatureSplit
+      eyebrow="Integrated with Visions"
+      titleLight="Connect emissions data"
+      titleBold="to asset integrity."
+      description="Leaks aren't random — they correlate with asset condition, operating cycles, and damage mechanisms. Our Fugitive Emissions module integrates natively with Visions Enterprise, giving you a unified view of integrity, reliability, and emissions performance."
+      bullets={[
+        'Link leaks to asset history and RBI studies',
+        'Predictive analytics on repeat offenders',
+        'Work order integration for repairs',
+        'Executive dashboards with emission trends',
+      ]}
+      image="/images/photos/data-analysis.jpg"
+      imagePosition="left"
+    />
+
+    <CTASection
+      titleLight="Ready to transform"
+      titleBold="your LDAR program?"
+      description="See how integrated emissions management reduces compliance cost and environmental impact."
+    />
+  </main>
+  <Footer />
+</Layout>

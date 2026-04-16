@@ -1,0 +1,386 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const upcomingEvents = [
+  {
+    date: { d: '15', m: 'Jan', y: '2027' },
+    title: 'API Inspection Planning Summit',
+    type: 'Conference',
+    location: 'Galveston, TX',
+    description: 'Join Metegrity at the industry\'s largest inspection event. Our integrity engineers are presenting on RBI implementation best practices.',
+    cta: 'Register',
+  },
+  {
+    date: { d: '22', m: 'Jan', y: '2027' },
+    title: 'Webinar: API 581 Third Edition Deep Dive',
+    type: 'Webinar',
+    location: 'Online · 11am ET',
+    description: 'Free 60-minute session walking through the updated methodology with Metegrity\'s chief RBI consultant. Q&A included.',
+    cta: 'Reserve Seat',
+  },
+  {
+    date: { d: '03', m: 'Feb', y: '2027' },
+    title: 'OTC Houston 2027',
+    type: 'Conference',
+    location: 'NRG Park, Houston, TX',
+    description: 'Visit Metegrity at booth #4821. Product demos, expert consultations, and our annual client reception on Monday evening.',
+    cta: 'Book Meeting',
+  },
+  {
+    date: { d: '18', m: 'Feb', y: '2027' },
+    title: 'Chemical Plant Integrity Forum',
+    type: 'Conference',
+    location: 'New Orleans, LA',
+    description: 'Metegrity is a platinum sponsor. Our VP of Consulting keynotes on Damage Mechanism Library standardization.',
+    cta: 'Register',
+  },
+];
+
+const news = [
+  {
+    date: 'Dec 18, 2026',
+    category: 'Product Update',
+    title: 'Metegrity announces API 581 Third Edition compliance in Visions RBI',
+    description: 'New methodology fully supported with automated migration from previous editions. Customers can update with no service interruption.',
+  },
+  {
+    date: 'Dec 10, 2026',
+    category: 'Company',
+    title: 'Metegrity expands Wroclaw office — 40 new engineering roles',
+    description: 'European engineering hub doubles in size to serve growing EMEA client base. Recruiting active across software, integrity, and customer success roles.',
+  },
+  {
+    date: 'Nov 28, 2026',
+    category: 'Partnership',
+    title: 'Strategic partnership announced with Lloyd\'s Register',
+    description: 'Renewed partnership brings combined expertise to offshore and FPSO integrity management. Joint go-to-market launches in Q1 2027.',
+  },
+  {
+    date: 'Nov 15, 2026',
+    category: 'Industry',
+    title: 'Metegrity named Leader in Gartner AIM Report 2026',
+    description: 'Independent analyst firm ranks Metegrity as overall Leader for the 5th consecutive year. Full report available to qualified readers.',
+  },
+  {
+    date: 'Oct 30, 2026',
+    category: 'Product Update',
+    title: 'VISIONSGO 4.0 released with enhanced offline-first architecture',
+    description: 'New mobile release includes improved sync performance, AR-assisted inspection, and multi-language support for 12 languages.',
+  },
+  {
+    date: 'Oct 12, 2026',
+    category: 'Customer',
+    title: 'Saudi Aramco expands Metegrity deployment to 85 facilities',
+    description: 'Multi-year agreement extends Visions Enterprise across upstream and downstream operations in the Kingdom.',
+  },
+];
+---
+
+<Layout title="News & Events | Metegrity" description="Latest company news, industry events, product announcements, and conference appearances from Metegrity.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Insights', href: '/insights' }, { label: 'News & Events' }]}
+      eyebrow="News & Events"
+      titleLight="What's new"
+      titleBold="at Metegrity."
+      description="Company announcements, product releases, industry events, and conference appearances. Stay connected with the Metegrity community."
+      align="center"
+    />
+
+    <!-- Upcoming Events -->
+    <section class="ne-events section">
+      <div class="container">
+        <div class="ne-events__header reveal">
+          <div class="section-label">Upcoming Events</div>
+          <h2>
+            <span class="text-light">Meet us</span>
+            <span class="text-bold">in person or online.</span>
+          </h2>
+        </div>
+
+        <div class="ne-events__list">
+          {upcomingEvents.map((e, i) => (
+            <article class="ne-event reveal" style={`transition-delay: ${i * 80}ms`}>
+              <div class="ne-event__date">
+                <span class="ne-event__day">{e.date.d}</span>
+                <span class="ne-event__month">{e.date.m}</span>
+                <span class="ne-event__year">{e.date.y}</span>
+              </div>
+              <div class="ne-event__main">
+                <span class="ne-event__type">{e.type}</span>
+                <h3>{e.title}</h3>
+                <div class="ne-event__loc">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 14s-5-4-5-8a5 5 0 0110 0c0 4-5 8-5 8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                    <circle cx="8" cy="6" r="2" stroke="currentColor" stroke-width="1.5"/>
+                  </svg>
+                  {e.location}
+                </div>
+                <p>{e.description}</p>
+              </div>
+              <div class="ne-event__cta">
+                <a href="#" class="btn btn-primary">{e.cta}</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- News Timeline -->
+    <section class="ne-news section">
+      <div class="container">
+        <div class="ne-news__header reveal">
+          <div class="section-label">Latest News</div>
+          <h2>
+            <span class="text-light">Recent</span>
+            <span class="text-bold">announcements.</span>
+          </h2>
+        </div>
+
+        <div class="ne-news__list">
+          {news.map((n, i) => (
+            <a href="#" class="ne-news-item reveal" style={`transition-delay: ${i * 60}ms`}>
+              <div class="ne-news-item__meta">
+                <span class="ne-news-item__date">{n.date}</span>
+                <span class="ne-news-item__cat">{n.category}</span>
+              </div>
+              <h3>{n.title}</h3>
+              <p>{n.description}</p>
+              <span class="ne-news-item__more">
+                Read more
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 8H12M12 8L8 4M12 8L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <div class="ne-news__more reveal">
+          <a href="#" class="btn btn-outline">View all news</a>
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      titleLight="Stay in"
+      titleBold="the loop."
+      description="Subscribe to our monthly newsletter for product updates, industry analysis, and event invitations."
+      primaryLabel="Subscribe"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Events */
+  .ne-events__header,
+  .ne-news__header {
+    max-width: 640px;
+    margin-bottom: var(--space-10);
+  }
+
+  .ne-events__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .ne-event {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: var(--space-6);
+    align-items: center;
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+  }
+
+  .ne-event:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 107, 0, 0.25);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+  }
+
+  .ne-event__date {
+    text-align: center;
+    padding: var(--space-3);
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+  }
+
+  .ne-event__day {
+    display: block;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-dark);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .ne-event__month {
+    display: block;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-bold);
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+  }
+
+  .ne-event__year {
+    display: block;
+    font-size: 10px;
+    color: var(--color-text-secondary);
+    margin-top: 1px;
+  }
+
+  .ne-event__type {
+    display: inline-block;
+    padding: 3px 8px;
+    background: rgba(255, 107, 0, 0.1);
+    color: var(--color-primary);
+    font-size: 10px;
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-2);
+  }
+
+  .ne-event h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+    margin-bottom: var(--space-2);
+    letter-spacing: -0.01em;
+  }
+
+  .ne-event__loc {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-medium);
+    margin-bottom: var(--space-3);
+  }
+
+  .ne-event__main p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* News */
+  .ne-news {
+    background: var(--color-bg-alt);
+  }
+
+  .ne-news__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-10);
+  }
+
+  .ne-news-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-base);
+  }
+
+  .ne-news-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 107, 0, 0.25);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.06);
+  }
+
+  .ne-news-item__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .ne-news-item__date {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-medium);
+  }
+
+  .ne-news-item__cat {
+    padding: 3px 8px;
+    background: rgba(255, 107, 0, 0.1);
+    color: var(--color-primary);
+    font-size: 10px;
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: var(--radius-sm);
+  }
+
+  .ne-news-item h3 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .ne-news-item p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .ne-news-item__more {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+    margin-top: var(--space-2);
+    transition: gap var(--transition-fast);
+  }
+
+  .ne-news-item:hover .ne-news-item__more { gap: var(--space-3); }
+
+  .ne-news__more {
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .ne-event {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+      text-align: center;
+    }
+    .ne-event__date { width: 120px; margin: 0 auto; }
+    .ne-event__loc { justify-content: center; }
+    .ne-news__list { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .ne-events__header,
+    .ne-news__header { text-align: center; margin-left: auto; margin-right: auto; }
+  }
+</style>

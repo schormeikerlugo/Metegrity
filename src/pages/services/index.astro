@@ -1,0 +1,465 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import FeatureSplit from '../../components/shared/FeatureSplit.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+const services = [
+  {
+    num: '01',
+    name: 'Implementation Planning',
+    description: 'Tailored roadmaps that align your AIM strategy with business objectives and operational priorities. We define scope, timelines, and success metrics before a single line of configuration.',
+    bullets: ['Business objectives workshop', 'Asset hierarchy design', 'Success metrics & KPIs'],
+    image: '/images/photos/roadmap.jpg',
+  },
+  {
+    num: '02',
+    name: 'Configuration & Setup',
+    description: 'Asset hierarchy configuration, data templates, and workflows customized to your facility requirements. Pre-built templates accelerate deployment by 40-60%.',
+    bullets: ['Asset hierarchy configuration', 'Template & form setup', 'Workflow automation'],
+    image: '/images/photos/customization.jpg',
+  },
+  {
+    num: '03',
+    name: 'Systems Integration',
+    description: 'Seamless bidirectional integration with SAP, EAM, CMMS, and GIS systems for unified data management. Eliminate silos and keep your teams in their preferred tools.',
+    bullets: ['SAP / Oracle ERP connectors', 'EAM / CMMS (Maximo, Infor)', 'GIS and document management'],
+    image: '/images/photos/integration.jpg',
+  },
+  {
+    num: '04',
+    name: 'User Training',
+    description: 'Role-based training programs ensuring your team maximizes the value of every feature. Virtual, on-site, or hybrid — we train inspectors, engineers, and administrators separately.',
+    bullets: ['Role-based curricula', 'On-site and virtual delivery', 'Certification pathways'],
+    image: '/images/photos/training.jpg',
+  },
+  {
+    num: '05',
+    name: 'Maintenance & Support',
+    description: 'Proactive support from day one. Our customer success team monitors system health, delivers updates, and responds to issues with industry-leading SLAs.',
+    bullets: ['24/7 support channels', 'Proactive system monitoring', 'Regular platform updates'],
+    image: '/images/photos/support.jpg',
+  },
+  {
+    num: '06',
+    name: 'Data Migration',
+    description: 'Safe, validated migration of legacy data with full integrity verification and audit trails. We handle the chaos of legacy spreadsheets and databases.',
+    bullets: ['Legacy system extraction', 'Data validation & mapping', 'Audit-trailed migration'],
+    image: '/images/photos/migration.jpg',
+  },
+  {
+    num: '07',
+    name: 'Customizations',
+    description: 'Custom enhancements tailored to your unique operational needs. From bespoke reports to proprietary calculations — we extend the platform to fit your process.',
+    bullets: ['Custom reports & dashboards', 'Proprietary calculations', 'API-based extensions'],
+    image: '/images/photos/customization.jpg',
+  },
+  {
+    num: '08',
+    name: 'Strategic Consulting',
+    description: 'Expert guidance for regulatory compliance, cost control, process efficiency, and insurance risk reduction. Our consultants are former integrity engineers, not just software people.',
+    bullets: ['Regulatory compliance guidance', 'Cost optimization strategy', 'Process efficiency audits'],
+    image: '/images/photos/consulting.jpg',
+    href: '/services/consulting',
+  },
+];
+---
+
+<Layout title="Services | Metegrity" description="Services that Go Hand-in-Hand — From implementation planning to strategic consulting, we power your AIM journey.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
+      eyebrow="Services"
+      titleLight="Services that Go"
+      titleBold="Hand-in-Hand."
+      description="Software alone doesn't transform operations — expertise does. Our services team combines former integrity engineers, software specialists, and industry veterans to ensure your Metegrity deployment delivers measurable results."
+      align="center"
+    />
+
+    <!-- Introduction -->
+    <section class="srv-intro section">
+      <div class="container">
+        <div class="srv-intro__inner reveal">
+          <div class="srv-intro__text">
+            <p>
+              Cloud computing is changing the way companies manage their IT investments. Our cloud services improve flexibility, reliability, security and more — all while remaining cost effective to deliver an increased return on investment.
+            </p>
+            <p>
+              With the help of our Metegrity experts, your organization can realize enhanced speed of deployment, reduced overhead expenditure and secure access to your data when you need it most.
+            </p>
+          </div>
+          <div class="srv-intro__stats">
+            <div class="srv-intro__stat">
+              <span>40-60%</span>
+              <label>Faster Deployment</label>
+            </div>
+            <div class="srv-intro__stat">
+              <span>99.9%</span>
+              <label>System Uptime</label>
+            </div>
+            <div class="srv-intro__stat">
+              <span>24/7</span>
+              <label>Support Available</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services as numbered alternating splits -->
+    <section class="srv-list">
+      <div class="container">
+        {services.map((s, i) => (
+          <article class={`srv-item reveal ${i % 2 === 1 ? 'srv-item--reverse' : ''}`} style={`transition-delay: ${i * 60}ms`}>
+            <div class="srv-item__visual">
+              <img src={s.image} alt={s.name} loading="lazy" />
+            </div>
+            <div class="srv-item__content">
+              <span class="srv-item__num">{s.num}</span>
+              <h3>{s.name}</h3>
+              <p>{s.description}</p>
+              <ul>
+                {s.bullets.map(b => (
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="8" r="7" stroke="#FF6B00" stroke-width="1.5"/>
+                      <path d="M5 8L7 10L11 6" stroke="#FF6B00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+              {s.href && (
+                <a href={s.href} class="srv-item__link">
+                  Learn more
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <path d="M4 8H12M12 8L8 4M12 8L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="srv-timeline section">
+      <div class="container">
+        <div class="srv-timeline__header reveal">
+          <div class="section-label">Engagement Process</div>
+          <h2>
+            <span class="text-light">A partnership</span>
+            <span class="text-bold">from day one.</span>
+          </h2>
+        </div>
+        <div class="srv-timeline__grid">
+          <div class="srv-step reveal">
+            <span class="srv-step__num">01</span>
+            <h4>Discovery</h4>
+            <p>We understand your assets, your team, and your objectives.</p>
+          </div>
+          <div class="srv-step reveal" style="transition-delay: 100ms">
+            <span class="srv-step__num">02</span>
+            <h4>Design</h4>
+            <p>Tailored implementation roadmap with clear milestones.</p>
+          </div>
+          <div class="srv-step reveal" style="transition-delay: 200ms">
+            <span class="srv-step__num">03</span>
+            <h4>Deploy</h4>
+            <p>Configuration, integration, migration — executed with rigor.</p>
+          </div>
+          <div class="srv-step reveal" style="transition-delay: 300ms">
+            <span class="srv-step__num">04</span>
+            <h4>Support</h4>
+            <p>Ongoing success management and continuous improvement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FeatureSplit
+      eyebrow="Consulting-Led Approach"
+      titleLight="Expert consultants."
+      titleBold="Former integrity engineers."
+      description="Our services team isn't just software specialists — they're former chief inspectors, API-authorized engineers, and integrity consultants who've stood in your shoes. That operational DNA means faster value, fewer surprises, and better outcomes."
+      bullets={[
+        'API-authorized engineers on staff',
+        'Average 15+ years industry experience',
+        'Former operators, now consultants',
+        'Global delivery across 40+ countries',
+      ]}
+      image="/images/photos/strategy.jpg"
+      imagePosition="right"
+      ctaLabel="Explore Consulting"
+      ctaHref="/services/consulting"
+    />
+
+    <CTASection
+      titleLight="Partner with"
+      titleBold="the AIM experts."
+      description="From day one to year twenty, Metegrity services deliver compound value. Schedule a consultation with our team."
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .srv-intro__inner {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .srv-intro__text p {
+    font-size: var(--font-size-md);
+    line-height: 1.7;
+    margin-bottom: var(--space-4);
+  }
+
+  .srv-intro__stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+  }
+
+  .srv-intro__stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .srv-intro__stat:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .srv-intro__stat span {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .srv-intro__stat label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: var(--font-medium);
+  }
+
+  .srv-list {
+    padding-bottom: var(--space-16);
+  }
+
+  .srv-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: center;
+    padding: var(--space-12) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .srv-item:last-child { border-bottom: none; }
+
+  .srv-item--reverse { direction: rtl; }
+  .srv-item--reverse .srv-item__content,
+  .srv-item--reverse .srv-item__visual { direction: ltr; }
+
+  .srv-item__visual {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  }
+
+  .srv-item__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 6s ease;
+  }
+
+  .srv-item:hover .srv-item__visual img { transform: scale(1.04); }
+
+  .srv-item__num {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-bold);
+    color: var(--color-primary);
+    letter-spacing: 0.12em;
+    margin-bottom: var(--space-3);
+  }
+
+  .srv-item__content h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-3);
+    letter-spacing: -0.02em;
+  }
+
+  .srv-item__content p {
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    margin-bottom: var(--space-5);
+    max-width: 480px;
+    color: var(--color-text-secondary);
+  }
+
+  .srv-item__content ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+  }
+
+  .srv-item__content li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--font-size-sm);
+    color: var(--color-dark);
+    font-weight: var(--font-medium);
+  }
+
+  .srv-item__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+    transition: gap var(--transition-fast);
+  }
+
+  .srv-item__link:hover { gap: var(--space-3); }
+
+  /* Timeline */
+  .srv-timeline {
+    background: var(--color-dark);
+    color: var(--color-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .srv-timeline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.1), transparent 70%);
+    filter: blur(60px);
+  }
+
+  .srv-timeline .container { position: relative; z-index: 1; }
+
+  .srv-timeline__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto var(--space-16);
+  }
+
+  .srv-timeline__header .section-label { color: var(--color-primary); }
+
+  .srv-timeline__header h2 .text-light {
+    color: rgba(255,255,255,0.5);
+  }
+
+  .srv-timeline__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    position: relative;
+  }
+
+  .srv-timeline__grid::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.3) 20%, rgba(255, 107, 0, 0.3) 80%, transparent);
+  }
+
+  .srv-step {
+    position: relative;
+    padding: var(--space-4);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    z-index: 1;
+  }
+
+  .srv-step__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-bold);
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-4);
+    box-shadow: 0 0 0 8px rgba(255, 107, 0, 0.1);
+  }
+
+  .srv-step h4 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-2);
+  }
+
+  .srv-step p {
+    font-size: var(--font-size-sm);
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .srv-intro__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+    .srv-item,
+    .srv-item--reverse {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      direction: ltr;
+      text-align: center;
+    }
+    .srv-item__content p { margin-left: auto; margin-right: auto; }
+    .srv-item__content li { justify-content: center; }
+
+    .srv-timeline__grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-5); }
+    .srv-timeline__grid::before { display: none; }
+  }
+
+  @media (max-width: 560px) {
+    .srv-timeline__grid { grid-template-columns: 1fr; }
+  }
+</style>

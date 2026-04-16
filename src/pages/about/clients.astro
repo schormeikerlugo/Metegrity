@@ -1,0 +1,438 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/shared/PageHero.astro';
+import FeatureSplit from '../../components/shared/FeatureSplit.astro';
+import CTASection from '../../components/shared/CTASection.astro';
+
+// Client logos displayed as styled text (real implementation would use images)
+const clients = [
+  'Chevron', 'Marathon Oil', 'Shell', 'BP', 'ExxonMobil', 'TotalEnergies',
+  'Equinor', 'ConocoPhillips', 'Eni', 'Repsol', 'Saudi Aramco', 'ADNOC',
+  'Petrobras', 'Petronas', 'PEMEX', 'Ecopetrol', 'Sinopec', 'CNOOC',
+  'Dow Chemical', 'LyondellBasell', 'INEOS', 'BASF', 'SABIC', 'Formosa',
+];
+
+const testimonials = [
+  {
+    quote: "The extremely professional individuals at Metegrity know their business inside out. Their dedication to providing quality solutions is unmatched in the industry.",
+    author: "Advanced Facility Specialist",
+    company: "Marathon Oil Company",
+  },
+  {
+    quote: "Visions continues to increase its presence as a leading Asset Integrity Data Management system. The platform reliability and comprehensive feature set make it indispensable.",
+    author: "Asset Integrity Process Supervisor",
+    company: "Chevron Angola",
+  },
+  {
+    quote: "The Metegrity reporting system is very user friendly. It has streamlined our inspection processes and provided clear insights for decision-making across all our facilities.",
+    author: "Pressure Equipment Inspector",
+    company: "Major Energy Corporation",
+  },
+];
+
+const industries = [
+  { name: 'Oil & Gas', count: '800+' },
+  { name: 'Chemical', count: '400+' },
+  { name: 'Power & Energy', count: '100+' },
+  { name: 'Mining & Metals', count: '50+' },
+];
+---
+
+<Layout title="Our Clients | Metegrity" description="Trusted by 1,350+ facilities worldwide — from major oil companies to chemical processors, power generators, and mining operations.">
+  <Navbar />
+  <main>
+    <PageHero
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'About', href: '/about' },
+        { label: 'Clients' }
+      ]}
+      eyebrow="Our Clients"
+      titleLight="Trusted by"
+      titleBold="Industry Leaders."
+      description="From supermajor oil companies to specialty chemical processors and global power generators — 1,350+ facilities across 5 continents rely on Metegrity for their most critical assets."
+      image="/images/photos/team.jpg"
+    >
+      <div slot="cta" style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="/contact" class="btn btn-primary">Join Them</a>
+        <a href="#stories" class="btn btn-outline">Success Stories</a>
+      </div>
+    </PageHero>
+
+    <!-- Stats -->
+    <section class="cl-stats">
+      <div class="container cl-stats__inner">
+        <div class="cl-stats__item"><span>1,350+</span><label>Facilities</label></div>
+        <div class="cl-stats__item"><span>$1T+</span><label>Assets Managed</label></div>
+        <div class="cl-stats__item"><span>40+</span><label>Countries</label></div>
+        <div class="cl-stats__item"><span>98%</span><label>Retention Rate</label></div>
+      </div>
+    </section>
+
+    <!-- Client grid -->
+    <section class="cl-grid section">
+      <div class="container">
+        <div class="cl-grid__header reveal">
+          <div class="section-label">Client Portfolio</div>
+          <h2>
+            <span class="text-light">Who we</span>
+            <span class="text-bold">serve.</span>
+          </h2>
+          <p>A snapshot of the leading operators, chemical companies, and industrial giants who trust Metegrity with their critical infrastructure.</p>
+        </div>
+
+        <div class="cl-grid__logos">
+          {clients.map((name, i) => (
+            <div class="cl-logo reveal" style={`transition-delay: ${(i % 8) * 40}ms`}>
+              <span>{name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- By Industry -->
+    <section class="cl-industries">
+      <div class="container">
+        <div class="cl-industries__header reveal">
+          <div class="section-label">By Industry</div>
+          <h2>
+            <span class="text-light">Coverage across</span>
+            <span class="text-bold">critical sectors.</span>
+          </h2>
+        </div>
+        <div class="cl-industries__grid">
+          {industries.map((ind, i) => (
+            <div class="cl-industry reveal" style={`transition-delay: ${i * 100}ms`}>
+              <span class="cl-industry__count">{ind.count}</span>
+              <span class="cl-industry__name">{ind.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Case study feature -->
+    <FeatureSplit
+      eyebrow="Flagship Case Study"
+      titleLight="Chevron Agbami FPSO —"
+      titleBold="20 years of partnership."
+      description="Operating in 1,400m water depth off Nigeria, the Agbami FPSO processes 250,000 barrels per day. For over two decades, Chevron has trusted Metegrity for RBI studies, turnaround planning, and integrity optimization across 2,000+ circuits — achieving zero unplanned shutdowns from integrity events."
+      bullets={[
+        '20+ years continuous Visions deployment',
+        'RBI studies across 2,000+ circuits',
+        'Zero integrity-driven unplanned shutdowns',
+        'Industry-leading reliability metrics',
+      ]}
+      image="/images/photos/offshore.jpg"
+      imagePosition="right"
+      ctaLabel="Read Full Case Study"
+      ctaHref="#"
+    />
+
+    <!-- Testimonials -->
+    <section id="stories" class="cl-testimonials section">
+      <div class="container">
+        <div class="cl-testimonials__header reveal">
+          <div class="section-label">In Their Words</div>
+          <h2>
+            <span class="text-light">What clients</span>
+            <span class="text-bold">say about us.</span>
+          </h2>
+        </div>
+        <div class="cl-testimonials__grid">
+          {testimonials.map((t, i) => (
+            <blockquote class={`cl-testimonial reveal ${i === 0 ? 'cl-testimonial--featured' : ''}`} style={`transition-delay: ${i * 120}ms`}>
+              <svg class="cl-testimonial__quote" width="32" height="24" viewBox="0 0 32 24" fill="none">
+                <path d="M0 24V14.4C0 6.4 4.8 1.6 14.4 0L16 3.2C11.2 4.8 8.8 7.2 8 10.4H14V24H0ZM18 24V14.4C18 6.4 22.8 1.6 32 0L33.6 3.2C28.8 4.8 26.4 7.2 25.6 10.4H32V24H18Z" fill="currentColor"/>
+              </svg>
+              <p>{t.quote}</p>
+              <footer>
+                <div class="cl-testimonial__avatar">{t.author[0]}</div>
+                <div>
+                  <cite>{t.author}</cite>
+                  <span>{t.company}</span>
+                </div>
+              </footer>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Global coverage -->
+    <FeatureSplit
+      eyebrow="Global Coverage"
+      titleLight="Clients on"
+      titleBold="5 continents."
+      description="Metegrity serves facilities from the Canadian oil sands to the North Sea, from the Gulf of Mexico to the Middle East, from Australian mines to Asian petrochemical complexes. Wherever critical assets operate, we're there."
+      bullets={[
+        'Americas — 600+ facilities',
+        'Europe — 250+ facilities',
+        'Middle East & Africa — 300+ facilities',
+        'Asia Pacific — 200+ facilities',
+      ]}
+      image="/images/photos/globe.jpg"
+      imagePosition="left"
+    />
+
+    <CTASection
+      titleLight="Join the league of"
+      titleBold="industry leaders."
+      description="See why the world's most critical operations trust Metegrity. Schedule a personalized demo today."
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .cl-stats {
+    background: var(--color-dark);
+    color: var(--color-white);
+    padding: var(--space-12) 0;
+  }
+
+  .cl-stats__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    text-align: center;
+  }
+
+  .cl-stats__item span {
+    display: block;
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2);
+  }
+
+  .cl-stats__item label {
+    font-size: var(--font-size-xs);
+    color: rgba(255,255,255,0.6);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* Client grid */
+  .cl-grid__header {
+    max-width: 640px;
+    margin: 0 auto var(--space-12);
+    text-align: center;
+  }
+
+  .cl-grid__header h2 { margin-bottom: var(--space-4); }
+
+  .cl-grid__header p {
+    font-size: var(--font-size-md);
+    line-height: 1.7;
+  }
+
+  .cl-grid__logos {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-3);
+  }
+
+  .cl-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    padding: var(--space-4);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+  }
+
+  .cl-logo:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    border-color: rgba(255, 107, 0, 0.25);
+  }
+
+  .cl-logo span {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-bold);
+    color: var(--color-text-muted);
+    letter-spacing: -0.01em;
+    text-align: center;
+    transition: color var(--transition-fast);
+  }
+
+  .cl-logo:hover span {
+    color: var(--color-primary);
+  }
+
+  /* Industries */
+  .cl-industries {
+    padding: var(--space-20) 0;
+    background: var(--color-bg-alt);
+  }
+
+  .cl-industries__header {
+    max-width: 640px;
+    margin: 0 auto var(--space-12);
+    text-align: center;
+  }
+
+  .cl-industries__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+  }
+
+  .cl-industry {
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .cl-industry:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 107, 0, 0.3);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+  }
+
+  .cl-industry__count {
+    display: block;
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2);
+  }
+
+  .cl-industry__name {
+    font-size: var(--font-size-sm);
+    color: var(--color-dark);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* Testimonials */
+  .cl-testimonials__header {
+    max-width: 640px;
+    margin: 0 auto var(--space-12);
+    text-align: center;
+  }
+
+  .cl-testimonials__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-5);
+  }
+
+  .cl-testimonial {
+    padding: var(--space-8);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .cl-testimonial--featured {
+    background: var(--color-dark);
+    color: var(--color-white);
+    border-color: transparent;
+    grid-row: span 1;
+  }
+
+  .cl-testimonial__quote {
+    color: var(--color-border);
+    width: 32px;
+    flex-shrink: 0;
+  }
+
+  .cl-testimonial--featured .cl-testimonial__quote { color: var(--color-primary); }
+
+  .cl-testimonial p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    flex: 1;
+    font-style: italic;
+  }
+
+  .cl-testimonial--featured p {
+    color: rgba(255,255,255,0.85);
+    font-size: var(--font-size-base);
+  }
+
+  .cl-testimonial footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .cl-testimonial__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 107, 0, 0.1);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-bold);
+    font-size: var(--font-size-sm);
+    flex-shrink: 0;
+  }
+
+  .cl-testimonial--featured .cl-testimonial__avatar {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .cl-testimonial cite {
+    display: block;
+    font-style: normal;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-dark);
+  }
+
+  .cl-testimonial--featured cite { color: var(--color-white); }
+
+  .cl-testimonial footer span {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  .cl-testimonial--featured footer span { color: rgba(255,255,255,0.5); }
+
+  @media (max-width: 1024px) {
+    .cl-grid__logos { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  @media (max-width: 900px) {
+    .cl-testimonials__grid { grid-template-columns: 1fr; }
+    .cl-industries__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .cl-stats__inner { grid-template-columns: repeat(2, 1fr); gap: var(--space-8); }
+    .cl-stats__item span { font-size: var(--font-size-3xl); }
+    .cl-grid__logos { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .cl-grid__logos { grid-template-columns: repeat(2, 1fr); }
+    .cl-industries__grid { grid-template-columns: 1fr; }
+  }
+</style>
