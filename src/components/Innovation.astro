@@ -275,26 +275,28 @@
 </style>
 
 <script>
-  const counters = document.querySelectorAll<HTMLElement>('.innovation__stats [data-count-to]');
-  if (counters.length) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target as HTMLElement;
-        const end = parseFloat(el.dataset.countTo || '0');
-        const decimals = parseInt(el.dataset.decimals || '0', 10);
-        const duration = 2000;
-        const start = performance.now();
-        function tick(now: number) {
-          const p = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = (eased * end).toFixed(decimals);
-          if (p < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-        io.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(c => io.observe(c));
-  }
+  document.addEventListener('astro:page-load', () => {
+    const counters = document.querySelectorAll<HTMLElement>('.innovation__stats [data-count-to]');
+    if (counters.length) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          const end = parseFloat(el.dataset.countTo || '0');
+          const decimals = parseInt(el.dataset.decimals || '0', 10);
+          const duration = 2000;
+          const start = performance.now();
+          function tick(now: number) {
+            const p = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = (eased * end).toFixed(decimals);
+            if (p < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+          io.unobserve(el);
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(c => io.observe(c));
+    }
+  });
 </script>

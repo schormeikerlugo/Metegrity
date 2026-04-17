@@ -33,7 +33,7 @@ const navLinks = [
 ];
 ---
 
-<nav class="navbar" id="navbar">
+<nav class="navbar" id="navbar" transition:animate="none">
   <div class="navbar__inner container">
     <a href="/" class="navbar__logo" aria-label="Metegrity">
       <img src="/images/brand/logo.png" alt="Metegrity" />
@@ -320,36 +320,90 @@ const navLinks = [
 </style>
 
 <script>
-  const navbar = document.getElementById('navbar');
-  const toggle = document.getElementById('navToggle');
-  const mobile = document.getElementById('mobileMenu');
+  document.addEventListener('astro:page-load', () => {
+    const navbar = document.getElementById('navbar');
+    const toggle = document.getElementById('navToggle');
+    const mobile = document.getElementById('mobileMenu');
 
-  window.addEventListener('scroll', () => {
-    navbar?.classList.toggle('scrolled', window.scrollY > 40);
-  });
-
-  function closeMenu() {
+    // Reset menu state on page load
     toggle?.classList.remove('active');
     mobile?.classList.remove('open');
     navbar?.classList.remove('menu-open');
     document.body.style.overflow = '';
-  }
 
-  toggle?.addEventListener('click', () => {
-    const isOpen = !mobile?.classList.contains('open');
-    toggle.classList.toggle('active', isOpen);
-    mobile?.classList.toggle('open', isOpen);
-    navbar?.classList.toggle('menu-open', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  });
+    // Apply scrolled state immediately
+    navbar?.classList.toggle('scrolled', window.scrollY > 40);
 
-  // Close mobile menu on link click
-  mobile?.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', closeMenu);
-  });
+    window.addEventListener('scroll', () => {
+      navbar?.classList.toggle('scrolled', window.scrollY > 40);
+    });
 
-  // Close on ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobile?.classList.contains('open')) closeMenu();
+    function closeMenu() {
+      toggle?.classList.remove('active');
+      mobile?.classList.remove('open');
+      navbar?.classList.remove('menu-open');
+      document.body.style.overflow = '';
+    }
+
+    toggle?.addEventListener('click', () => {
+      const isOpen = !mobile?.classList.contains('open');
+      toggle.classList.toggle('active', isOpen);
+      mobile?.classList.toggle('open', isOpen);
+      navbar?.classList.toggle('menu-open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close mobile menu on link click
+    mobile?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', closeMenu);
+    });
+
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobile?.classList.contains('open')) closeMenu();
+    });
+
+    // Active link highlighting
+    const path = window.location.pathname;
+
+    // Desktop nav links
+    document.querySelectorAll<HTMLAnchorElement>('.navbar__link').forEach(link => {
+      link.classList.remove('navbar__link--active');
+    });
+    document.querySelectorAll<HTMLAnchorElement>('.navbar__dropdown-link').forEach(link => {
+      link.classList.remove('navbar__link--active');
+    });
+
+    // Check dropdown links first
+    document.querySelectorAll<HTMLAnchorElement>('.navbar__dropdown-link').forEach(link => {
+      const href = link.getAttribute('href') || '';
+      const isActive = href === '/' ? path === '/' : path.startsWith(href);
+      if (isActive) {
+        link.classList.add('navbar__link--active');
+        // Also mark parent navbar__link as active
+        const parentItem = link.closest('.navbar__item');
+        const parentLink = parentItem?.querySelector('.navbar__link');
+        parentLink?.classList.add('navbar__link--active');
+      }
+    });
+
+    // Check top-level links
+    document.querySelectorAll<HTMLAnchorElement>('.navbar__link').forEach(link => {
+      const href = link.getAttribute('href') || '';
+      const isActive = href === '/' ? path === '/' : path.startsWith(href);
+      if (isActive) {
+        link.classList.add('navbar__link--active');
+      }
+    });
+
+    // Mobile links
+    document.querySelectorAll<HTMLAnchorElement>('.navbar__mobile-links a').forEach(link => {
+      link.classList.remove('navbar__mobile-active');
+      const href = link.getAttribute('href') || '';
+      const isActive = href === '/' ? path === '/' : path.startsWith(href);
+      if (isActive) {
+        link.classList.add('navbar__mobile-active');
+      }
+    });
   });
 </script>

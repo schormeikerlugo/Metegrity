@@ -1453,36 +1453,38 @@
 </style>
 
 <script>
-  // Animated counters for dashboard values
-  const counters = document.querySelectorAll<HTMLElement>(".hero .dc");
-  if (counters.length) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target as HTMLElement;
-          const end = parseFloat(el.dataset.to || "0");
-          const dec = parseInt(el.dataset.dec || "0", 10);
-          const duration = 1800;
-          const start = performance.now() + 400; // wait for entrance
-          function tick(now: number) {
-            if (now < start) {
-              requestAnimationFrame(tick);
-              return;
+  document.addEventListener('astro:page-load', () => {
+    // Animated counters for dashboard values
+    const counters = document.querySelectorAll<HTMLElement>(".hero .dc");
+    if (counters.length) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target as HTMLElement;
+            const end = parseFloat(el.dataset.to || "0");
+            const dec = parseInt(el.dataset.dec || "0", 10);
+            const duration = 1800;
+            const start = performance.now() + 400; // wait for entrance
+            function tick(now: number) {
+              if (now < start) {
+                requestAnimationFrame(tick);
+                return;
+              }
+              const p = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              const v = eased * end;
+              el.textContent =
+                dec > 0 ? v.toFixed(dec) : Math.round(v).toLocaleString("en-US");
+              if (p < 1) requestAnimationFrame(tick);
             }
-            const p = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            const v = eased * end;
-            el.textContent =
-              dec > 0 ? v.toFixed(dec) : Math.round(v).toLocaleString("en-US");
-            if (p < 1) requestAnimationFrame(tick);
-          }
-          requestAnimationFrame(tick);
-          io.unobserve(el);
-        });
-      },
-      { threshold: 0.3 },
-    );
-    counters.forEach((c) => io.observe(c));
-  }
+            requestAnimationFrame(tick);
+            io.unobserve(el);
+          });
+        },
+        { threshold: 0.3 },
+      );
+      counters.forEach((c) => io.observe(c));
+    }
+  });
 </script>

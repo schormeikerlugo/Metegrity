@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import LegalLayout from '../../components/shared/LegalLayout.astro';
+
+const sections = [
+  { id: 'ownership', title: 'Ownership' },
+  { id: 'permitted', title: 'Permitted Uses' },
+  { id: 'prohibited', title: 'Prohibited Uses' },
+  { id: 'trademarks', title: 'Trademarks' },
+  { id: 'dmca', title: 'DMCA Notices' },
+  { id: 'contact', title: 'Contact' },
+];
+---
+
+<Layout title="Copyright Policy | Metegrity" description="Copyright ownership, permitted uses, and DMCA procedures for Metegrity content.">
+  <Navbar />
+  <main>
+    <LegalLayout
+      title="Copyright Policy"
+      subtitle="This policy covers ownership, permitted uses, and procedures for reporting copyright concerns related to Metegrity content."
+      lastUpdated="December 15, 2026"
+      version="2.0"
+      sections={sections}
+    >
+
+      <section id="ownership">
+        <h2><span class="legal-num">01</span>Ownership</h2>
+        <p>&copy; 2026 Metegrity Inc. All rights reserved.</p>
+        <p>All content on this website and within our software products, including but not limited to text, graphics, logos, icons, images, audio clips, video clips, data compilations, software, documentation, and the overall design and arrangement thereof (collectively, "<strong>Content</strong>"), is the property of Metegrity Inc. or its licensors and is protected by Canadian and international copyright, trademark, patent, trade secret, and other intellectual property laws.</p>
+        <p>The Content is made available for your use subject to the terms of this Copyright Policy and our <a href="/legal/terms">Terms & Conditions</a>. No part of the Content may be reproduced, distributed, modified, transmitted, reused, downloaded, reposted, or otherwise used without the express prior written permission of Metegrity Inc., except as expressly set forth below.</p>
+        <div class="legal-callout">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3M8 10.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <p><strong>All Rights Reserved</strong>All intellectual property rights in the Services and Content are owned exclusively by Metegrity Inc. Unauthorized use may violate copyright, trademark, and other applicable laws.</p>
+        </div>
+      </section>
+
+      <section id="permitted">
+        <h2><span class="legal-num">02</span>Permitted Uses</h2>
+        <p>Subject to this Copyright Policy, you are permitted to:</p>
+        <ol>
+          <li><strong>View and access</strong> the Content on our website for your personal, non-commercial, informational purposes.</li>
+          <li><strong>Print or download</strong> a reasonable number of copies of pages from our website for your personal, non-commercial use, provided you retain all copyright, trademark, and other proprietary notices contained in the original materials.</li>
+          <li><strong>Share links</strong> to pages on our website via social media, email, or other communication channels, provided you do not frame, mirror, or otherwise alter the presentation of our Content.</li>
+          <li><strong>Use the Services</strong> in accordance with your subscription agreement and our <a href="/legal/terms">Terms & Conditions</a>, including generating reports, exporting your own data, and using our software for its intended purposes.</li>
+        </ol>
+        <p>Any permitted use must include proper attribution to Metegrity Inc. as the source of the Content.</p>
+      </section>
+
+      <section id="prohibited">
+        <h2><span class="legal-num">03</span>Prohibited Uses</h2>
+        <p>Without the express prior written consent of Metegrity Inc., you may not:</p>
+        <ol>
+          <li><strong>Reproduce or distribute</strong> any Content from our website or Services for commercial purposes, including selling, licensing, or distributing copies of our materials.</li>
+          <li><strong>Modify or create derivative works</strong> based on our Content, including translating, adapting, reverse engineering, decompiling, or disassembling any portion of our software or materials.</li>
+          <li><strong>Remove proprietary notices</strong> or alter, obscure, or remove any copyright, trademark, or other proprietary notices displayed on or within our Content.</li>
+          <li><strong>Frame or mirror</strong> any portion of our website or Services on any other server, website, or application without our prior written consent.</li>
+          <li><strong>Use our Content for AI training</strong> by scraping, crawling, or otherwise collecting our Content for the purpose of training machine learning models, artificial intelligence systems, or other automated tools.</li>
+          <li><strong>Misrepresent ownership</strong> by presenting our Content as your own or implying any endorsement, sponsorship, or affiliation with Metegrity that does not exist.</li>
+        </ol>
+      </section>
+
+      <section id="trademarks">
+        <h2><span class="legal-num">04</span>Trademarks</h2>
+        <p>The following are trademarks or registered trademarks of Metegrity Inc.:</p>
+        <ul>
+          <li><strong>Metegrity&reg;</strong> — Registered trademark of Metegrity Inc.</li>
+          <li><strong>Visions Enterprise&reg;</strong> — Registered trademark for our comprehensive asset integrity management platform.</li>
+          <li><strong>VISIONSGO&trade;</strong> — Trademark for our mobile field data collection application.</li>
+          <li><strong>Visions RBI&trade;</strong> — Trademark for our risk-based inspection management solution.</li>
+        </ul>
+        <p>All other trademarks, service marks, trade names, and logos appearing on our website or within our Services are the property of their respective owners. Use of any Metegrity trademark without our prior written permission is strictly prohibited.</p>
+        <p>You may not use any Metegrity trademark in connection with any product or service that is not offered by Metegrity, in any manner that is likely to cause confusion, or in any manner that disparages or discredits Metegrity Inc.</p>
+      </section>
+
+      <section id="dmca">
+        <h2><span class="legal-num">05</span>DMCA Notices</h2>
+        <p>Metegrity respects the intellectual property rights of others. If you believe that any content on our website or within our Services infringes your copyright, you may submit a notice pursuant to the Digital Millennium Copyright Act (DMCA) by providing our designated agent with the following information in writing:</p>
+        <ol>
+          <li>A physical or electronic signature of the copyright owner or a person authorized to act on their behalf.</li>
+          <li>Identification of the copyrighted work claimed to have been infringed, or, if multiple works are covered by a single notification, a representative list of such works.</li>
+          <li>Identification of the material that is claimed to be infringing and information reasonably sufficient to allow Metegrity to locate the material (e.g., a URL or specific page reference).</li>
+          <li>Your contact information, including your name, mailing address, telephone number, and email address.</li>
+          <li>A statement that you have a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law.</li>
+          <li>A statement, made under penalty of perjury, that the information in the notification is accurate and that you are the copyright owner or are authorized to act on behalf of the copyright owner.</li>
+        </ol>
+
+        <div class="legal-callout">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3M8 10.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <p><strong>DMCA Submissions</strong>Please send all DMCA notices to our designated agent at <a href="mailto:legal@metegrity.com">legal@metegrity.com</a>. We will review and respond to all valid notices in accordance with applicable law.</p>
+        </div>
+
+        <p>Upon receipt of a valid DMCA notice, Metegrity will take appropriate action, which may include removing or disabling access to the allegedly infringing material and notifying the content provider. Repeat infringers may have their access to the Services terminated.</p>
+      </section>
+
+      <section id="contact">
+        <h2><span class="legal-num">06</span>Contact</h2>
+        <p>If you have any questions about this Copyright Policy, require permission to use our Content, or wish to report a copyright concern, please contact us:</p>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:legal@metegrity.com">legal@metegrity.com</a></li>
+        </ul>
+        <p><strong>Metegrity Inc.</strong><br/>
+        5715-76 Avenue<br/>
+        Edmonton, AB T6B 0A7<br/>
+        Canada</p>
+        <p>We will make every effort to respond to your inquiry promptly.</p>
+      </section>
+
+    </LegalLayout>
+  </main>
+  <Footer />
+</Layout>

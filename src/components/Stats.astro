@@ -76,39 +76,41 @@ const stats = [
 </style>
 
 <script>
-  function formatNumber(n: number): string {
-    return n >= 1000 ? n.toLocaleString('en-US') : String(n);
-  }
-
-  function animateCounter(el: HTMLElement) {
-    const end = Number(el.dataset.end);
-    const prefix = el.dataset.prefix || '';
-    const suffix = el.dataset.suffix || '';
-    const duration = 2000;
-    const startTime = performance.now();
-
-    function update(now: number) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease-out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(eased * end);
-      el.textContent = prefix + formatNumber(current) + suffix;
-      if (progress < 1) requestAnimationFrame(update);
+  document.addEventListener('astro:page-load', () => {
+    function formatNumber(n: number): string {
+      return n >= 1000 ? n.toLocaleString('en-US') : String(n);
     }
 
-    requestAnimationFrame(update);
-  }
+    function animateCounter(el: HTMLElement) {
+      const end = Number(el.dataset.end);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const duration = 2000;
+      const startTime = performance.now();
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target as HTMLElement;
-        animateCounter(el);
-        observer.unobserve(el);
+      function update(now: number) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(eased * end);
+        el.textContent = prefix + formatNumber(current) + suffix;
+        if (progress < 1) requestAnimationFrame(update);
       }
-    });
-  }, { threshold: 0.5 });
 
-  document.querySelectorAll('.stats__value').forEach(el => observer.observe(el));
+      requestAnimationFrame(update);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target as HTMLElement;
+          animateCounter(el);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stats__value').forEach(el => observer.observe(el));
+  });
 </script>

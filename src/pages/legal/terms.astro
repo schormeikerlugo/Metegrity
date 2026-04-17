@@ -1,0 +1,196 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import LegalLayout from '../../components/shared/LegalLayout.astro';
+
+const sections = [
+  { id: 'acceptance', title: 'Acceptance of Terms' },
+  { id: 'services', title: 'Our Services' },
+  { id: 'accounts', title: 'Accounts & Registration' },
+  { id: 'license', title: 'License Grant' },
+  { id: 'restrictions', title: 'Use Restrictions' },
+  { id: 'content', title: 'Customer Content' },
+  { id: 'payment', title: 'Fees & Payment' },
+  { id: 'confidentiality', title: 'Confidentiality' },
+  { id: 'warranties', title: 'Warranties & Disclaimers' },
+  { id: 'liability', title: 'Limitation of Liability' },
+  { id: 'indemnification', title: 'Indemnification' },
+  { id: 'termination', title: 'Termination' },
+  { id: 'governing', title: 'Governing Law' },
+  { id: 'general', title: 'General Provisions' },
+];
+---
+
+<Layout title="Terms & Conditions | Metegrity" description="The legal terms governing your use of Metegrity products, services, and website.">
+  <Navbar />
+  <main>
+    <LegalLayout
+      title="Terms & Conditions"
+      subtitle="These terms govern your access to and use of Metegrity products, services, and website. Please read carefully."
+      lastUpdated="December 15, 2026"
+      version="4.1"
+      sections={sections}
+    >
+
+      <section id="acceptance">
+        <h2><span class="legal-num">01</span>Acceptance of Terms</h2>
+        <p>These Terms and Conditions ("<strong>Terms</strong>") constitute a legally binding agreement between you ("<strong>Customer</strong>," "<strong>you</strong>," or "<strong>your</strong>") and Metegrity Inc. ("<strong>Metegrity</strong>," "<strong>we</strong>," "<strong>us</strong>," or "<strong>our</strong>") governing your access to and use of our software products, website, and related services (collectively, the "<strong>Services</strong>").</p>
+        <p>By accessing or using our Services, clicking "I Agree," executing an order form that references these Terms, or otherwise indicating your acceptance, you agree to be bound by these Terms. If you are entering into these Terms on behalf of a company or other legal entity, you represent that you have the authority to bind that entity to these Terms.</p>
+        <div class="legal-callout">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3M8 10.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <p><strong>Binding Agreement</strong>By using our Services, you acknowledge that you have read, understood, and agree to be bound by these Terms and our <a href="/legal/privacy-policy">Privacy Policy</a>. If you do not agree, you must not use our Services.</p>
+        </div>
+      </section>
+
+      <section id="services">
+        <h2><span class="legal-num">02</span>Our Services</h2>
+        <p>Metegrity provides asset integrity management software solutions designed for pipeline, facility, and infrastructure operators. Our product offerings include:</p>
+        <ul>
+          <li><strong>Visions Enterprise</strong> — Our comprehensive asset integrity management platform for managing inspections, risk assessments, and compliance across your entire asset portfolio.</li>
+          <li><strong>VISIONSGO</strong> — A mobile-first field data collection application that enables inspectors to capture and synchronize inspection data in real time.</li>
+          <li><strong>Visions RBI (Risk-Based Inspection)</strong> — Advanced risk assessment tools that help you prioritize inspections based on quantitative risk analysis and industry standards.</li>
+          <li><strong>Fugitive Emissions Management</strong> — Leak detection and repair (LDAR) management solutions to help you comply with environmental regulations and reduce emissions.</li>
+        </ul>
+        <p>We reserve the right to modify, suspend, or discontinue any aspect of the Services at any time, with reasonable notice to active subscribers where practicable.</p>
+      </section>
+
+      <section id="accounts">
+        <h2><span class="legal-num">03</span>Accounts & Registration</h2>
+        <p>To access certain features of our Services, you must register for an account. When creating an account, you agree to:</p>
+        <ul>
+          <li>Provide accurate, current, and complete information during registration</li>
+          <li>Maintain and promptly update your account information to keep it accurate and complete</li>
+          <li>Maintain the security and confidentiality of your login credentials</li>
+          <li>Accept responsibility for all activities that occur under your account</li>
+          <li>Notify Metegrity immediately of any unauthorized use of your account or any other security breach</li>
+        </ul>
+        <p>You may not share your account credentials with any third party. Metegrity reserves the right to suspend or terminate accounts that violate these Terms or pose a security risk.</p>
+      </section>
+
+      <section id="license">
+        <h2><span class="legal-num">04</span>License Grant</h2>
+        <p>Subject to your compliance with these Terms and payment of all applicable fees, Metegrity grants you a <strong>limited, non-exclusive, non-transferable, non-sublicensable, revocable license</strong> to access and use the Services solely for your internal business purposes during the applicable subscription term.</p>
+        <p>This license does not include any right to:</p>
+        <ul>
+          <li>Modify, adapt, or create derivative works based on the Services</li>
+          <li>Sublicense, sell, lease, or otherwise distribute access to the Services to third parties</li>
+          <li>Use the Services for the benefit of any third party, including as a service bureau or outsourcing offering</li>
+        </ul>
+        <p>All rights not expressly granted in these Terms are reserved by Metegrity. The Services, including all associated intellectual property rights, are and remain the exclusive property of Metegrity Inc.</p>
+      </section>
+
+      <section id="restrictions">
+        <h2><span class="legal-num">05</span>Use Restrictions</h2>
+        <p>You agree not to, and will not permit any third party to:</p>
+        <ol>
+          <li>Reverse engineer, decompile, disassemble, or otherwise attempt to discover the source code or underlying algorithms of the Services</li>
+          <li>Copy, modify, or create derivative works based on the Services or any portion thereof</li>
+          <li>Remove, alter, or obscure any proprietary notices, labels, or marks on the Services</li>
+          <li>Use the Services to develop a competing product or service</li>
+          <li>Access the Services for benchmarking or competitive analysis purposes</li>
+          <li>Use the Services in any manner that violates applicable laws, regulations, or third-party rights</li>
+          <li>Introduce any viruses, malware, or other harmful code into the Services</li>
+          <li>Attempt to gain unauthorized access to the Services, other accounts, or computer systems or networks connected to the Services</li>
+          <li>Use automated means (bots, scrapers, crawlers) to access the Services except through APIs we expressly provide and authorize</li>
+        </ol>
+      </section>
+
+      <section id="content">
+        <h2><span class="legal-num">06</span>Customer Content</h2>
+        <p>You retain all right, title, and interest in and to any data, information, files, or other materials that you submit, upload, or otherwise make available through the Services ("<strong>Customer Content</strong>"). Metegrity does not claim ownership over your Customer Content.</p>
+        <p>By submitting Customer Content, you grant Metegrity a limited, non-exclusive license to use, process, store, and display your Customer Content solely as necessary to provide and improve the Services in accordance with these Terms and our <a href="/legal/privacy-policy">Privacy Policy</a>.</p>
+        <p>You are solely responsible for the accuracy, quality, and legality of your Customer Content and the means by which you acquire it. You represent and warrant that you have all necessary rights and permissions to submit Customer Content and grant the licenses described herein.</p>
+      </section>
+
+      <section id="payment">
+        <h2><span class="legal-num">07</span>Fees & Payment</h2>
+        <p>Fees for the Services are set forth in the applicable order form or subscription agreement. Unless otherwise specified:</p>
+        <ul>
+          <li><strong>Billing Cycle:</strong> Fees are billed on an annual basis in advance.</li>
+          <li><strong>Payment Terms:</strong> All invoices are due net-30 days from the date of invoice.</li>
+          <li><strong>Late Payments:</strong> Overdue amounts will accrue interest at a rate of 1.5% per month (or the maximum rate permitted by law, whichever is lower).</li>
+          <li><strong>Taxes:</strong> All fees are exclusive of applicable taxes. You are responsible for paying all applicable sales, use, GST, VAT, or other taxes.</li>
+        </ul>
+
+        <h3>Auto-Renewal</h3>
+        <p>Subscriptions automatically renew for successive renewal terms equal to the initial subscription term unless either party provides written notice of non-renewal at least <strong>60 days</strong> prior to the end of the then-current term. Metegrity may adjust pricing for renewal terms with at least 60 days' prior written notice.</p>
+
+        <div class="legal-callout">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3M8 10.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <p><strong>Auto-Renewal Notice</strong>Your subscription will automatically renew unless you provide written notice of non-renewal at least 60 days before the end of your current term.</p>
+        </div>
+      </section>
+
+      <section id="confidentiality">
+        <h2><span class="legal-num">08</span>Confidentiality</h2>
+        <p>"<strong>Confidential Information</strong>" means any non-public information disclosed by either party to the other, whether orally, in writing, or by other means, that is designated as confidential or that reasonably should be understood to be confidential given the nature of the information and the circumstances of disclosure.</p>
+        <p>Each party agrees to:</p>
+        <ul>
+          <li>Protect the other party's Confidential Information using the same degree of care it uses for its own confidential information, but in no event less than reasonable care</li>
+          <li>Use the other party's Confidential Information only for the purposes of exercising rights and fulfilling obligations under these Terms</li>
+          <li>Not disclose the other party's Confidential Information to any third party except to employees, contractors, and agents who have a need to know and are bound by confidentiality obligations at least as restrictive as those herein</li>
+        </ul>
+        <p>Confidential Information does not include information that: (a) is or becomes publicly available without breach of these Terms; (b) was known to the receiving party prior to disclosure; (c) is independently developed without use of the disclosing party's Confidential Information; or (d) is rightfully received from a third party without restriction.</p>
+      </section>
+
+      <section id="warranties">
+        <h2><span class="legal-num">09</span>Warranties & Disclaimers</h2>
+        <p>Metegrity warrants that the Services will perform materially in accordance with the applicable documentation during the subscription term. If the Services fail to meet this warranty, Metegrity will, at its option, correct the non-conformity or provide a reasonable workaround.</p>
+        <div class="legal-callout">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3M8 10.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <p><strong>Disclaimer</strong>EXCEPT AS EXPRESSLY SET FORTH HEREIN, THE SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE." METEGRITY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.</p>
+        </div>
+        <p>Metegrity does not warrant that the Services will be uninterrupted, error-free, or completely secure. No advice or information obtained from Metegrity or through the Services shall create any warranty not expressly stated in these Terms.</p>
+      </section>
+
+      <section id="liability">
+        <h2><span class="legal-num">10</span>Limitation of Liability</h2>
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW:</p>
+        <ul>
+          <li><strong>Exclusion of Consequential Damages:</strong> IN NO EVENT SHALL EITHER PARTY BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING LOSS OF PROFITS, DATA, BUSINESS OPPORTUNITIES, OR GOODWILL, ARISING OUT OF OR RELATED TO THESE TERMS, REGARDLESS OF THE THEORY OF LIABILITY.</li>
+          <li><strong>Liability Cap:</strong> EACH PARTY'S TOTAL AGGREGATE LIABILITY ARISING OUT OF OR RELATED TO THESE TERMS SHALL NOT EXCEED THE TOTAL FEES PAID OR PAYABLE BY CUSTOMER TO METEGRITY DURING THE <strong>12-MONTH PERIOD</strong> IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM.</li>
+        </ul>
+        <p>The limitations in this section shall not apply to: (a) a party's indemnification obligations; (b) a party's breach of confidentiality obligations; (c) Customer's payment obligations; or (d) liability that cannot be limited by applicable law.</p>
+      </section>
+
+      <section id="indemnification">
+        <h2><span class="legal-num">11</span>Indemnification</h2>
+        <p><strong>By Metegrity:</strong> Metegrity shall indemnify, defend, and hold harmless Customer from and against any third-party claims, damages, losses, and expenses (including reasonable attorneys' fees) arising from allegations that Customer's authorized use of the Services infringes any third-party intellectual property rights. Metegrity's obligations under this section do not apply if the alleged infringement results from: (a) Customer's modification of the Services; (b) use of the Services in combination with products not provided by Metegrity; or (c) use of the Services in violation of these Terms.</p>
+        <p><strong>By Customer:</strong> Customer shall indemnify, defend, and hold harmless Metegrity from and against any third-party claims, damages, losses, and expenses (including reasonable attorneys' fees) arising from: (a) Customer Content; (b) Customer's violation of applicable laws; or (c) Customer's use of the Services in breach of these Terms.</p>
+      </section>
+
+      <section id="termination">
+        <h2><span class="legal-num">12</span>Termination</h2>
+        <p>Either party may terminate these Terms as follows:</p>
+        <ul>
+          <li><strong>Termination for Convenience:</strong> Either party may terminate these Terms by providing at least <strong>60 days'</strong> prior written notice to the other party. Termination for convenience will be effective at the end of the then-current subscription term.</li>
+          <li><strong>Termination for Cause:</strong> Either party may terminate these Terms immediately upon written notice if the other party materially breaches these Terms and fails to cure such breach within <strong>30 days</strong> after receiving written notice of the breach.</li>
+        </ul>
+        <p>Upon termination, Customer's access to the Services will cease. Customer may request export of Customer Content for up to 30 days following termination, after which Metegrity may delete Customer Content in accordance with its data retention policies. Any provisions that by their nature should survive termination shall survive, including confidentiality, limitation of liability, and indemnification.</p>
+      </section>
+
+      <section id="governing">
+        <h2><span class="legal-num">13</span>Governing Law</h2>
+        <p>These Terms shall be governed by and construed in accordance with the laws of the <strong>Province of Alberta, Canada</strong>, without regard to its conflict of laws principles. Any dispute arising out of or relating to these Terms shall be subject to the exclusive jurisdiction of the courts located in Edmonton, Alberta, Canada.</p>
+        <p>The parties agree that the United Nations Convention on Contracts for the International Sale of Goods does not apply to these Terms. Nothing in these Terms shall prevent either party from seeking injunctive or other equitable relief in any court of competent jurisdiction.</p>
+      </section>
+
+      <section id="general">
+        <h2><span class="legal-num">14</span>General Provisions</h2>
+        <ul>
+          <li><strong>Entire Agreement:</strong> These Terms, together with any order forms and exhibits, constitute the entire agreement between the parties concerning the subject matter hereof and supersede all prior and contemporaneous agreements, proposals, and representations.</li>
+          <li><strong>Amendments:</strong> No modification to these Terms shall be effective unless in writing and signed by both parties. However, Metegrity may update these Terms by posting revised terms on its website with reasonable notice.</li>
+          <li><strong>Assignment:</strong> Neither party may assign these Terms without the prior written consent of the other party, except in connection with a merger, acquisition, or sale of all or substantially all of the assigning party's assets.</li>
+          <li><strong>Severability:</strong> If any provision of these Terms is held to be unenforceable, the remaining provisions shall remain in full force and effect.</li>
+          <li><strong>Waiver:</strong> The failure of either party to enforce any right or provision of these Terms shall not constitute a waiver of such right or provision.</li>
+          <li><strong>Force Majeure:</strong> Neither party shall be liable for any failure or delay in performance due to causes beyond its reasonable control, including natural disasters, pandemics, war, terrorism, strikes, or government actions.</li>
+          <li><strong>Notices:</strong> All notices under these Terms shall be in writing and shall be deemed given when delivered personally, sent by certified mail, or sent by email with confirmation of receipt.</li>
+        </ul>
+      </section>
+
+    </LegalLayout>
+  </main>
+  <Footer />
+</Layout>

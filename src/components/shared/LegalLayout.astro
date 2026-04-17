@@ -1,0 +1,511 @@
+---
+interface Section {
+  id: string;
+  title: string;
+}
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  lastUpdated: string;
+  version?: string;
+  sections: Section[];
+}
+
+const { title, subtitle, lastUpdated, version, sections } = Astro.props;
+---
+
+<section class="legal-hero">
+  <img src="/images/backgrounds/hero.png" alt="" class="legal-hero__bg" aria-hidden="true" />
+  <div class="legal-hero__overlay"></div>
+
+  <div class="container legal-hero__inner">
+    <div class="section-label">Legal</div>
+    <h1 class="legal-hero__title">{title}</h1>
+    {subtitle && <p class="legal-hero__subtitle">{subtitle}</p>}
+    <div class="legal-hero__meta">
+      <span class="legal-hero__meta-item">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M2 7h12M5 2v2M11 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Last updated: <strong>{lastUpdated}</strong>
+      </span>
+      {version && (
+        <span class="legal-hero__meta-item">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 8l1.5 1.5L10 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Version <strong>{version}</strong>
+        </span>
+      )}
+    </div>
+  </div>
+</section>
+
+<section class="legal-body section">
+  <div class="container">
+    <div class="legal-body__inner">
+
+      <!-- TOC Sidebar -->
+      <aside class="legal-toc">
+        <div class="legal-toc__inner">
+          <h3 class="legal-toc__title">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            On this page
+          </h3>
+          <ol class="legal-toc__list">
+            {sections.map((s, i) => (
+              <li><a href={`#${s.id}`} data-toc-link={s.id}>
+                <span class="legal-toc__num">{String(i + 1).padStart(2, '0')}</span>
+                <span>{s.title}</span>
+              </a></li>
+            ))}
+          </ol>
+
+          <div class="legal-toc__actions">
+            <button type="button" onclick="window.print()" class="legal-toc__action">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <rect x="3" y="6" width="10" height="6" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M5 6V2h6v4M5 12v2h6v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Print
+            </button>
+            <a href="/contact" class="legal-toc__action">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <rect x="2" y="4" width="12" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M2 4l6 5 6-5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+              Contact
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <article class="legal-content">
+        <slot />
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .legal-hero {
+    position: relative;
+    padding: calc(var(--space-32) + var(--space-4)) 0 var(--space-12);
+    overflow: hidden;
+  }
+
+  .legal-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .legal-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(248, 246, 247, 0.85) 0%, rgba(248, 246, 247, 0.95) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .legal-hero__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+  }
+
+  .legal-hero__title {
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-bold);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: var(--space-4) 0 var(--space-4);
+  }
+
+  .legal-hero__subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    max-width: 640px;
+    line-height: 1.7;
+    margin-bottom: var(--space-5);
+  }
+
+  .legal-hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .legal-hero__meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-medium);
+  }
+
+  .legal-hero__meta-item strong {
+    color: var(--color-dark);
+    font-weight: var(--font-bold);
+  }
+
+  .legal-hero__meta-item svg { color: var(--color-primary); }
+
+  /* Body */
+  .legal-body {
+    background: var(--color-bg);
+  }
+
+  .legal-body__inner {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: var(--space-10);
+    align-items: start;
+  }
+
+  /* TOC */
+  .legal-toc {
+    position: sticky;
+    top: 100px;
+  }
+
+  .legal-toc__inner {
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+  }
+
+  .legal-toc__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .legal-toc__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: var(--space-5);
+  }
+
+  .legal-toc__list a {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    line-height: 1.4;
+  }
+
+  .legal-toc__list a:hover {
+    background: rgba(255, 107, 0, 0.06);
+    color: var(--color-primary);
+  }
+
+  .legal-toc__list a.is-active {
+    background: rgba(255, 107, 0, 0.1);
+    color: var(--color-primary);
+  }
+
+  .legal-toc__num {
+    font-size: 10px;
+    font-weight: var(--font-bold);
+    color: var(--color-primary);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .legal-toc__actions {
+    display: flex;
+    gap: var(--space-2);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .legal-toc__action {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-semibold);
+    color: var(--color-dark);
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: inherit;
+  }
+
+  .legal-toc__action:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  /* Content - global typography for legal text */
+  .legal-content :global(section) {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+    scroll-margin-top: 90px;
+  }
+
+  .legal-content :global(section:not(:last-child)) {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .legal-content :global(h2) {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+    letter-spacing: -0.01em;
+    margin-bottom: var(--space-5);
+  }
+
+  .legal-content :global(h2 .legal-num) {
+    font-size: var(--font-size-md);
+    color: var(--color-primary);
+    font-weight: var(--font-bold);
+    letter-spacing: 0.05em;
+  }
+
+  .legal-content :global(h3) {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+    margin: var(--space-6) 0 var(--space-3);
+  }
+
+  .legal-content :global(h4) {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-semibold);
+    color: var(--color-dark);
+    margin: var(--space-4) 0 var(--space-2);
+  }
+
+  .legal-content :global(p) {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--space-4);
+  }
+
+  .legal-content :global(a) {
+    color: var(--color-primary);
+    font-weight: var(--font-semibold);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 107, 0, 0.4);
+    text-underline-offset: 3px;
+    transition: all var(--transition-fast);
+  }
+
+  .legal-content :global(a:hover) {
+    text-decoration-color: var(--color-primary);
+  }
+
+  .legal-content :global(strong) {
+    color: var(--color-dark);
+    font-weight: var(--font-semibold);
+  }
+
+  .legal-content :global(ul),
+  .legal-content :global(ol) {
+    margin-bottom: var(--space-5);
+    padding-left: var(--space-6);
+    color: var(--color-text-secondary);
+  }
+
+  .legal-content :global(ul) { list-style: none; padding-left: 0; }
+
+  .legal-content :global(ul li) {
+    position: relative;
+    padding-left: var(--space-6);
+    padding-bottom: var(--space-3);
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+  }
+
+  .legal-content :global(ul li::before) {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    background: var(--color-primary);
+    border-radius: 50%;
+  }
+
+  .legal-content :global(ol) {
+    counter-reset: legal-counter;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .legal-content :global(ol li) {
+    position: relative;
+    counter-increment: legal-counter;
+    padding-left: var(--space-10);
+    padding-bottom: var(--space-3);
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+  }
+
+  .legal-content :global(ol li::before) {
+    content: counter(legal-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-bold);
+    color: var(--color-primary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .legal-content :global(.legal-callout) {
+    display: flex;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    background: rgba(255, 107, 0, 0.04);
+    border: 1px solid rgba(255, 107, 0, 0.2);
+    border-left: 3px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    margin: var(--space-5) 0;
+  }
+
+  .legal-content :global(.legal-callout svg) {
+    flex-shrink: 0;
+    color: var(--color-primary);
+    margin-top: 2px;
+  }
+
+  .legal-content :global(.legal-callout p) {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    color: var(--color-dark);
+  }
+
+  .legal-content :global(.legal-callout strong) {
+    display: block;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-1);
+    color: var(--color-dark);
+  }
+
+  /* Tables */
+  .legal-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-4) 0 var(--space-6);
+    font-size: var(--font-size-sm);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .legal-content :global(thead th) {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+    background: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .legal-content :global(tbody td) {
+    padding: var(--space-3) var(--space-4);
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+    line-height: 1.5;
+  }
+
+  .legal-content :global(tbody tr:last-child td) { border-bottom: none; }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .legal-body__inner { grid-template-columns: 1fr; gap: var(--space-6); }
+    .legal-toc { position: static; }
+    .legal-toc__list { display: flex; flex-wrap: wrap; gap: 4px; }
+    .legal-toc__list li { flex: 1 1 auto; min-width: 200px; }
+  }
+
+  @media (max-width: 768px) {
+    .legal-hero { padding-top: calc(var(--space-32) + var(--space-6)); }
+    .legal-hero__title { font-size: var(--font-size-3xl); }
+    .legal-hero__inner { text-align: center; }
+    .legal-hero__meta { justify-content: center; }
+  }
+
+  @media print {
+    .legal-toc,
+    .legal-hero__bg,
+    .legal-hero__overlay { display: none; }
+    .legal-body__inner { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const tocLinks = document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]');
+    if (!tocLinks.length) return;
+    const sections = Array.from(tocLinks).map(a => {
+      const id = a.dataset.tocLink;
+      return id ? document.getElementById(id) : null;
+    }).filter(Boolean) as HTMLElement[];
+
+    if (sections.length) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            tocLinks.forEach(link => {
+              link.classList.toggle('is-active', link.dataset.tocLink === id);
+            });
+          }
+        });
+      }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+      sections.forEach(s => observer.observe(s));
+    }
+  });
+</script>

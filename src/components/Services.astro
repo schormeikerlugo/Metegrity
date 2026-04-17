@@ -741,40 +741,42 @@ const benefits = [
 </style>
 
 <script>
-  // Benefit cards staggered entrance
-  const benefitsGrid = document.querySelector('.services__benefits-grid');
-  if (benefitsGrid) {
-    const bio = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          bio.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    bio.observe(benefitsGrid);
-  }
-
-  const numEl = document.querySelector<HTMLElement>('.services__dash-num');
-  if (numEl) {
-    const end = Number(numEl.dataset.end);
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const start = performance.now();
-          const duration = 2200;
-          function tick(now: number) {
-            const p = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            const val = eased * end;
-            numEl!.textContent = val.toFixed(1);
-            if (p < 1) requestAnimationFrame(tick);
+  document.addEventListener('astro:page-load', () => {
+    // Benefit cards staggered entrance
+    const benefitsGrid = document.querySelector('.services__benefits-grid');
+    if (benefitsGrid) {
+      const bio = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            bio.unobserve(entry.target);
           }
-          requestAnimationFrame(tick);
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    io.observe(numEl);
-  }
+        });
+      }, { threshold: 0.2 });
+      bio.observe(benefitsGrid);
+    }
+
+    const numEl = document.querySelector<HTMLElement>('.services__dash-num');
+    if (numEl) {
+      const end = Number(numEl.dataset.end);
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const start = performance.now();
+            const duration = 2200;
+            function tick(now: number) {
+              const p = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              const val = eased * end;
+              numEl!.textContent = val.toFixed(1);
+              if (p < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      io.observe(numEl);
+    }
+  });
 </script>

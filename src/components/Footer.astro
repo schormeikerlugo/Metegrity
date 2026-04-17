@@ -1,9 +1,30 @@
 ---
-const links = {
-  Products: ['Visions Enterprise', 'VISIONSGO', 'Visions RBI Bundle', 'Fugitive Emissions'],
-  Services: ['Implementation Planning', 'Configuration & Setup', 'Systems Integration', 'User Training', 'Strategic Consulting'],
-  Company: ['About Us', 'Partner Network', 'Clients', 'Careers', 'Contact'],
-  Resources: ['Success Stories', 'Whitepapers', 'Blogs', 'Video Gallery'],
+const links: Record<string, { label: string; href: string }[]> = {
+  Products: [
+    { label: 'Visions Enterprise', href: '/products/visions-enterprise' },
+    { label: 'VISIONSGO', href: '/products/visionsgo' },
+    { label: 'Visions RBI Bundle', href: '/products/visions-rbi' },
+    { label: 'Fugitive Emissions', href: '/products/fugitive-emissions' },
+  ],
+  Services: [
+    { label: 'All Services', href: '/services' },
+    { label: 'Strategic Consulting', href: '/services/consulting' },
+  ],
+  Company: [
+    { label: 'About Us', href: '/about' },
+    { label: 'Partner Network', href: '/about/partner-network' },
+    { label: 'Clients', href: '/about/clients' },
+    { label: 'Careers', href: '/about/careers' },
+    { label: 'Contact', href: '/contact' },
+  ],
+  Resources: [
+    { label: 'Success Stories', href: '/insights/success-stories' },
+    { label: 'Whitepapers', href: '/insights/whitepapers' },
+    { label: 'Blog', href: '/insights/blogs' },
+    { label: 'eBooks', href: '/insights/ebooks' },
+    { label: 'News & Events', href: '/insights/news-events' },
+    { label: 'Video Gallery', href: '/insights/video-gallery' },
+  ],
 };
 ---
 
@@ -32,7 +53,7 @@ const links = {
             <h4 class="footer__col-title">{title}</h4>
             <ul>
               {items.map(item => (
-                <li><a href="#">{item}</a></li>
+                <li><a href={item.href}>{item.label}</a></li>
               ))}
             </ul>
           </div>
@@ -43,9 +64,10 @@ const links = {
     <div class="footer__bottom">
       <p>&copy; 2026 Metegrity Inc. All rights reserved.</p>
       <div class="footer__legal">
-        <a href="#">Terms & Conditions</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Cookie Policy</a>
+        <a href="/legal/terms">Terms & Conditions</a>
+        <a href="/legal/privacy-policy">Privacy Policy</a>
+        <a href="/legal/cookie-policy">Cookie Policy</a>
+        <a href="/legal/copyright-policy">Copyright</a>
       </div>
     </div>
   </div>

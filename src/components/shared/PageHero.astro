@@ -5,7 +5,6 @@ interface Props {
   titleBold?: string;
   description?: string;
   image?: string;
-  breadcrumb?: { label: string; href?: string }[];
   align?: 'left' | 'center';
 }
 
@@ -15,11 +14,8 @@ const {
   titleBold,
   description,
   image,
-  breadcrumb = [],
   align = 'left',
 } = Astro.props;
-
-import Breadcrumb from './Breadcrumb.astro';
 ---
 
 <section class={`page-hero page-hero--${align}`}>
@@ -32,8 +28,7 @@ import Breadcrumb from './Breadcrumb.astro';
 
   <div class="container page-hero__inner">
     <div class="page-hero__content">
-      {breadcrumb.length > 0 && <Breadcrumb items={breadcrumb} />}
-      {eyebrow && <div class="section-label" style="margin-top: var(--space-5);">{eyebrow}</div>}
+      {eyebrow && <div class="section-label">{eyebrow}</div>}
       <h1 class="page-hero__title">
         {titleLight && <span class="text-light">{titleLight}</span>}
         {titleLight && <br />}

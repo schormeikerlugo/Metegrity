@@ -1,0 +1,245 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import LegalLayout from '../../components/shared/LegalLayout.astro';
+
+const sections = [
+  { id: 'introduction', title: 'Introduction' },
+  { id: 'information-collected', title: 'Information We Collect' },
+  { id: 'how-we-use', title: 'How We Use Information' },
+  { id: 'sharing', title: 'Sharing & Disclosure' },
+  { id: 'cookies', title: 'Cookies & Tracking' },
+  { id: 'retention', title: 'Data Retention' },
+  { id: 'security', title: 'Security' },
+  { id: 'rights', title: 'Your Rights' },
+  { id: 'international', title: 'International Transfers' },
+  { id: 'children', title: 'Children\'s Privacy' },
+  { id: 'changes', title: 'Changes to This Policy' },
+  { id: 'contact', title: 'Contact Us' },
+];
+---
+
+<Layout title="Privacy Policy | Metegrity" description="How Metegrity collects, uses, and protects your personal information.">
+  <Navbar />
+  <main>
+    <LegalLayout
+      title="Privacy Policy"
+      subtitle="How we collect, use, and protect your personal information. We're committed to transparency and your right to privacy."
+      lastUpdated="December 15, 2026"
+      version="3.2"
+      sections={sections}
+    >
+
+      <section id="introduction">
+        <h2><span class="legal-num">01</span>Introduction</h2>
+        <p>Metegrity Inc. ("<strong>Metegrity</strong>," "<strong>we</strong>," "<strong>us</strong>," or "<strong>our</strong>") is committed to protecting the privacy of individuals who visit our website, use our products, or otherwise interact with us. This Privacy Policy describes how we collect, use, disclose, and safeguard your personal information when you access or use our website, software products (including Visions Enterprise, VISIONSGO, and related services), and other online services (collectively, the "<strong>Services</strong>").</p>
+        <p>By accessing or using our Services, you acknowledge that you have read and understood this Privacy Policy. If you do not agree with our practices, please do not use our Services.</p>
+        <div class="legal-callout">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3M8 10.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <p><strong>Important</strong>This Privacy Policy applies to all users of our Services, including visitors to our website, customers, and prospective customers. For information specific to cookies, please also review our <a href="/legal/cookie-policy">Cookie Policy</a>.</p>
+        </div>
+      </section>
+
+      <section id="information-collected">
+        <h2><span class="legal-num">02</span>Information We Collect</h2>
+        <p>We collect information in several ways depending on how you interact with our Services.</p>
+
+        <h3>Account Information</h3>
+        <p>When you create an account, request a demo, or contact us, we may collect:</p>
+        <ul>
+          <li>Full name and job title</li>
+          <li>Business email address and phone number</li>
+          <li>Company name, size, and industry</li>
+          <li>Billing and payment information (processed securely by third-party payment processors)</li>
+          <li>Login credentials (passwords are stored in hashed form only)</li>
+        </ul>
+
+        <h3>Usage Data</h3>
+        <p>When you use our Services, we automatically collect certain technical and usage information, including:</p>
+        <ul>
+          <li>IP address, browser type, operating system, and device identifiers</li>
+          <li>Pages visited, features used, and time spent on our Services</li>
+          <li>Referring URLs and search terms used to find our website</li>
+          <li>Error logs and performance data related to your use of our products</li>
+          <li>Clickstream data and navigation patterns within our applications</li>
+        </ul>
+
+        <h3>Information from Third Parties</h3>
+        <p>We may receive information about you from third-party sources, including:</p>
+        <ul>
+          <li>Business contact information from data providers and public databases</li>
+          <li>Information from marketing partners and advertising networks</li>
+          <li>Publicly available information from professional networking sites</li>
+          <li>Information from integrated third-party services you connect to your account</li>
+        </ul>
+      </section>
+
+      <section id="how-we-use">
+        <h2><span class="legal-num">03</span>How We Use Information</h2>
+        <p>We use the information we collect for the following purposes:</p>
+        <ol>
+          <li><strong>Provide and maintain our Services</strong> — To operate, deliver, and improve our software products, process transactions, and provide customer support.</li>
+          <li><strong>Personalize your experience</strong> — To tailor content, features, and recommendations based on your preferences and usage patterns.</li>
+          <li><strong>Communicate with you</strong> — To send transactional emails, service updates, security alerts, and administrative notices related to your account.</li>
+          <li><strong>Marketing and promotions</strong> — To send promotional communications about our products, services, events, and industry news, where permitted by applicable law. You may opt out at any time.</li>
+          <li><strong>Analytics and improvement</strong> — To analyze usage trends, measure the effectiveness of our Services, and conduct research and development to improve our products.</li>
+          <li><strong>Security and fraud prevention</strong> — To detect, investigate, and prevent fraudulent transactions, unauthorized access, and other illegal activities.</li>
+          <li><strong>Legal compliance</strong> — To comply with applicable laws, regulations, legal processes, or enforceable governmental requests.</li>
+          <li><strong>Business operations</strong> — To support our internal business operations, including auditing, data analysis, troubleshooting, and organizational planning.</li>
+        </ol>
+      </section>
+
+      <section id="sharing">
+        <h2><span class="legal-num">04</span>Sharing & Disclosure</h2>
+        <p>We do not sell your personal information. We may share your information in the following circumstances:</p>
+
+        <h3>Service Providers</h3>
+        <p>We engage trusted third-party companies and individuals to perform services on our behalf, such as cloud hosting, data analytics, payment processing, email delivery, and customer support. These service providers are contractually obligated to protect your information and may only use it for the specific purposes we direct.</p>
+
+        <h3>Business Transfers</h3>
+        <p>In connection with any merger, acquisition, reorganization, sale of assets, or bankruptcy, your personal information may be transferred to the acquiring entity. We will provide notice before your information becomes subject to a different privacy policy.</p>
+
+        <h3>Legal Requirements</h3>
+        <p>We may disclose your personal information if required to do so by law or in the good faith belief that such action is necessary to:</p>
+        <ul>
+          <li>Comply with a legal obligation, regulatory requirement, or valid legal process</li>
+          <li>Protect and defend the rights or property of Metegrity Inc.</li>
+          <li>Prevent or investigate possible wrongdoing in connection with the Services</li>
+          <li>Protect the personal safety of users of the Services or the public</li>
+        </ul>
+
+        <div class="legal-callout">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3M8 10.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <p><strong>No Sale of Personal Data</strong>Metegrity does not sell, rent, or trade your personal information to third parties for their marketing purposes.</p>
+        </div>
+      </section>
+
+      <section id="cookies">
+        <h2><span class="legal-num">05</span>Cookies & Tracking</h2>
+        <p>We use cookies and similar tracking technologies to collect and track information about your activity on our Services. For detailed information about the cookies we use, please refer to our <a href="/legal/cookie-policy">Cookie Policy</a>.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Purpose</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Essential</strong></td>
+              <td>Required for the website to function properly, including authentication, security, and session management.</td>
+              <td>Session to 1 year</td>
+            </tr>
+            <tr>
+              <td><strong>Analytics</strong></td>
+              <td>Help us understand how visitors interact with our website by collecting and reporting usage data anonymously.</td>
+              <td>Up to 2 years</td>
+            </tr>
+            <tr>
+              <td><strong>Marketing</strong></td>
+              <td>Used to deliver relevant advertisements and track the effectiveness of advertising campaigns across platforms.</td>
+              <td>Up to 2 years</td>
+            </tr>
+            <tr>
+              <td><strong>Preferences</strong></td>
+              <td>Allow the website to remember choices you make (such as language, region, or display settings) and provide enhanced features.</td>
+              <td>Up to 1 year</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>You can manage your cookie preferences through your browser settings or through our cookie consent banner. Please note that disabling certain cookies may affect the functionality of our Services.</p>
+      </section>
+
+      <section id="retention">
+        <h2><span class="legal-num">06</span>Data Retention</h2>
+        <p>We retain your personal information for as long as necessary to fulfill the purposes for which it was collected, including to satisfy any legal, accounting, or reporting requirements. The retention period may vary depending on the context of the processing and our legal obligations.</p>
+        <p>When determining retention periods, we consider the amount, nature, and sensitivity of the personal information, the potential risk of harm from unauthorized use or disclosure, the purposes for which we process the information, and applicable legal requirements.</p>
+        <p>When your personal information is no longer needed, we will securely delete or anonymize it. If deletion is not possible (for example, because the information has been stored in backup archives), we will securely store your information and isolate it from any further processing until deletion is possible.</p>
+      </section>
+
+      <section id="security">
+        <h2><span class="legal-num">07</span>Security</h2>
+        <p>Metegrity implements robust technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. Our security program includes:</p>
+        <ul>
+          <li>SOC 2 Type II certified infrastructure and controls</li>
+          <li>Encryption of data in transit (TLS 1.2+) and at rest (AES-256)</li>
+          <li>Regular security audits, vulnerability assessments, and penetration testing</li>
+          <li>Role-based access controls and multi-factor authentication for internal systems</li>
+          <li>Employee security awareness training and background checks</li>
+          <li>Incident response procedures and breach notification protocols</li>
+        </ul>
+        <div class="legal-callout">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3M8 10.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <p><strong>SOC 2 Compliance</strong>Metegrity maintains SOC 2 Type II certification, demonstrating our commitment to the highest standards of security, availability, processing integrity, confidentiality, and privacy.</p>
+        </div>
+        <p>While we strive to protect your personal information, no method of transmission over the Internet or method of electronic storage is completely secure. We cannot guarantee the absolute security of your information.</p>
+      </section>
+
+      <section id="rights">
+        <h2><span class="legal-num">08</span>Your Rights</h2>
+        <p>Depending on your location and applicable laws (including the GDPR, CCPA, and other data protection regulations), you may have the following rights regarding your personal information:</p>
+        <ul>
+          <li><strong>Right of Access</strong> — You have the right to request a copy of the personal information we hold about you.</li>
+          <li><strong>Right to Correction</strong> — You have the right to request that we correct any inaccurate or incomplete personal information.</li>
+          <li><strong>Right to Deletion</strong> — You have the right to request that we delete your personal information, subject to certain legal exceptions.</li>
+          <li><strong>Right to Data Portability</strong> — You have the right to receive your personal information in a structured, commonly used, and machine-readable format and to transmit it to another controller.</li>
+          <li><strong>Right to Restrict Processing</strong> — You have the right to request that we restrict the processing of your personal information in certain circumstances.</li>
+          <li><strong>Right to Object</strong> — You have the right to object to the processing of your personal information for direct marketing purposes or where we rely on legitimate interests.</li>
+          <li><strong>Right to Withdraw Consent</strong> — Where we rely on your consent to process personal information, you may withdraw your consent at any time without affecting the lawfulness of prior processing.</li>
+          <li><strong>Right to Lodge a Complaint</strong> — You have the right to lodge a complaint with a supervisory authority if you believe our processing of your personal information violates applicable law.</li>
+        </ul>
+        <p>To exercise any of these rights, please contact us at <a href="mailto:privacy@metegrity.com">privacy@metegrity.com</a>. We will respond to your request within 30 days or as required by applicable law.</p>
+      </section>
+
+      <section id="international">
+        <h2><span class="legal-num">09</span>International Transfers</h2>
+        <p>Metegrity is headquartered in Canada. Your personal information may be transferred to and processed in countries other than your country of residence, including Canada and the United States, where data protection laws may differ from those in your jurisdiction.</p>
+        <p>When we transfer personal information outside of the European Economic Area (EEA), United Kingdom, or Switzerland, we ensure that appropriate safeguards are in place, including:</p>
+        <ul>
+          <li><strong>Standard Contractual Clauses (SCCs)</strong> — We use European Commission-approved Standard Contractual Clauses to provide adequate protection for transfers of personal information.</li>
+          <li><strong>Adequacy Decisions</strong> — We may rely on adequacy decisions by the European Commission where applicable.</li>
+          <li><strong>Contractual Protections</strong> — We enter into data processing agreements with our service providers that include appropriate data protection obligations.</li>
+        </ul>
+        <p>For more information about the safeguards we have in place, please contact our Data Protection Officer at <a href="mailto:dpo@metegrity.com">dpo@metegrity.com</a>.</p>
+      </section>
+
+      <section id="children">
+        <h2><span class="legal-num">10</span>Children's Privacy</h2>
+        <p>Our Services are not directed to individuals under the age of 16. We do not knowingly collect personal information from children under 16. If we become aware that we have collected personal information from a child under 16 without verification of parental consent, we will take steps to delete that information promptly.</p>
+        <p>If you are a parent or guardian and believe that your child has provided us with personal information, please contact us at <a href="mailto:privacy@metegrity.com">privacy@metegrity.com</a> so that we can take appropriate action.</p>
+      </section>
+
+      <section id="changes">
+        <h2><span class="legal-num">11</span>Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technologies, legal requirements, or other factors. When we make material changes, we will notify you by:</p>
+        <ul>
+          <li>Posting the updated policy on our website with a revised "Last Updated" date</li>
+          <li>Sending an email notification to registered users at the email address associated with their account</li>
+          <li>Displaying a prominent notice on our website or within our Services</li>
+        </ul>
+        <p>We encourage you to review this Privacy Policy periodically to stay informed about how we protect your information. Your continued use of our Services after any changes constitutes your acceptance of the updated policy.</p>
+      </section>
+
+      <section id="contact">
+        <h2><span class="legal-num">12</span>Contact Us</h2>
+        <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+        <ul>
+          <li><strong>Privacy Inquiries:</strong> <a href="mailto:privacy@metegrity.com">privacy@metegrity.com</a></li>
+          <li><strong>Data Protection Officer:</strong> <a href="mailto:dpo@metegrity.com">dpo@metegrity.com</a></li>
+        </ul>
+        <p><strong>Metegrity Inc.</strong><br/>
+        5715-76 Avenue<br/>
+        Edmonton, AB T6B 0A7<br/>
+        Canada</p>
+        <p>We will make every effort to respond to your inquiry within 30 days.</p>
+      </section>
+
+    </LegalLayout>
+  </main>
+  <Footer />
+</Layout>
