@@ -1,5 +1,11 @@
 # Metegrity - Asset Integrity Management (AIM)
 
+<p align="left">
+  <img src="https://img.shields.io/badge/FASE-ENTRENAMIENTO_TERRESTRE-00e5ff?style=for-the-badge&color=25E8DC&labelColor=555555" alt="Fase" />
+  <img src="https://img.shields.io/badge/ESTADO-ACTIVO-9acd32?style=for-the-badge&color=8CC63F&labelColor=555555" alt="Estado" />
+  <img src="https://img.shields.io/badge/VERSI%C3%93N-0.7.0_BETA-0088cc?style=for-the-badge&color=0E86CB&labelColor=555555" alt="Versión" />
+</p>
+
 Metegrity es el líder global y el entorno más confiable en Sistemas de Gestión de Integridad de Activos (**Asset Integrity Management - AIM**) especializado para la protección de plantas e instalaciones con un uso intensivo de activos, tales como la industria Química y Petroquímica, Petróleo y Gas, Generación de Energía, y Pulpa y Papel. 
 
 **Nuestra misión principal** es mejorar la confiabilidad de las instalaciones industriales a escala mundial, reduciendo drásticamente los riesgos operativos y paradas no planificadas, todo esto mientras maximizamos el rendimiento a través de todo el ciclo de vida del activo. Implementar un software de Metegrity (como *Visions Enterprise*, *Visions RBI* y *VisionsGo*) asegura a los ingenieros de confiabilidad e inspectores que siempre contarán con datos exactos y calculados, alertas proactivas basadas en anomalías (presión, erosión, temperatura) y herramientas de gestión del riesgo avanzadas (Risk Based Inspection).
@@ -58,3 +64,33 @@ El ciclo de desarrollo está enfocado en integraciones cortas, revisiones eficie
 3. **Manejo de Estilos:** Al construir nuevas secciones se busca que los estilos se incluyan de forma localizada o de *alcance específico* dentro del mismo archivo `.astro` usando las etiquetas `<style>`. Los estilos estéticos genéricos variables se alimentan de `/src/styles/global.css`.
 4. **Despliegue y Construcción:** Usa `npm run build` en el ambiente de producción (para crear el directorio `dist/` estático de alto rendimiento listo para cualquier CDN).
 5. **Control de Versiones (Git):** El trabajo se unifica en la rama `main`. Cada nueva mejora del sistema UI (Por ej. componentes como el `Contact.astro` o flujos de innovación) se registra mediante *commits* descriptivos detallando los cambios. Todo despliegue corre acorde el manual básico de versionamiento.
+
+---
+
+## 📸 Galería del Proyecto
+
+Aquí puedes ver la interfaz, modulos y distintas vistas generadas para el frontend de Metegrity:
+
+### 1. Home
+![Home](public/Git/01Home.jpeg)
+
+### 2. Products
+![Products](public/Git/02Products.jpeg)
+
+### 3. Services
+![Services](public/Git/03Services.jpeg)
+
+### 4. Industries
+![Industries](public/Git/04Industries.jpeg)
+
+### 5. Insights
+![Insights](public/Git/05Insights.jpeg)
+
+### 6. About
+![About](public/Git/06About.jpeg)
+
+### 7. Contact
+![Contact](public/Git/07Contact.jpeg)
+
+### 8. Book a Demo
+![Book a Demo](public/Git/08Book_a_Demo.jpeg)
