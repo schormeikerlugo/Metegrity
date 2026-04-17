@@ -100,16 +100,24 @@ const stats = [
       </div>
     </section>
 
-    <FilterBar categories={categories} targetGrid=".vg-grid__list" />
-
     <!-- Videos grid -->
     <section class="vg-grid section">
       <div class="container">
+        <div class="vg-grid__header reveal">
+          <div class="section-label">All Videos</div>
+          <h2>
+            <span class="text-light">Browse our</span>
+            <span class="text-bold">video library.</span>
+          </h2>
+        </div>
+
+        <FilterBar categories={categories} targetGrid=".vg-grid__list" />
+
         <div class="vg-grid__list">
-          {videos.map((v, i) => (
-            <a href="#" class="vg-video reveal" data-tag={v.category} style={`transition-delay: ${(i % 4) * 60}ms`}>
+          {videos.map((v) => (
+            <a href="#" class="vg-video" data-tag={v.category}>
               <div class="vg-video__thumb">
-                <img src={v.image} alt={v.title} loading="lazy" />
+                <img src={v.image} alt={v.title} loading="lazy" decoding="async" />
                 <div class="vg-video__overlay"></div>
                 <button class="vg-video__play" aria-label="Play">
                   <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
@@ -297,56 +305,9 @@ const stats = [
     letter-spacing: 0.06em;
   }
 
-  /* Filters bar (reusing pattern) */
-  .filters-bar {
-    padding: var(--space-6) 0;
-    background: var(--color-bg-alt);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .filters-bar__inner {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-  }
-
-  .filters-bar__label {
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-bold);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-text-secondary);
-  }
-
-  .filters-bar__list {
-    display: flex;
-    gap: var(--space-2);
-    flex-wrap: wrap;
-  }
-
-  .filters-bar__pill {
-    padding: 6px 14px;
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-semibold);
-    color: var(--color-text-secondary);
-    background: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-pill);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    font-family: inherit;
-  }
-
-  .filters-bar__pill:hover {
-    color: var(--color-primary);
-    border-color: var(--color-primary);
-  }
-
-  .filters-bar__pill--active {
-    background: var(--color-primary);
-    color: var(--color-white);
-    border-color: var(--color-primary);
+  .vg-grid__header {
+    max-width: 640px;
+    margin-bottom: var(--space-6);
   }
 
   /* Videos grid */

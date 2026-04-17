@@ -41,8 +41,6 @@ const filters = ['All', 'Oil & Gas', 'Chemical', 'Refining', 'Energy Delivery'];
       align="center"
     />
 
-    <FilterBar categories={filters} targetGrid=".ss-grid__list" />
-
     <!-- Flagship -->
     <section class="ss-flagship section">
       <div class="container">
@@ -63,9 +61,11 @@ const filters = ['All', 'Oil & Gas', 'Chemical', 'Refining', 'Energy Delivery'];
           </h2>
         </div>
 
+        <FilterBar categories={filters} targetGrid=".ss-grid__list" />
+
         <div class="ss-grid__list">
-          {stories.map((s, i) => (
-            <div class="ss-grid__item reveal" data-tag={s.tag} style={`transition-delay: ${(i % 3) * 80}ms`}>
+          {stories.map((s) => (
+            <div class="ss-grid__item" data-tag={s.tag}>
               <ResourceCard {...s} />
             </div>
           ))}
@@ -88,57 +88,6 @@ const filters = ['All', 'Oil & Gas', 'Chemical', 'Refining', 'Energy Delivery'];
 </Layout>
 
 <style>
-  .filters-bar {
-    padding: var(--space-6) 0;
-    background: var(--color-bg-alt);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .filters-bar__inner {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-  }
-
-  .filters-bar__label {
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-bold);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-text-secondary);
-  }
-
-  .filters-bar__list {
-    display: flex;
-    gap: var(--space-2);
-    flex-wrap: wrap;
-  }
-
-  .filters-bar__pill {
-    padding: 6px 14px;
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-semibold);
-    color: var(--color-text-secondary);
-    background: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-pill);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    font-family: inherit;
-  }
-
-  .filters-bar__pill:hover {
-    color: var(--color-primary);
-    border-color: var(--color-primary);
-  }
-
-  .filters-bar__pill--active {
-    background: var(--color-primary);
-    color: var(--color-white);
-    border-color: var(--color-primary);
-  }
-
   .ss-flagship__inner :global(.rcard--featured) {
     max-width: 100%;
   }

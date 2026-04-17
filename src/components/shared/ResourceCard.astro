@@ -26,7 +26,7 @@ const {
 
 <a href={href} class={`rcard ${featured ? 'rcard--featured' : ''} ${compact ? 'rcard--compact' : ''}`}>
   <div class="rcard__image">
-    <img src={image} alt={title} loading="lazy" />
+    <img src={image} alt={title} loading="lazy" decoding="async" />
     {tag && <span class="rcard__tag">{tag}</span>}
   </div>
   <div class="rcard__content">
@@ -73,11 +73,13 @@ const {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 6s ease;
+    transition: transform 0.5s ease;
+    will-change: transform;
+    content-visibility: auto;
   }
 
   .rcard:hover .rcard__image img {
-    transform: scale(1.06);
+    transform: scale(1.04);
   }
 
   .rcard__tag {
