@@ -1,9 +1,9 @@
 # Metegrity - Asset Integrity Management (AIM)
 
 <p align="left">
-  <img src="https://img.shields.io/badge/FASE-ENTRENAMIENTO_TERRESTRE-00e5ff?style=for-the-badge&color=25E8DC&labelColor=555555" alt="Fase" />
-  <img src="https://img.shields.io/badge/ESTADO-ACTIVO-9acd32?style=for-the-badge&color=8CC63F&labelColor=555555" alt="Estado" />
-  <img src="https://img.shields.io/badge/VERSI%C3%93N-0.7.0_BETA-0088cc?style=for-the-badge&color=0E86CB&labelColor=555555" alt="Versión" />
+  <img src="https://img.shields.io/badge/INDUSTRIA-ASSET_INTEGRITY_MANAGEMENT-00e5ff?style=for-the-badge&color=25E8DC&labelColor=555555" alt="Industria" />
+  <img src="https://img.shields.io/badge/SOFTWARE-VISIONS_SUITE-9acd32?style=for-the-badge&color=8CC63F&labelColor=555555" alt="Software" />
+  <img src="https://img.shields.io/badge/ESTADO-APLICACI%C3%93N_ACTIVA-0088cc?style=for-the-badge&color=0E86CB&labelColor=555555" alt="Estado" />
 </p>
 
 Metegrity es el líder global y el entorno más confiable en Sistemas de Gestión de Integridad de Activos (**Asset Integrity Management - AIM**) especializado para la protección de plantas e instalaciones con un uso intensivo de activos, tales como la industria Química y Petroquímica, Petróleo y Gas, Generación de Energía, y Pulpa y Papel. 
