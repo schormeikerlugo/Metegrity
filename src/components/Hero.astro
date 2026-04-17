@@ -21,10 +21,7 @@
     <span class="hero__orb hero__orb--3"></span>
   </div>
 
-  <!-- Scanning line -->
-  <div class="hero__scan" aria-hidden="true"></div>
-
-  <!-- Particles -->
+<!-- Particles -->
   <div class="hero__particles" aria-hidden="true">
     <span></span><span></span><span></span><span></span>
     <span></span><span></span><span></span><span></span>
@@ -51,8 +48,8 @@
         the asset lifecycle.
       </p>
       <div class="hero__ctas hero__anim" style="--d: 480ms">
-        <a href="#contact" class="btn btn-primary">Book a Demo</a>
-        <a href="#products" class="btn btn-outline">
+        <a href="/book-a-demo" class="btn btn-primary">Book a Demo</a>
+        <a href="/products" class="btn btn-outline">
           Explore Products
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
@@ -456,22 +453,23 @@
 
   .hero__bg {
     position: absolute;
-    inset: -5%;
-    width: 110%;
-    height: 110%;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     z-index: 0;
     pointer-events: none;
+    transform: scale(1.15);
     animation: bg-drift 30s ease-in-out infinite;
     will-change: transform;
   }
 
   @keyframes bg-drift {
-    0%   { transform: scale(1.06) translate(0, 0); }
-    25%  { transform: scale(1.08) translate(-1.5%, -0.8%); }
-    50%  { transform: scale(1.05) translate(1%, -1.2%); }
-    75%  { transform: scale(1.07) translate(1.5%, 0.6%); }
-    100% { transform: scale(1.06) translate(0, 0); }
+    0%   { transform: scale(1.15) translate(0, 0); }
+    25%  { transform: scale(1.18) translate(-0.8%, -0.5%); }
+    50%  { transform: scale(1.15) translate(0.6%, -0.8%); }
+    75%  { transform: scale(1.17) translate(0.8%, 0.4%); }
+    100% { transform: scale(1.15) translate(0, 0); }
   }
 
   /* Animated grid overlay */
@@ -554,39 +552,6 @@
     25%      { transform: translate(-50px, 30px) scale(1.2); }
     50%      { transform: translate(40px, -50px) scale(0.9); }
     75%      { transform: translate(30px, 60px) scale(1.05); }
-  }
-
-  /* Horizontal scanning line */
-  .hero__scan {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    overflow: hidden;
-  }
-
-  .hero__scan::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg,
-      transparent 0%,
-      rgba(255, 107, 0, 0.4) 30%,
-      rgba(255, 107, 0, 0.7) 50%,
-      rgba(255, 107, 0, 0.4) 70%,
-      transparent 100%);
-    filter: blur(1px);
-    animation: scan-line 8s linear infinite;
-    opacity: 0.5;
-  }
-
-  @keyframes scan-line {
-    0%   { top: -5%; opacity: 0; }
-    10%  { opacity: 0.6; }
-    90%  { opacity: 0.6; }
-    100% { top: 105%; opacity: 0; }
   }
 
   /* Drifting particles */

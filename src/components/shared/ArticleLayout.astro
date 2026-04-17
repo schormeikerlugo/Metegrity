@@ -2,6 +2,13 @@
 import Navbar from '../Navbar.astro';
 import Footer from '../Footer.astro';
 
+interface RelatedItem {
+  title: string;
+  href: string;
+  image: string;
+  meta?: string;
+}
+
 interface Props {
   type: string;
   title: string;
@@ -11,9 +18,24 @@ interface Props {
   readTime?: string;
   tag?: string;
   downloadable?: boolean;
+  backHref?: string;
+  backLabel?: string;
+  related?: RelatedItem[];
 }
 
-const { type, title, description, image, date, readTime, tag, downloadable = false } = Astro.props;
+const {
+  type,
+  title,
+  description,
+  image,
+  date,
+  readTime,
+  tag,
+  downloadable = false,
+  backHref = '/insights',
+  backLabel = 'Insights',
+  related = [],
+} = Astro.props;
 ---
 
 <Navbar />
@@ -24,6 +46,15 @@ const { type, title, description, image, date, readTime, tag, downloadable = fal
       <img src="/images/backgrounds/hero.png" alt="" class="article__hero-bg" aria-hidden="true" />
       <div class="article__hero-overlay"></div>
       <div class="container article__hero-inner">
+
+        <!-- Back button -->
+        <a href={backHref} class="article__back">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M12 8H4M4 8L8 4M4 8L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Back to {backLabel}</span>
+        </a>
+
         <div class="article__hero-meta">
           <span class="article__type">{type}</span>
           {tag && <span class="article__tag">{tag}</span>}
@@ -35,7 +66,7 @@ const { type, title, description, image, date, readTime, tag, downloadable = fal
           {readTime && <><span class="article__sep">·</span><span>{readTime}</span></>}
         </div>
         {downloadable && (
-          <a href="#" class="btn btn-primary article__download" onclick="event.preventDefault(); alert('Download will be available soon.')">
+          <a href="#" class="btn btn-primary article__download" onclick="this.textContent='Coming soon...'; return false;">
             Download Free
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
               <path d="M8 2v10M4 8l4 4 4-4M3 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -62,6 +93,36 @@ const { type, title, description, image, date, readTime, tag, downloadable = fal
         </div>
       </div>
     </div>
+
+    <!-- Related content -->
+    {related.length > 0 && (
+      <section class="article__related">
+        <div class="container">
+          <div class="article__related-header">
+            <h2>More in <span class="text-primary">{backLabel}</span></h2>
+            <a href={backHref} class="article__related-all">
+              View all
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M4 8H12M12 8L8 4M12 8L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+          <div class="article__related-grid">
+            {related.map(item => (
+              <a href={item.href} class="article__related-card">
+                <div class="article__related-image">
+                  <img src={item.image} alt={item.title} loading="lazy" decoding="async" />
+                </div>
+                <div class="article__related-content">
+                  <h3>{item.title}</h3>
+                  {item.meta && <span class="article__related-meta">{item.meta}</span>}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
 
     <!-- CTA bottom -->
     <section class="article__cta">
@@ -105,7 +166,39 @@ const { type, title, description, image, date, readTime, tag, downloadable = fal
   .article__hero-inner {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Back button */
+  .article__back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4) var(--space-2) var(--space-3);
+    margin-bottom: var(--space-6);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-secondary);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    transition: all var(--transition-base);
+  }
+
+  .article__back svg {
+    transition: transform var(--transition-fast);
+  }
+
+  .article__back:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    background: rgba(255, 107, 0, 0.04);
+    transform: translateX(-4px);
+  }
+
+  .article__back:hover svg {
+    transform: translateX(-3px);
   }
 
   .article__hero-meta {
@@ -194,11 +287,12 @@ const { type, title, description, image, date, readTime, tag, downloadable = fal
   }
 
   .article__content {
-    max-width: 760px;
+    max-width: 900px;
     margin: 0 auto;
     font-size: var(--font-size-md);
     line-height: 1.8;
     color: var(--color-text-secondary);
+    text-align: justify;
   }
 
   .article__content :global(h2) {
@@ -207,6 +301,7 @@ const { type, title, description, image, date, readTime, tag, downloadable = fal
     color: var(--color-dark);
     margin: var(--space-10) 0 var(--space-5);
     letter-spacing: -0.01em;
+    text-align: left;
   }
 
   .article__content :global(h3) {
@@ -214,6 +309,7 @@ const { type, title, description, image, date, readTime, tag, downloadable = fal
     font-weight: var(--font-bold);
     color: var(--color-dark);
     margin: var(--space-8) 0 var(--space-3);
+    text-align: left;
   }
 
   .article__content :global(p) {
@@ -242,6 +338,12 @@ const { type, title, description, image, date, readTime, tag, downloadable = fal
     text-underline-offset: 3px;
   }
 
+  .article__content :global(ul),
+  .article__content :global(ol),
+  .article__content :global(blockquote) {
+    text-align: left;
+  }
+
   .article__content :global(blockquote) {
     padding: var(--space-5) var(--space-6);
     margin: var(--space-6) 0;
@@ -252,6 +354,98 @@ const { type, title, description, image, date, readTime, tag, downloadable = fal
     color: var(--color-dark);
   }
 
+  /* Related content */
+  .article__related {
+    padding: var(--space-16) 0;
+    background: var(--color-bg-alt);
+  }
+
+  .article__related-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-8);
+  }
+
+  .article__related-header h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+  }
+
+  .article__related-all {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+    transition: gap var(--transition-fast);
+  }
+
+  .article__related-all:hover {
+    gap: var(--space-3);
+  }
+
+  .article__related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+  }
+
+  .article__related-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-base);
+  }
+
+  .article__related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+    border-color: rgba(255, 107, 0, 0.25);
+  }
+
+  .article__related-image {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+
+  .article__related-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .article__related-card:hover .article__related-image img {
+    transform: scale(1.04);
+  }
+
+  .article__related-content {
+    padding: var(--space-5);
+  }
+
+  .article__related-content h3 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-bold);
+    color: var(--color-dark);
+    line-height: 1.35;
+    margin-bottom: var(--space-2);
+  }
+
+  .article__related-meta {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    font-weight: var(--font-medium);
+  }
+
+  /* CTA */
   .article__cta {
     padding: var(--space-20) 0;
     background: var(--color-dark);
@@ -286,8 +480,18 @@ const { type, title, description, image, date, readTime, tag, downloadable = fal
     border-color: rgba(255,255,255,0.25);
   }
 
+  @media (max-width: 900px) {
+    .article__related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   @media (max-width: 768px) {
     .article__title { font-size: var(--font-size-3xl); }
-    .article__hero-inner, .article__content { text-align: left; }
+    .article__related-header {
+      flex-direction: column;
+      gap: var(--space-3);
+      align-items: flex-start;
+    }
   }
 </style>

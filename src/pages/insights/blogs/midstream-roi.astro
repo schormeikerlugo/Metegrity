@@ -13,6 +13,13 @@ import ArticleLayout from '../../../components/shared/ArticleLayout.astro';
     date="Mar 2024"
     readTime="6 min read"
     tag="Pipeline"
+    backHref="/insights/blogs"
+    backLabel="Blog"
+    related={[
+      { title: 'The Necessity of AIM for the Petrochemical Sector', href: '/insights/blogs/petrochemical-aim', image: '/images/photos/blog-petrochemical.jpg', meta: 'Mar 2024 · 6 min' },
+      { title: 'Integrity Operating Windows Reduce Inspection Frequency', href: '/insights/blogs/iow-inspection', image: '/images/photos/blog-iow.jpg', meta: 'Mar 2024 · 5 min' },
+      { title: 'Improving Asset Performance: Reliability Engineering Techniques', href: '/insights/blogs/reliability-engineering', image: '/images/photos/blog-reliability.jpg', meta: 'Oct 2023 · 7 min' },
+    ]}
   >
     <h2>The Midstream Data Challenge</h2>
     <p>Midstream operators manage vast networks of pipelines, compressor stations, and storage facilities spread across wide geographies. Integrity data for these assets is often scattered across multiple systems: inline inspection vendors provide reports in proprietary formats, field technicians use separate apps for external corrosion surveys, and engineering teams maintain their own analysis spreadsheets.</p>

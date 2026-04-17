@@ -13,6 +13,13 @@ import ArticleLayout from '../../../components/shared/ArticleLayout.astro';
     date="Oct 2023"
     readTime="6 min read"
     tag="Integration"
+    backHref="/insights/blogs"
+    backLabel="Blog"
+    related={[
+      { title: 'AIM Technology That Solves Real Business Problems', href: '/insights/blogs/aim-technology', image: '/images/photos/blog-data.jpg', meta: 'Mar 2024 · 6 min' },
+      { title: 'Improving Asset Performance: Reliability Engineering Techniques', href: '/insights/blogs/reliability-engineering', image: '/images/photos/blog-reliability.jpg', meta: 'Oct 2023 · 7 min' },
+      { title: 'Coupling AIM with Process Safety Management', href: '/insights/blogs/aim-psm', image: '/images/photos/blog-psm.jpg', meta: 'Oct 2023 · 6 min' },
+    ]}
   >
     <h2>Why Integration Matters</h2>
     <p>Inspection software and computerized maintenance management systems serve different but complementary functions. The CMMS manages work orders, schedules preventive maintenance, and tracks spare parts. The AIM platform manages inspection data, calculates corrosion rates, performs RBI assessments, and tracks equipment condition. When these systems operate in isolation, critical information gaps emerge.</p>

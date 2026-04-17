@@ -13,6 +13,13 @@ import ArticleLayout from '../../../components/shared/ArticleLayout.astro';
     readTime="15 min read"
     tag="Solutions"
     downloadable={true}
+    backHref="/insights/ebooks"
+    backLabel="eBooks"
+    related={[
+      { title: "Buyer's Guide For Asset Integrity Management Solutions", href: '/insights/ebooks/buyers-guide', image: '/images/photos/eb-buyers.jpg', meta: 'PDF · Free Download' },
+      { title: '8 Ways to Drive ROI with Risk Based Inspection', href: '/insights/ebooks/rbi-roi', image: '/images/photos/eb-roi.jpg', meta: 'PDF · Free Download' },
+      { title: 'Chemical Manufacturing Survey Results for AIM', href: '/insights/ebooks/chemical-survey', image: '/images/photos/eb-survey.jpg', meta: 'PDF · Free Download' },
+    ]}
   >
     <h2>Challenge 1: Data Fragmentation and Inaccessibility</h2>
     <p>The most common challenge facing integrity managers today is data fragmentation. Inspection records are scattered across spreadsheets, paper files, vendor databases, and legacy systems. When a critical decision needs to be made, engineers spend hours or days locating and consolidating the relevant information. In time-sensitive situations such as turnaround scope finalization or incident response, this delay can have serious consequences.</p>
