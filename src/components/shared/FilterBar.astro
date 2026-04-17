@@ -1,0 +1,121 @@
+---
+interface Props {
+  categories: string[];
+  targetGrid: string;
+}
+
+const { categories, targetGrid } = Astro.props;
+---
+
+<section class="filters-bar" data-filter-target={targetGrid}>
+  <div class="container">
+    <div class="filters-bar__inner">
+      <span class="filters-bar__label">Filter by</span>
+      <div class="filters-bar__list">
+        {categories.map((c, i) => (
+          <button
+            class={`filters-bar__pill ${i === 0 ? 'filters-bar__pill--active' : ''}`}
+            data-filter={c}
+          >
+            {c}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .filters-bar {
+    padding: var(--space-6) 0;
+    background: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .filters-bar__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .filters-bar__label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary);
+  }
+
+  .filters-bar__list {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .filters-bar__pill {
+    padding: 6px 14px;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-secondary);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: inherit;
+  }
+
+  .filters-bar__pill:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .filters-bar__pill--active {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLElement>('.filters-bar').forEach(bar => {
+      const targetSelector = bar.dataset.filterTarget;
+      if (!targetSelector) return;
+      const grid = document.querySelector(targetSelector);
+      if (!grid) return;
+
+      const pills = bar.querySelectorAll<HTMLButtonElement>('[data-filter]');
+      const items = grid.querySelectorAll<HTMLElement>('[data-tag]');
+
+      pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          const filter = pill.dataset.filter || 'All';
+
+          // Update active pill
+          pills.forEach(p => p.classList.remove('filters-bar__pill--active'));
+          pill.classList.add('filters-bar__pill--active');
+
+          // Filter items
+          items.forEach(item => {
+            const tag = item.dataset.tag || '';
+            if (filter === 'All' || tag === filter) {
+              item.style.display = '';
+              item.style.animation = 'filter-in 0.35s ease forwards';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  });
+</script>
+
+<style is:global>
+  @keyframes filter-in {
+    from { opacity: 0; transform: scale(0.96) translateY(8px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+</style>

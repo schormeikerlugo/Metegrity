@@ -1,0 +1,34 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import '../../../styles/global.css';
+import ArticleLayout from '../../../components/shared/ArticleLayout.astro';
+---
+
+<Layout title="Top Business Challenges Solved: Visions Enterprise | Metegrity" description="Discover how Visions Enterprise addresses the most pressing business challenges in asset integrity management across the process industry.">
+  <ArticleLayout
+    type="ebook"
+    title="Top Business Challenges Solved: Visions Enterprise"
+    description="Discover how Visions Enterprise addresses the most pressing business challenges in asset integrity management across the process industry."
+    image="/images/photos/eb-challenges.jpg"
+    readTime="15 min read"
+    tag="Solutions"
+    downloadable={true}
+  >
+    <h2>Challenge 1: Data Fragmentation and Inaccessibility</h2>
+    <p>The most common challenge facing integrity managers today is data fragmentation. Inspection records are scattered across spreadsheets, paper files, vendor databases, and legacy systems. When a critical decision needs to be made, engineers spend hours or days locating and consolidating the relevant information. In time-sensitive situations such as turnaround scope finalization or incident response, this delay can have serious consequences.</p>
+    <p><strong>Visions Enterprise</strong> solves this by providing a single, unified platform for all integrity data. Equipment hierarchies, inspection records, thickness measurements, RBI assessments, and fitness-for-service evaluations all reside in one environment. Role-based access ensures that each user sees the data relevant to their responsibilities, presented in a format that supports their decision-making needs.</p>
+
+    <h2>Challenge 2: Inspection Program Inefficiency</h2>
+    <p>Without risk-based prioritization, inspection programs inevitably over-inspect low-risk equipment while under-inspecting high-risk items. This misallocation wastes resources and, more importantly, leaves the organization exposed to risks that are not being adequately monitored.</p>
+    <p>Visions Enterprise includes a fully integrated RBI module aligned with API 580/581 methodology. The platform calculates risk for each equipment item based on current condition data, process parameters, and consequence factors. The resulting risk rankings drive inspection planning, ensuring that resources are directed where they deliver the greatest risk reduction per dollar spent.</p>
+    <p>Organizations implementing RBI through Visions Enterprise commonly report 25-40% reductions in overall inspection costs while simultaneously improving their risk management posture.</p>
+
+    <h2>Challenge 3: Regulatory Compliance Burden</h2>
+    <p>Demonstrating compliance with regulatory requirements such as OSHA PSM, EPA RMP, API standards, and jurisdiction-specific codes requires comprehensive, well-organized records. Manual compliance tracking is labor-intensive and error-prone, and gaps in documentation create audit exposure.</p>
+    <p>Visions Enterprise automates compliance tracking and reporting. The platform monitors inspection due dates, flags overdue items, and generates audit-ready reports on demand. Compliance dashboards provide real-time visibility into program status, enabling proactive management rather than last-minute scrambles before audits.</p>
+
+    <h2>Challenge 4: Turnaround Planning Complexity</h2>
+    <p>Turnarounds represent the largest single expenditure in many facilities' annual budgets. Scope development for the integrity work component depends on accurate, current equipment condition data and risk assessments. When this information is incomplete or outdated, turnaround scopes tend to be conservative, increasing duration and cost.</p>
+    <p>By maintaining current, comprehensive integrity data, Visions Enterprise enables precise turnaround scope development. Inspection and repair priorities are clearly ranked by risk, enabling scope optimization that reduces turnaround duration without increasing risk. Post-turnaround data is captured directly into the system, immediately updating condition assessments and risk models for the next planning cycle.</p>
+  </ArticleLayout>
+</Layout>

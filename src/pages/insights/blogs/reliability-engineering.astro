@@ -1,0 +1,39 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import '../../../styles/global.css';
+import ArticleLayout from '../../../components/shared/ArticleLayout.astro';
+---
+
+<Layout title="Improving Asset Performance: Reliability Engineering Techniques | Metegrity" description="Explore how reliability engineering techniques complement asset integrity management to maximize equipment uptime and reduce total cost of ownership.">
+  <ArticleLayout
+    type="blog"
+    title="Improving Asset Performance: Reliability Engineering Techniques"
+    description="Explore how reliability engineering techniques complement asset integrity management to maximize equipment uptime and reduce total cost of ownership."
+    image="/images/photos/blog-reliability.jpg"
+    date="Oct 2023"
+    readTime="7 min read"
+    tag="Integration"
+  >
+    <h2>Reliability and Integrity: Complementary Disciplines</h2>
+    <p>Reliability engineering and asset integrity management address different aspects of equipment performance, but their integration creates a more complete picture than either discipline achieves alone. While AIM focuses on detecting and managing degradation to prevent failures, reliability engineering analyzes failure patterns, optimizes maintenance strategies, and predicts equipment performance over its lifecycle.</p>
+    <p>Combining these perspectives enables organizations to make better decisions about when to inspect, when to repair, when to replace, and how to operate equipment to maximize its productive life.</p>
+
+    <h2>Key Reliability Techniques for Integrity Professionals</h2>
+    <p>Several reliability engineering techniques are particularly valuable when integrated with asset integrity management:</p>
+    <ul>
+      <li><strong>Failure mode and effects analysis (FMEA):</strong> Systematically identifies how equipment can fail and the consequences of each failure mode. This analysis directly supports damage mechanism identification in RBI programs.</li>
+      <li><strong>Weibull analysis:</strong> Models failure probability distributions to predict equipment end-of-life and optimize replacement timing. When combined with AIM corrosion rate data, Weibull models become far more accurate.</li>
+      <li><strong>Reliability-centered maintenance (RCM):</strong> Determines the most effective maintenance strategy for each failure mode, whether it is condition monitoring, time-based replacement, or run-to-failure. AIM data on equipment condition is essential input to RCM analysis.</li>
+      <li><strong>Root cause analysis (RCA):</strong> Investigates the underlying causes of failures to prevent recurrence. AIM systems like <strong>Visions Enterprise</strong> provide the historical inspection and condition data that RCA teams need to identify patterns and contributing factors.</li>
+    </ul>
+
+    <h2>Data-Driven Decision Making</h2>
+    <p>The integration of reliability and integrity data enables truly data-driven asset management decisions. For example, combining corrosion rate trends with reliability models can predict not just when a component will reach minimum thickness, but the probability distribution around that prediction, enabling more nuanced risk-based decisions about inspection timing and replacement planning.</p>
+    <p>Similarly, reliability data on failure rates for specific equipment types can inform consequence assessments in RBI programs. If a particular valve type has a documented history of seat leakage, that information should factor into the consequence of failure assessment for all valves of that type in the system.</p>
+
+    <h2>Creating an Integrated Asset Performance Framework</h2>
+    <p>Organizations seeking to integrate reliability and integrity should start by establishing common data standards and shared access to equipment performance data. Reliability engineers need access to inspection results and condition assessments. Integrity engineers need access to failure history and maintenance records.</p>
+    <p>Modern platforms support this integration through unified databases, configurable dashboards, and automated data exchange with maintenance and operations systems. The result is a comprehensive asset performance management framework that optimizes equipment lifecycle costs while maintaining safety and regulatory compliance.</p>
+    <p>Facilities that have successfully integrated these disciplines report measurable improvements in equipment availability, reduced maintenance costs, and fewer unexpected failures that disrupt operations and endanger personnel.</p>
+  </ArticleLayout>
+</Layout>

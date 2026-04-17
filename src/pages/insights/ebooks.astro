@@ -8,54 +8,44 @@ import CTASection from '../../components/shared/CTASection.astro';
 
 const ebooks = [
   {
-    title: 'The Ultimate Guide to Asset Integrity Management',
-    description: 'A 120-page foundation text covering RBI, corrosion management, inspection planning, PSM compliance, and digital transformation. The most comprehensive AIM guide published.',
-    pages: '120',
+    title: 'Buyer\'s Guide For Asset Integrity Management Solutions',
+    description: 'The essential guide for chemical plants, refineries, and upstream operators evaluating AIM software. Covers legacy system challenges, RBI capabilities, PSM compliance requirements, and what to look for in a modern integrity platform.',
+    pages: '48',
     rating: '4.9',
-    downloads: '8.5K',
-    image: '/images/photos/whitepaper.jpg',
-    tag: 'Bestseller',
+    downloads: '5.2K',
+    image: '/images/photos/eb-buyers.jpg',
+    tag: 'Most Popular',
     featured: true,
+    slug: 'buyers-guide',
   },
   {
-    title: 'Risk-Based Inspection from Theory to Practice',
-    description: 'Step-by-step implementation guide for RBI programs. Covers qualitative, semi-quantitative, and fully quantitative methodologies with real-world examples.',
-    pages: '84', rating: '4.8', downloads: '5.2K',
-    image: '/images/photos/research.jpg',
+    title: 'Top Business Challenges Solved with Visions Enterprise',
+    description: 'How Metegrity\'s Visions Enterprise platform addresses the most common operational challenges faced by integrity teams — from data silos to regulatory compliance gaps.',
+    pages: '36', rating: '4.8', downloads: '3.1K',
+    image: '/images/photos/eb-challenges.jpg',
+    tag: 'Solutions',
+    slug: 'business-challenges',
+  },
+  {
+    title: '8 Ways to Drive ROI with Risk Based Inspection',
+    description: 'A practical guide to maximizing return on investment through effective RBI implementation, covering inspection optimization, cost reduction, and risk prioritization strategies.',
+    pages: '28', rating: '4.7', downloads: '2.8K',
+    image: '/images/photos/eb-roi.jpg',
     tag: 'RBI',
+    slug: 'rbi-roi',
   },
   {
-    title: 'Corrosion Management Handbook',
-    description: 'Damage mechanisms, monitoring strategies, and mitigation techniques across oil & gas, chemical, and power industries.',
-    pages: '96', rating: '4.7', downloads: '4.1K',
-    image: '/images/photos/corrosion.jpg',
-    tag: 'Corrosion',
-  },
-  {
-    title: 'PSM Mechanical Integrity Playbook',
-    description: 'How to build and maintain an audit-ready mechanical integrity program that stands up to OSHA PSM scrutiny.',
-    pages: '72', rating: '4.8', downloads: '3.8K',
-    image: '/images/photos/chem-plant.jpg',
-    tag: 'PSM',
-  },
-  {
-    title: 'Digital Transformation in AIM',
-    description: 'From legacy spreadsheets to modern integrity platforms — a practical transformation roadmap.',
-    pages: '68', rating: '4.6', downloads: '3.2K',
-    image: '/images/photos/data-analysis.jpg',
-    tag: 'Digital',
-  },
-  {
-    title: 'Offshore Integrity in Harsh Environments',
-    description: 'Lessons from 30+ years of deepwater and Arctic operations. Includes FPSO, platform, and subsea integrity best practices.',
-    pages: '88', rating: '4.9', downloads: '2.9K',
-    image: '/images/photos/success-story.jpg',
-    tag: 'Offshore',
+    title: 'Chemical Manufacturing Survey Results for Asset Integrity Management',
+    description: 'Industry survey findings from chemical manufacturing facilities on their current AIM practices, challenges, technology adoption, and future investment priorities.',
+    pages: '32', rating: '4.6', downloads: '1.9K',
+    image: '/images/photos/eb-survey.jpg',
+    tag: 'Research',
+    slug: 'chemical-survey',
   },
 ];
 ---
 
-<Layout title="eBooks | Metegrity" description="Comprehensive guides for integrity professionals — 120+ pages of expertise, free to download.">
+<Layout title="eBooks | Metegrity" description="Comprehensive guides for integrity professionals — free to download.">
   <Navbar />
   <main>
     <PageHero
@@ -69,9 +59,9 @@ const ebooks = [
     <!-- Stats -->
     <section class="eb-stats">
       <div class="container eb-stats__inner">
-        <div class="eb-stats__item"><span>10+</span><label>eBooks Published</label></div>
-        <div class="eb-stats__item"><span>700+</span><label>Pages of Content</label></div>
-        <div class="eb-stats__item"><span>28K+</span><label>Total Downloads</label></div>
+        <div class="eb-stats__item"><span>4</span><label>eBooks Published</label></div>
+        <div class="eb-stats__item"><span>200+</span><label>Pages of Content</label></div>
+        <div class="eb-stats__item"><span>10K+</span><label>Total Downloads</label></div>
         <div class="eb-stats__item"><span>4.8/5</span><label>Average Rating</label></div>
       </div>
     </section>
@@ -94,7 +84,7 @@ const ebooks = [
             <div class="eb-feature__meta">
               <div>
                 <span class="eb-feature__meta-val">{ebooks[0].rating}</span>
-                <span class="eb-feature__meta-lbl">★ Rating</span>
+                <span class="eb-feature__meta-lbl">Rating</span>
               </div>
               <div>
                 <span class="eb-feature__meta-val">{ebooks[0].downloads}</span>
@@ -106,8 +96,8 @@ const ebooks = [
               </div>
             </div>
             <div class="eb-feature__cta">
-              <a href="#" class="btn btn-primary">Download Free</a>
-              <a href="#" class="btn btn-outline">Read Sample</a>
+              <a href={`/insights/ebooks/${ebooks[0].slug}`} class="btn btn-primary">Download Free</a>
+              <a href={`/insights/ebooks/${ebooks[0].slug}`} class="btn btn-outline">Read Sample</a>
             </div>
           </div>
         </article>
@@ -127,7 +117,7 @@ const ebooks = [
 
         <div class="eb-library__grid">
           {ebooks.slice(1).map((b, i) => (
-            <a href="#" class="eb-card reveal" style={`transition-delay: ${(i % 3) * 80}ms`}>
+            <a href={`/insights/ebooks/${b.slug}`} class="eb-card reveal" style={`transition-delay: ${(i % 3) * 80}ms`}>
               <div class="eb-card__cover">
                 <img src={b.image} alt={b.title} loading="lazy" />
                 <span class="eb-card__tag">{b.tag}</span>
@@ -138,7 +128,7 @@ const ebooks = [
                 <div class="eb-card__meta">
                   <span>{b.pages} pages</span>
                   <span class="eb-card__sep">·</span>
-                  <span>★ {b.rating}</span>
+                  <span>{b.rating} rating</span>
                   <span class="eb-card__sep">·</span>
                   <span>{b.downloads} downloads</span>
                 </div>

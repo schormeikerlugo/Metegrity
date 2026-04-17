@@ -1,0 +1,39 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import '../../../styles/global.css';
+import ArticleLayout from '../../../components/shared/ArticleLayout.astro';
+---
+
+<Layout title="Coupling AIM with Process Safety Management | Metegrity" description="Discover how integrating asset integrity management with process safety management creates a stronger, more resilient safety framework.">
+  <ArticleLayout
+    type="blog"
+    title="Coupling AIM with Process Safety Management"
+    description="Discover how integrating asset integrity management with process safety management creates a stronger, more resilient safety framework."
+    image="/images/photos/blog-psm.jpg"
+    date="Oct 2023"
+    readTime="6 min read"
+    tag="PSM"
+  >
+    <h2>Two Disciplines, One Objective</h2>
+    <p>Asset integrity management and process safety management share a common goal: preventing catastrophic failures that endanger people, the environment, and business continuity. Yet in many organizations, these disciplines operate in separate departments with separate systems, separate metrics, and limited communication between them.</p>
+    <p>This separation creates blind spots. A process safety review might evaluate the consequence of a vessel failure without current data on the vessel's actual condition. An integrity assessment might calculate remaining life without accounting for process upsets that have accelerated degradation. Coupling AIM and PSM eliminates these blind spots by ensuring that both disciplines work from a common, current understanding of equipment condition and risk.</p>
+
+    <h2>Where AIM and PSM Intersect</h2>
+    <p>Several PSM elements have direct connections to asset integrity management:</p>
+    <ul>
+      <li><strong>Mechanical integrity:</strong> This is the most obvious intersection. MI programs depend on inspection data, corrosion rate calculations, and fitness-for-service evaluations that AIM systems provide.</li>
+      <li><strong>Management of change:</strong> Any process or equipment change that affects integrity operating windows, damage mechanisms, or equipment condition should trigger updates in the AIM system.</li>
+      <li><strong>Process hazard analysis:</strong> PHA teams need accurate equipment condition data to assess the likelihood of failure scenarios. AIM systems provide this data.</li>
+      <li><strong>Incident investigation:</strong> When equipment failures occur, AIM data provides the historical context needed to identify root causes and prevent recurrence.</li>
+      <li><strong>Pre-startup safety review:</strong> After turnarounds, PSSRs must verify that all integrity work was completed satisfactorily before operations resume.</li>
+    </ul>
+
+    <h2>Building the Connection</h2>
+    <p>Coupling AIM and PSM requires both organizational and technological changes. On the organizational side, integrity engineers should participate in PHA teams, MOC reviews, and incident investigations. Process safety professionals should have visibility into equipment risk rankings and condition trends. Cross-training between disciplines builds mutual understanding and improves collaboration.</p>
+    <p>On the technology side, <strong>Visions Enterprise</strong> supports this integration by providing process safety teams with access to current equipment condition data, risk assessments, and inspection histories. Automated alerts can notify PSM coordinators when equipment risk levels change or when integrity operating windows are exceeded.</p>
+
+    <h2>The Payoff of Integration</h2>
+    <p>Organizations that successfully couple AIM and PSM report stronger performance across both disciplines. Process safety incidents decrease because hazard analyses are informed by actual equipment condition data. Integrity programs improve because they account for process safety considerations in their risk models. Regulatory audits go more smoothly because the connection between safety systems and mechanical integrity is clearly documented and demonstrable.</p>
+    <p>The investment in coupling these disciplines is modest compared to the cost of a single process safety incident that might have been prevented by better information sharing.</p>
+  </ArticleLayout>
+</Layout>

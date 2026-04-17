@@ -1,0 +1,35 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import '../../../styles/global.css';
+import ArticleLayout from '../../../components/shared/ArticleLayout.astro';
+---
+
+<Layout title="The Hidden Circuit Risk: When Digital and Physical Diverge | Metegrity" description="Discover how discrepancies between digital records and physical piping circuits create hidden integrity risks and how to close the gap.">
+  <ArticleLayout
+    type="blog"
+    title="The Hidden Circuit Risk: When Digital and Physical Diverge"
+    description="Discover how discrepancies between digital records and physical piping circuits create hidden integrity risks and how to close the gap."
+    image="/images/photos/blog-circuit.jpg"
+    date="Feb 2026"
+    readTime="7 min read"
+    tag="Corrosion"
+  >
+    <h2>The Divergence Problem</h2>
+    <p>Every operating facility undergoes modifications over its lifetime. Piping reroutes, equipment replacements, and process changes accumulate year after year. When these physical changes are not accurately reflected in the digital asset register, a dangerous gap emerges between what the integrity management system believes exists and what actually operates in the field.</p>
+    <p>This divergence is more common than most operators realize. A recent industry survey found that over 30% of facilities had significant discrepancies between their piping and instrumentation diagrams (P&IDs) and the as-built condition. These discrepancies mean that corrosion circuits may be incorrectly defined, inspection points may be missing, and risk calculations may be based on inaccurate assumptions.</p>
+    <p>The consequences can be severe. A circuit that appears low-risk in the digital model may in reality be operating under conditions that promote accelerated corrosion, stress corrosion cracking, or other damage mechanisms that go unmonitored.</p>
+
+    <h2>Root Causes of Digital-Physical Divergence</h2>
+    <p>Several factors contribute to this problem. Management of change (MOC) processes may be in place but inconsistently followed. Field modifications made during turnarounds or emergency repairs are particularly prone to being undocumented. When multiple contractors perform work simultaneously, the risk of undocumented changes multiplies.</p>
+    <p>Legacy data migration is another common source of divergence. When organizations transition from paper-based or spreadsheet-based systems to modern AIM platforms like <strong>Visions Enterprise</strong>, inaccuracies in the source data are carried forward unless a thorough verification exercise is conducted.</p>
+    <p>Even well-maintained systems can drift over time if there is no periodic reconciliation process that compares the digital model against field conditions.</p>
+
+    <h2>Strategies for Closing the Gap</h2>
+    <p>Addressing digital-physical divergence requires a systematic approach. Field verification campaigns, where inspectors physically walk down circuits and compare them to the digital record, are essential. These campaigns should be prioritized based on risk, focusing first on circuits in high-consequence services such as hydrofluoric acid, hydrogen, and high-temperature hydrogen sulfide.</p>
+    <p>Integrating <strong>corrosion management</strong> data with process safety management systems ensures that any change triggering an MOC review also triggers an update to the asset integrity database. This linkage prevents the two systems from drifting apart after each modification.</p>
+
+    <h2>Sustaining Alignment Over Time</h2>
+    <p>Technology plays a key role in maintaining alignment. Mobile inspection tools that capture GPS coordinates and photographs alongside thickness measurements help verify that readings are being taken at the correct locations. Digital twins and 3D models provide an intuitive reference that makes discrepancies easier to spot.</p>
+    <p>Ultimately, closing the gap between digital records and physical reality is not a one-time project but an ongoing discipline. Organizations that embed this reconciliation into their routine integrity workflows will uncover hidden risks before they manifest as leaks, failures, or regulatory findings.</p>
+  </ArticleLayout>
+</Layout>

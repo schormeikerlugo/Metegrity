@@ -43,40 +43,32 @@ const upcomingEvents = [
 
 const news = [
   {
-    date: 'Dec 18, 2026',
-    category: 'Product Update',
-    title: 'Metegrity announces API 581 Third Edition compliance in Visions RBI',
-    description: 'New methodology fully supported with automated migration from previous editions. Customers can update with no service interruption.',
+    date: 'Mar 6, 2024',
+    category: 'News',
+    title: 'Metegrity Participates in Inaugural AI Symposium at University of Houston',
+    description: 'Metegrity joins industry leaders and academics at the University of Houston\'s first AI Symposium, exploring the intersection of artificial intelligence and asset integrity management.',
+    image: '/images/photos/news-ai.jpg',
   },
   {
-    date: 'Dec 10, 2026',
+    date: 'Jan 17, 2024',
     category: 'Company',
-    title: 'Metegrity expands Wroclaw office — 40 new engineering roles',
-    description: 'European engineering hub doubles in size to serve growing EMEA client base. Recruiting active across software, integrity, and customer success roles.',
+    title: 'Navigating Industry Dynamics: Metegrity\'s Strategic Leadership Insights',
+    description: 'Metegrity\'s leadership team shares strategic insights on navigating evolving industry dynamics, digital transformation, and the future of asset integrity management.',
+    image: '/images/photos/news-leadership.jpg',
   },
   {
-    date: 'Nov 28, 2026',
-    category: 'Partnership',
-    title: 'Strategic partnership announced with Lloyd\'s Register',
-    description: 'Renewed partnership brings combined expertise to offshore and FPSO integrity management. Joint go-to-market launches in Q1 2027.',
+    date: 'Jan 14, 2024',
+    category: 'Event',
+    title: 'Join Metegrity at the 2024 Inspection And Mechanical Integrity Summit',
+    description: 'Metegrity will be exhibiting and presenting at the 2024 Inspection and Mechanical Integrity Summit, showcasing the latest advances in Visions Enterprise and VISIONSGO.',
+    image: '/images/photos/news-summit.jpg',
   },
   {
-    date: 'Nov 15, 2026',
-    category: 'Industry',
-    title: 'Metegrity named Leader in Gartner AIM Report 2026',
-    description: 'Independent analyst firm ranks Metegrity as overall Leader for the 5th consecutive year. Full report available to qualified readers.',
-  },
-  {
-    date: 'Oct 30, 2026',
-    category: 'Product Update',
-    title: 'VISIONSGO 4.0 released with enhanced offline-first architecture',
-    description: 'New mobile release includes improved sync performance, AR-assisted inspection, and multi-language support for 12 languages.',
-  },
-  {
-    date: 'Oct 12, 2026',
-    category: 'Customer',
-    title: 'Saudi Aramco expands Metegrity deployment to 85 facilities',
-    description: 'Multi-year agreement extends Visions Enterprise across upstream and downstream operations in the Kingdom.',
+    date: 'Nov 15, 2023',
+    category: 'News',
+    title: 'Metegrity at ADIPEC 2023',
+    description: 'Metegrity exhibited at ADIPEC 2023 in Abu Dhabi, connecting with oil and gas professionals from across the Middle East and North Africa region to discuss asset integrity solutions.',
+    image: '/images/photos/news-adipec.jpg',
   },
 ];
 ---
@@ -146,6 +138,9 @@ const news = [
         <div class="ne-news__list">
           {news.map((n, i) => (
             <a href="#" class="ne-news-item reveal" style={`transition-delay: ${i * 60}ms`}>
+              <div class="ne-news-item__image">
+                <img src={n.image} alt={n.title} loading="lazy" />
+              </div>
               <div class="ne-news-item__meta">
                 <span class="ne-news-item__date">{n.date}</span>
                 <span class="ne-news-item__cat">{n.category}</span>
@@ -310,6 +305,24 @@ const news = [
     transform: translateY(-4px);
     border-color: rgba(255, 107, 0, 0.25);
     box-shadow: 0 16px 32px rgba(0,0,0,0.06);
+  }
+
+  .ne-news-item__image {
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: var(--space-2);
+  }
+
+  .ne-news-item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .ne-news-item:hover .ne-news-item__image img {
+    transform: scale(1.04);
   }
 
   .ne-news-item__meta {

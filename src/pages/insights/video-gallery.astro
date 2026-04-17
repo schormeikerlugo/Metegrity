@@ -5,37 +5,34 @@ import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import PageHero from '../../components/shared/PageHero.astro';
 import CTASection from '../../components/shared/CTASection.astro';
+import FilterBar from '../../components/shared/FilterBar.astro';
 
 const featured = {
-  title: 'Visions Enterprise — Platform Walkthrough',
-  description: 'A comprehensive 15-minute tour of the Visions Enterprise platform. See dashboards, RBI workflows, inspection management, and reporting in action.',
-  image: '/images/photos/control-room.jpg',
-  duration: '15:42',
-  category: 'Product Demo',
-  views: '12.4K',
+  title: 'Comprehensive Asset Integrity Management Solution',
+  description: 'See how Metegrity\'s Visions Enterprise platform delivers a comprehensive asset integrity management solution — from inspection data collection with VISIONSGO to risk-based inspection analysis and enterprise-wide reporting.',
+  image: '/images/photos/cs-agbami.jpg',
+  duration: '12:30',
+  category: 'Product Overview',
+  views: '14.2K',
 };
 
-const categories = ['All', 'Product Demos', 'Webinars', 'Customer Stories', 'Training', 'Industry Talks'];
+const categories = ['All', 'Product Demos', 'Product Features', 'Training', 'Product Solutions'];
 
 const videos = [
-  { title: 'VISIONSGO — Field Inspection Mobile App', image: '/images/photos/engineer-field.jpg', duration: '8:32', category: 'Product Demo', views: '8.1K' },
-  { title: 'Introduction to Risk-Based Inspection', image: '/images/photos/research.jpg', duration: '22:15', category: 'Training', views: '15.2K' },
-  { title: 'Chevron Agbami Case Study — Customer Talk', image: '/images/photos/success-story.jpg', duration: '18:40', category: 'Customer Stories', views: '6.3K' },
-  { title: 'API 581 Third Edition — What\'s New', image: '/images/photos/whitepaper.jpg', duration: '45:00', category: 'Webinars', views: '9.8K' },
-  { title: 'Damage Mechanism Library Best Practices', image: '/images/photos/corrosion.jpg', duration: '12:20', category: 'Training', views: '7.5K' },
-  { title: 'Visions RBI — Quantitative Analysis Demo', image: '/images/photos/data-analysis.jpg', duration: '9:55', category: 'Product Demo', views: '5.9K' },
-  { title: 'IOW Monitoring in Chemical Plants', image: '/images/photos/chem-plant.jpg', duration: '38:15', category: 'Webinars', views: '4.7K' },
-  { title: 'Marathon Oil — Digital Transformation Journey', image: '/images/photos/refinery.jpg', duration: '24:18', category: 'Customer Stories', views: '5.2K' },
-  { title: 'PSM Mechanical Integrity Fundamentals', image: '/images/photos/inspector.jpg', duration: '32:45', category: 'Training', views: '11.3K' },
-  { title: 'Offshore Integrity in Extreme Conditions', image: '/images/photos/success-story.jpg', duration: '28:30', category: 'Industry Talks', views: '6.8K' },
-  { title: 'Fugitive Emissions Module — LDAR Walkthrough', image: '/images/photos/fugitive-emissions.jpg', duration: '11:40', category: 'Product Demo', views: '4.1K' },
-  { title: 'Corrosion Under Insulation Detection', image: '/images/photos/corrosion.jpg', duration: '19:55', category: 'Training', views: '8.9K' },
+  { title: 'Digital Quality Management System', image: '/images/photos/blog-data.jpg', duration: '8:45', category: 'Product Demo', views: '9.1K' },
+  { title: 'Risk Based Inspection', image: '/images/photos/blog-rbi.jpg', duration: '10:20', category: 'Product Feature', views: '11.5K' },
+  { title: 'Comprehensive AIM Solution', image: '/images/photos/cs-agbami.jpg', duration: '12:30', category: 'Product Overview', views: '14.2K' },
+  { title: 'Visions Enterprise Mobility Application', image: '/images/photos/blog-cmms.jpg', duration: '7:15', category: 'Product Feature', views: '8.3K' },
+  { title: 'VISIONSGO — Connected Digital Worker Solution', image: '/images/photos/visionsgo.jpg', duration: '9:40', category: 'Product Feature', views: '10.7K' },
+  { title: 'Corrosion Control Documents — Integrity Manuals Training', image: '/images/photos/blog-corrosion.jpg', duration: '15:22', category: 'Training', views: '6.8K' },
+  { title: 'The Advantages of Visions Enterprise', image: '/images/photos/visions-enterprise.jpg', duration: '6:50', category: 'Product Benefits', views: '7.4K' },
+  { title: 'Visions Enterprise and VISIONSGO — Asset Performance Management', image: '/images/photos/blog-integration.jpg', duration: '11:15', category: 'Product Solution', views: '5.9K' },
 ];
 
 const stats = [
-  { val: '40+', lbl: 'Videos Available' },
-  { val: '200K+', lbl: 'Total Views' },
-  { val: '15K+', lbl: 'Subscribers' },
+  { val: '8', lbl: 'Videos Available' },
+  { val: '50K+', lbl: 'Total Views' },
+  { val: '5K+', lbl: 'Subscribers' },
   { val: '4.9', lbl: 'Average Rating' },
 ];
 ---
@@ -103,26 +100,14 @@ const stats = [
       </div>
     </section>
 
-    <!-- Filters -->
-    <section class="filters-bar">
-      <div class="container">
-        <div class="filters-bar__inner">
-          <span class="filters-bar__label">Category</span>
-          <div class="filters-bar__list">
-            {categories.map((c, i) => (
-              <button class={`filters-bar__pill ${i === 0 ? 'filters-bar__pill--active' : ''}`}>{c}</button>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+    <FilterBar categories={categories} targetGrid=".vg-grid__list" />
 
     <!-- Videos grid -->
     <section class="vg-grid section">
       <div class="container">
         <div class="vg-grid__list">
           {videos.map((v, i) => (
-            <a href="#" class="vg-video reveal" style={`transition-delay: ${(i % 4) * 60}ms`}>
+            <a href="#" class="vg-video reveal" data-tag={v.category} style={`transition-delay: ${(i % 4) * 60}ms`}>
               <div class="vg-video__thumb">
                 <img src={v.image} alt={v.title} loading="lazy" />
                 <div class="vg-video__overlay"></div>

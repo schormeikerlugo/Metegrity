@@ -8,24 +8,19 @@ import ResourceCard from '../../components/shared/ResourceCard.astro';
 import CTASection from '../../components/shared/CTASection.astro';
 
 const papers = [
-  { type: 'Whitepaper', title: 'The State of Risk-Based Inspection in 2026', image: '/images/photos/research.jpg', meta: '32 pages · PDF', tag: 'RBI', href: '#' },
-  { type: 'Whitepaper', title: 'API 581 Third Edition: What Changed and Why', image: '/images/photos/whitepaper.jpg', meta: '18 pages · PDF', tag: 'API 581', href: '#' },
-  { type: 'Whitepaper', title: 'Damage Mechanism Libraries for Process Plants', image: '/images/photos/corrosion.jpg', meta: '24 pages · PDF', tag: 'Corrosion', href: '#' },
-  { type: 'Whitepaper', title: 'Digital Transformation in Integrity Programs', image: '/images/photos/data-analysis.jpg', meta: '20 pages · PDF', tag: 'Digital', href: '#' },
-  { type: 'Whitepaper', title: 'Fugitive Emissions: EPA OOOOb Compliance Guide', image: '/images/photos/fugitive-emissions.jpg', meta: '28 pages · PDF', tag: 'Compliance', href: '#' },
-  { type: 'Whitepaper', title: 'Integrity Operating Windows: Theory to Practice', image: '/images/photos/control-room.jpg', meta: '22 pages · PDF', tag: 'IOW', href: '#' },
-  { type: 'Whitepaper', title: 'Fitness-for-Service: API 579 Implementation', image: '/images/photos/engineer-field.jpg', meta: '36 pages · PDF', tag: 'FFS', href: '#' },
-  { type: 'Whitepaper', title: 'Corrosion Under Insulation (CUI) Management', image: '/images/photos/refinery.jpg', meta: '26 pages · PDF', tag: 'Corrosion', href: '#' },
+  { type: 'Whitepaper', title: 'Achieving Efficient Implementation of Asset Integrity Management', image: '/images/photos/wp-implement.jpg', meta: 'PDF · Free Download', tag: 'Implementation', href: '/insights/whitepapers/efficient-implementation' },
+  { type: 'Whitepaper', title: 'How to Build a Business Case for Asset Integrity Management', image: '/images/photos/wp-business.jpg', meta: 'PDF · Free Download', tag: 'Business Case', href: '/insights/whitepapers/business-case' },
+  { type: 'Whitepaper', title: 'Change Management Strategies for AIM', image: '/images/photos/wp-change.jpg', meta: 'PDF · Free Download', tag: 'Change Management', href: '/insights/whitepapers/change-management' },
 ];
 
 const featured = {
   type: 'Featured Whitepaper',
-  title: 'The State of Risk-Based Inspection in 2026',
-  description: 'A comprehensive 32-page analysis covering the evolution of RBI methodologies, the latest API 581 updates, and emerging trends in risk-based integrity management. Includes case studies and practical implementation frameworks.',
-  image: '/images/photos/research.jpg',
-  meta: '32 pages · 4.5MB PDF',
-  tag: 'New',
-  href: '#',
+  title: 'How to Defend the Merits of an Asset Integrity Management System',
+  description: 'A practical guide for integrity professionals who need to justify AIM investments to leadership. Covers ROI frameworks, risk quantification, regulatory drivers, and real-world examples of how AIM systems deliver measurable value across operations.',
+  image: '/images/photos/wp-defend.jpg',
+  meta: '2025 · PDF · Free Download',
+  tag: 'Featured',
+  href: '/insights/whitepapers/defend-merits',
   featured: true,
 };
 ---
@@ -84,12 +79,11 @@ const featured = {
             <div class="wp-sidebar__topics">
               <h4>Topics</h4>
               <ul>
-                <li><a href="#">Risk-Based Inspection (12)</a></li>
-                <li><a href="#">Corrosion Management (8)</a></li>
-                <li><a href="#">API Standards (15)</a></li>
-                <li><a href="#">Compliance (6)</a></li>
-                <li><a href="#">Digital Transformation (4)</a></li>
-                <li><a href="#">Offshore Integrity (7)</a></li>
+                <li><a href="#">RBI</a></li>
+                <li><a href="#">Corrosion Management</a></li>
+                <li><a href="#">Implementation</a></li>
+                <li><a href="#">Business Case</a></li>
+                <li><a href="#">Change Management</a></li>
               </ul>
             </div>
           </aside>
