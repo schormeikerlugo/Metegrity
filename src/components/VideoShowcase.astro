@@ -4,12 +4,12 @@
 <section class="video-showcase" aria-label="Metegrity showcase video">
   <video
     class="video-showcase__video"
-    src="/videos/showcase.mp4"
+    data-src="/videos/showcase.mp4"
     autoplay
     muted
     loop
     playsinline
-    preload="metadata"
+    preload="none"
     aria-hidden="true"
   ></video>
   <div class="video-showcase__overlay"></div>
@@ -57,3 +57,21 @@
     }
   }
 </style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const video = document.querySelector<HTMLVideoElement>('.video-showcase__video');
+    if (!video || video.src) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const v = entry.target as HTMLVideoElement;
+          v.src = v.dataset.src || '';
+          v.load();
+          io.unobserve(v);
+        }
+      });
+    }, { rootMargin: '200px' });
+    io.observe(video);
+  });
+</script>
