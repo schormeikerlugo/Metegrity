@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import ScrollToTop from '../components/ScrollToTop.astro';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title?: string;
@@ -51,6 +52,7 @@ const {
   </head>
   <body>
     <slot />
+    <Analytics />
     <ScrollToTop />
     <script>
       function initReveal() {

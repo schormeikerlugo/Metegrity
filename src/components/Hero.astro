@@ -1393,7 +1393,7 @@
   @media (max-width: 560px) {
     .hero__visual {
       min-height: 420px;
-      overflow: visible;
+      overflow: hidden;
     }
     .dash {
       max-width: 100%;
@@ -1409,11 +1409,11 @@
     .stat-card--alert,
     .stat-card--sensor,
     .stat-card--stats {
-      min-width: 150px;
+      min-width: 140px;
     }
-    .stat-card--alert { top: -2%; left: -4%; }
-    .stat-card--sensor { bottom: 18%; left: -6%; }
-    .stat-card--stats { bottom: -2%; right: -4%; }
+    .stat-card--alert { top: 0; left: 0; }
+    .stat-card--sensor { bottom: 20%; left: 0; }
+    .stat-card--stats { bottom: 0; right: 0; }
   }
 </style>
 
@@ -1429,8 +1429,8 @@
             const el = entry.target as HTMLElement;
             const end = parseFloat(el.dataset.to || "0");
             const dec = parseInt(el.dataset.dec || "0", 10);
-            const duration = 1800;
-            const start = performance.now() + 400; // wait for entrance
+            const duration = 1000;
+            const start = performance.now();
             function tick(now: number) {
               if (now < start) {
                 requestAnimationFrame(tick);
@@ -1447,7 +1447,7 @@
             io.unobserve(el);
           });
         },
-        { threshold: 0.3 },
+        { threshold: 0.1 },
       );
       counters.forEach((c) => io.observe(c));
     }

@@ -16,8 +16,9 @@ const stats = [
           data-end={stat.end}
           data-prefix={stat.prefix}
           data-suffix={stat.suffix}
+          data-animated="false"
         >
-          {stat.prefix}0{stat.suffix}
+          {stat.prefix}{stat.end >= 1000 ? stat.end.toLocaleString('en-US') : stat.end}{stat.suffix}
         </span>
         <span class="stats__label">{stat.label}</span>
       </div>
@@ -82,35 +83,34 @@ const stats = [
     }
 
     function animateCounter(el: HTMLElement) {
+      if (el.dataset.animated === 'true') return;
+      el.dataset.animated = 'true';
       const end = Number(el.dataset.end);
       const prefix = el.dataset.prefix || '';
       const suffix = el.dataset.suffix || '';
-      const duration = 2000;
+      const duration = 1200;
       const startTime = performance.now();
+      el.textContent = prefix + '0' + suffix;
 
       function update(now: number) {
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        // Ease-out cubic
+        const progress = Math.min((now - startTime) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.round(eased * end);
-        el.textContent = prefix + formatNumber(current) + suffix;
+        el.textContent = prefix + formatNumber(Math.round(eased * end)) + suffix;
         if (progress < 1) requestAnimationFrame(update);
       }
-
       requestAnimationFrame(update);
     }
 
+    const els = document.querySelectorAll<HTMLElement>('.stats__value');
+    if (!els.length) return;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const el = entry.target as HTMLElement;
-          animateCounter(el);
-          observer.unobserve(el);
+          animateCounter(entry.target as HTMLElement);
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('.stats__value').forEach(el => observer.observe(el));
+    }, { threshold: 0.1 });
+    els.forEach(el => { el.dataset.animated = 'false'; observer.observe(el); });
   });
 </script>

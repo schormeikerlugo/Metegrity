@@ -550,7 +550,7 @@ const stats = [
         const raw = el.dataset.end || '0';
         const end = parseInt(raw, 10);
         if (isNaN(end)) { el.textContent = raw; statIO.unobserve(el); return; }
-        const duration = 1600;
+        const duration = 1000;
         const start = performance.now();
         function tick(now: number) {
           const p = Math.min((now - start) / duration, 1);
@@ -561,7 +561,7 @@ const stats = [
         requestAnimationFrame(tick);
         statIO.unobserve(el);
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.1 });
     statNums.forEach(n => statIO.observe(n));
   });
 </script>
